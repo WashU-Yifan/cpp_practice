@@ -34,3 +34,10 @@
         Weekday w1=Weekday::Monday,w2=Weekday::Wednesday;
         cout<<"lo<hi:"<<(p<p2)<<endl;
         cout<<"Wednesday<Monday:"<<(w2<w1)<<endl;
+    
+    The result type of < operator is a boolean type, which is posessed as 1 or 0 when printed.
+    The relavent sequence between p, p2, and between w1,w2 are also correct.
+
+
+4.
+    
