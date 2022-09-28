@@ -1,0 +1,204 @@
+1. Yifan Wang 488500
+
+2.
+    OutPut:
+        [wang.y1@linuxlab002 studio1]$ ./studio1
+        FRI 
+
+
+    Added to theheader file:
+
+        #include <iostream>
+
+        enum class Weekday{
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday,
+            Sunday
+        };
+
+        std::ostream &operator<< (std::ostream &os, const Weekday &day);
+
+
+    Added to the source file:
+
+        #include "studio1.h"
+        using namespace std;
+        const int SUCCESS = 0;
+
+        ostream &operator<< (ostream &os, const Weekday &day){
+            switch (day){
+                case Weekday::Monday:{
+                    os<<"MON ";
+                    return os;
+                }
+                case Weekday::Tuesday:{
+                    os<<"TUE ";
+                    return os;
+                }
+                case Weekday::Wednesday:{
+                    os<<"WED ";
+                    return os;
+                }
+                case Weekday::Thursday:{
+                    os<<"THU ";
+                    return os;
+                }
+                case Weekday::Friday:{
+                    os<<"FRI ";
+                    return os;
+                }   
+                case Weekday::Saturday:{
+                    os<<"SAT ";
+                    return os;
+                }
+                case Weekday::Sunday:{
+                    os<<"SUN ";
+                    return os;
+                }
+            }
+
+        }
+
+        int main(int argc, char * argv[]){
+            Weekday day=Weekday:: Friday;
+            cout<<day<<endl;
+            return SUCCESS;
+        }
+
+3.
+    output of the program:
+        MON TUE WED THU FRI SAT SUN
+
+
+    added to the header file:
+        void operator++ (Weekday &day,int);
+
+    added to the the source file:
+
+        void operator++ (Weekday &day,int){
+        
+            switch (day){
+                case Weekday::Monday:{
+                    day=Weekday::Tuesday;
+                    break;
+                }
+                case Weekday::Tuesday:{
+                    day= Weekday::Wednesday;
+                    break;
+                }
+                case Weekday::Wednesday:{
+                    day=Weekday::Thursday;
+                    break;
+                }
+                case Weekday::Thursday:{
+                    day= Weekday::Friday;
+                    break;
+                }
+                case Weekday::Friday:{
+                    day=Weekday::Saturday;
+                    break;
+                }   
+                case Weekday::Saturday:{
+                    day=Weekday::Sunday;
+                    break;
+                }
+                case Weekday::Sunday:{
+                    day= Weekday::Monday;
+                    break;
+                }
+            }
+        }
+
+
+        int main(int argc, char * argv[]){
+            Weekday day=Weekday:: Monday;
+
+            int i=1;
+            do {
+                cout<<day;
+                day++;
+            }while(i++<days);
+        
+            return SUCCESS;
+        }
+
+
+4.
+    output: 
+        MON SUN SAT FRI THU WED TUE 
+
+    Code:
+        added to the header file:
+            void operator-- (Weekday &day,int);
+
+        added to the source file:
+            void operator-- (Weekday &day,int){
+                
+                switch (day){
+                    case Weekday::Monday:{ day=Weekday::Sunday;break;}
+                    case Weekday::Tuesday:{day= Weekday::Monday;break;}
+                    case Weekday::Wednesday:{ day=Weekday::Tuesday; break;}
+                    case Weekday::Thursday:{  day= Weekday::Wednesday;break;}
+                    case Weekday::Friday:{day=Weekday::Thursday;break; }   
+                    case Weekday::Saturday:{day= Weekday::Friday; break;}
+                    case Weekday::Sunday:{day=Weekday::Saturday;break;}
+                }
+            }
+
+
+5.
+
+    OUTPUT of program:
+        LOW 
+        
+    Code added to source file:
+        ostream &operator<< (ostream &os, const Pressure &p){
+            switch (p){
+                case Pressure::lo:{os<<"LOW ";return os;}
+                case Pressure::med:{os<<"MEDIUM ";return os;}
+
+                case Pressure::hi:{os<<"HIGH ";return os;}
+                default:{os<<"POP ";return os;} 
+            }
+
+        }
+
+        int main(int argc, char * argv[]){
+            Pressure p= Pressure::lo;
+            cout<<p<<endl;
+            return SUCCESS;
+        }
+
+    Code added to the header file:
+        std::ostream &operator<< (std::ostream &os, const Pressure &p);
+
+6.
+
+    OUTPUT of the program:
+        LOW MEDIUM HIGH
+
+    Code added to the source file
+        void operator++ (Pressure &p){
+            switch (p){
+                case Pressure::lo:{p=Pressure::med;return ;}
+                case Pressure::med:{p=Pressure::hi;return ;}
+
+                case Pressure::hi:{p=Pressure::pop;return ;}
+                default: return;
+            }
+        }
+        int main(int argc, char * argv[]){
+            Pressure p= Pressure::lo;
+            for(int i=0;i<num_pressure;++i){
+                cout<<p;
+                ++p;
+            }
+            return SUCCESS;
+        }
+
+    Code added to the header file
+        void operator++ (Pressure &p);

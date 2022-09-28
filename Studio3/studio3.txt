@@ -1,0 +1,36 @@
+1. Yifan Wang 488500
+
+2.
+    OutPut:
+        Initial: LOW 
+        cout ++p: MEDIUM 
+
+    Pressure operator++ (Pressure &p){
+        switch (p){
+            case Pressure::lo:{p=Pressure::med;break;}
+            case Pressure::med:{p=Pressure::hi;break;}
+
+            case Pressure::hi:{p=Pressure::pop;break;}
+            default: break;
+        }
+        return p;
+    }
+    int main(int argc, char * argv[]){
+        Pressure p= Pressure::lo;
+        cout<<"Initial: "<<p<<endl;
+        cout<<"cout ++p: "<<++p<<endl;
+    }
+
+    The ++ operator has higher precedence since the ++p is excuted before the << operator.
+
+3.
+    OutPut:
+        [wang.y1@linuxlab002 studio3]$ ./studio3
+        lo<hi:1
+        Wednesday<Monday:0
+
+    Code:
+        Pressure p= Pressure::lo,p2=Pressure::hi;
+        Weekday w1=Weekday::Monday,w2=Weekday::Wednesday;
+        cout<<"lo<hi:"<<(p<p2)<<endl;
+        cout<<"Wednesday<Monday:"<<(w2<w1)<<endl;
