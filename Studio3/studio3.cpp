@@ -3,7 +3,7 @@ using namespace std;
 const int SUCCESS = 0;
 const int days=7;
 const int num_pressure=3;
-void operator++ (Weekday &day,int){
+Weekday  operator++ (Weekday &day,int){
     
     switch (day){
         case Weekday::Monday:{
@@ -35,9 +35,10 @@ void operator++ (Weekday &day,int){
              break;
         }
     }
+    return day;
 }
 
-void operator-- (Weekday &day,int){
+Weekday  operator-- (Weekday &day,int){
     
     switch (day){
         case Weekday::Monday:{ day=Weekday::Sunday;break;}
@@ -48,6 +49,7 @@ void operator-- (Weekday &day,int){
         case Weekday::Saturday:{day= Weekday::Friday; break;}
         default:{day=Weekday::Saturday;break;}
     }
+    return day;
 }
 
 ostream &operator<< (ostream &os, const Weekday &day){

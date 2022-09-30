@@ -21,8 +21,8 @@ enum class Pressure{
 };
 
 std::ostream &operator<< (std::ostream &os, const Weekday &day);
-void operator++ (Weekday &day,int);
-void operator-- (Weekday &day,int);
+Weekday operator++ (Weekday &day,int);
+Weekday operator-- (Weekday &day,int);
 
 
 std::ostream &operator<< (std::ostream &os, const Pressure &p);
