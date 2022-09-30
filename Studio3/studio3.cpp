@@ -112,9 +112,16 @@ int main(int argc, char * argv[]){
     
     Pressure p= Pressure::lo,p2=Pressure::hi;
     Weekday w1=Weekday::Monday,w2=Weekday::Wednesday;
-    set1.insert(w1);
-    set1.insert(w2);
-    set2.insert(w2);
+    set1.insert(w1++);
+    set1.insert(w1++);
+    set1.insert(w1++);
+    set1.insert(w1++);
+    set2.insert(w2++);
+    set2.insert(w2++);
+    set2.insert(w2++);
+    for(Weekday w:set1)cout<<w<<endl;
+    for(Weekday w:set2)cout<<w<<endl;
+    
     /*
     cout<<"lo<hi:"<<(p<p2)<<endl;
     cout<<"Wednesday<Monday:"<<(w2<w1)<<endl;

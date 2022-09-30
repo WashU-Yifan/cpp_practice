@@ -1,5 +1,7 @@
 #include <iostream>
 #include <set>
+#include <algorithm>
+#include <iterator>
 enum class Weekday{
     Monday,
     Tuesday,
