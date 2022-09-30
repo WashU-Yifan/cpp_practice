@@ -124,7 +124,7 @@ int main(int argc, char * argv[]){
    // for(Weekday w:set1)cout<<w<<endl;
     //for(Weekday w:set2)cout<<w<<endl;
     
-    set_intersection(set1.begin(),set1.end(),set2.begin(),set2.end(),inserter(set3,set3.begin()));
+    set_union(set1.begin(),set1.end(),set2.begin(),set2.end(),inserter(set3,set3.begin()));
     for (Weekday w:set3)cout<<w<<endl;
 
     /*
