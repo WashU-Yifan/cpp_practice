@@ -109,7 +109,7 @@ Pressure operator++ (Pressure &p){
     return p;
 }
 int main(int argc, char * argv[]){
-    set<Weekday>set1,set2;
+    set<Weekday>set1,set2,set3;
     
     
     Pressure p= Pressure::lo,p2=Pressure::hi;
@@ -121,8 +121,11 @@ int main(int argc, char * argv[]){
     set2.insert(w2++);
     set2.insert(w2++);
     set2.insert(w2++);
-    for(Weekday w:set1)cout<<w<<endl;
-    for(Weekday w:set2)cout<<w<<endl;
+   // for(Weekday w:set1)cout<<w<<endl;
+    //for(Weekday w:set2)cout<<w<<endl;
+    inserter ins(set3,set3.begin());
+    set_intersection(set1.begin(),set1.end(),set2.begin(),set2.end(),ins);
+    for (Weekday w:set3)cout<<w<<endl;
     
     /*
     cout<<"lo<hi:"<<(p<p2)<<endl;
