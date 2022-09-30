@@ -1,6 +1,9 @@
 1. Yifan Wang 488500
 
 2.
+[wang.y1@shell Studio4]$ ./studio4 
+"Hello, ", length: 7
+"World!", length: 6
     OutPut:
         Initial: LOW 
         cout ++p: MEDIUM 
