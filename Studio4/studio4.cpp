@@ -15,6 +15,7 @@ int main(int argc, char * argv[]){
     cout<<"sin(cos(f)) is:" <<sin(cos(f))<<endl;
     function<float(float)> sn =[](auto i){return sin(i);};
     function<float(float)> cs =[](auto i){return cos(i);};
+    float i=f;
     cout<<sn(cs(i))<<endl;
     auto compose_result=compose(sn,cs);
     cout<<compose_result(i)<<endl;
