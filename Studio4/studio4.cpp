@@ -19,6 +19,7 @@ int main(int argc, char * argv[]){
     cout<<sn(cs(i))<<endl;
     auto compose_result=compose(sn,cs);
     cout<<compose_result(i)<<endl;
-    cout<<bind(compose_result,i)<<endl;
+    auto bind_result=bind(compose_result,i);
+    cout<<bind_result()<<endl;
     return SUCCESS;
 }
