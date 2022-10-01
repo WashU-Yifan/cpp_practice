@@ -18,8 +18,40 @@
         cout<<"\""<<c2<<"\""<< ", length: "<<p(c2)<<endl;
 
 4
-f is :0
-sin(cos(f)) is:0.841471
-0.841471
-0.841471
-0.841471
+    Output:
+        f is :0
+        sin(cos(f)) is:0.841471
+        
+    Code:
+        float f=0.0;
+        cout<<"f is :"<<f<<endl;
+        cout<<"sin(cos(f)) is:" <<sin(cos(f))<<endl;
+
+5.
+    Output:
+
+        0.841471
+
+    Code:
+        function<float(float)> sn =[](auto i){return sin(i);};
+        function<float(float)> cs =[](auto i){return cos(i);};
+        float i=f;
+        cout<<sn(cs(i))<<endl;
+
+    6.
+    Output
+        0.841471
+
+    Code    
+        auto compose_result=compose(sn,cs);
+        cout<<compose_result(i)<<endl;
+
+    7.
+     
+    Output
+        0.841471
+      
+    Code   
+        auto bind_result=bind(compose_result,i);
+        cout<<bind_result()<<endl;
+
