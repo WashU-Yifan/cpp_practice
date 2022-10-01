@@ -7,13 +7,13 @@ EXECUTABLE	= studio4
 CMPL_SRCS	= studio4.cpp 
 
 #               Source files containing only template class method definitions
-TMPL_SRCS	= 
+TMPL_SRCS	= Compose_T.cpp 
 
 #               Header (.h) files
-HEADER_FILES    = studio4.h
+HEADER_FILES    = studio4.h  Compose_T 
 
 #               Any special flags that should be set for compilation
-SPECIAL_FLAGS  = -std=c++17
+SPECIAL_FLAGS  = -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE
 
 #               Any additional libraries that need to be linked in (e.g., -lsocket -lnsl)
 LIBS    =       
