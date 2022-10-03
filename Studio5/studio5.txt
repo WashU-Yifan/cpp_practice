@@ -68,6 +68,19 @@ Code:
         m.x is 0 and m.y is 0
         m.x is 7 and m.y is 3
         n.x is 7 and n.y is 3
-        
+
     default constructor initializes the variables to 0,
     default copy constructor copy the values into the new object.
+
+6.
+    output:
+        m.x is 0 and m.y is 0
+        m.x is 7 and m.y is 3
+        n.x is 7 and n.y is 3
+
+    Code:
+        point2D1(const point2D1& p2):x(p2.get_x()),y(p2.get_y()){}
+
+    No difference than the default copy constrcutor.
+
+7.
