@@ -19,4 +19,11 @@
             00
 
     With defined constructor:
+        Not warning from the compiler, but have to remove the excutable first before compiling.
+
+    
+        Output:
+            [wang.y1@shell Studio5]$ ./s5
+            00
+
         
