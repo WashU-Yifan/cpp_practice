@@ -3,10 +3,11 @@
 using namespace std;
 
 int main(){
-    point2D1 p1;
-    cout<<"access on nonconst: "<<p1.get_x()<<endl;
-    cout<<"mutate then access on nonconst: "<<p1.set_x(1).get_x()<<endl;
-   const point2D1 p2;
-    cout<<"access on nonconst: "<<p2.get_x()<<endl;
-    //cout<<"mutate then access on const: "<<p2.set_x(1).x()<<endl;
+    point2D1 m;
+    cout<<"m.x is "<<m.get_x()<<" and m.y is "<< m.get_y()<<endl;
+    m.set_x(7).set_y(3);
+    cout<<"m.x is "<<m.get_x()<<" and m.y is "<< m.get_y()<<endl;
+    point2D1 n(m);
+    cout<<"n.x is "<<n.get_x()<<" and n.y is "<< n.get_y()<<endl;
+
 }

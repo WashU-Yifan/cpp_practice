@@ -33,3 +33,32 @@ is private in a class.
    
                                      Public     protected   private
 member access outside the class      Y            N           N
+
+
+4.
+    Not able to evoke mutator on const object
+
+    Here is the program output after removing that line:
+
+        access on nonconst: 0
+        mutate then access on nonconst: 1
+        access on nonconst: 0
+
+Code:
+    Source file:
+        point2D1 p1;
+        cout<<"access on nonconst: "<<p1.get_x()<<endl;
+        cout<<"mutate then access on nonconst: "<<p1.set_x(1).get_x()<<endl;
+        const point2D1 p2;
+        cout<<"access on nonconst: "<<p2.get_x()<<endl;
+        //cout<<"mutate then access on const: "<<p2.set_x(1).x()<<endl;
+
+    Header file:
+        private:
+            int x,y;
+        public:
+            point2D1():x(0),y(0){}
+            int get_x()const{return x;}
+            int get_y()const{ return y;}
+            point2D1& set_x(int _x){x=_x; return *this;}
+            point2D1& set_y(int _y){y=_y; return *this;}
