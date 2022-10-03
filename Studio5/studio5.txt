@@ -99,5 +99,10 @@ Code:
         CC for n is called when take(n) returns
     print method excutes in main
 
+
+8.
+    If we explicitly declare constructor to be private, then the compiler will 
+    not provide us a constructor. Thus in this exercise, the program will fail to compile.
+
     
     
