@@ -26,4 +26,10 @@
             [wang.y1@shell Studio5]$ ./s5
             00
 
-        
+3.
+
+    The access privilige of variables in a struct is public by default. However, the privilige
+is private in a class. 
+   
+                                     Public     protected   private
+member access outside the class      Y            N           N
