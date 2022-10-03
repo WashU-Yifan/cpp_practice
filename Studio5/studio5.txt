@@ -1,3 +1,22 @@
 1 Yifan Wang 488500
 
 2.
+
+    Without declaring constructor:
+
+        Got warning from compiler:
+            [wang.y1@shell Studio5]$ make
+            g++ -o s5 -DUNIX   -Wall -W -g -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE s5.cpp 
+            s5.cpp: In function 'int main()':
+            s5.cpp:7:14: warning: 'p1.point2D::x' is used uninitialized in this function [-Wuninitialized]
+                cout<<p1.x<<p1.y<<endl;
+                        ^
+            s5.cpp:7:20: warning: 'p1.point2D::y' may be used uninitialized in this function [-Wmaybe-uninitialized]
+                cout<<p1.x<<p1.y<<endl;
+                                ^
+        Ouput of the program:
+            [wang.y1@shell Studio5]$ ./s5 
+            00
+
+    With defined constructor:
+        
