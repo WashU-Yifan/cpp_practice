@@ -3,12 +3,13 @@
 class point2D1{
     private:
         int x,y;
-    public:
-        point2D1():x(0),y(0){
+        point2D1(){/*:x(0),y(0){
             std::cout<<"calling default constructor"<<std::endl;
             std::cout<<"address"<< this<<std::endl;
-            std::cout<<"variables value:"<<x<<y<<std::endl;
+            std::cout<<"variables value:"<<x<<y<<std::endl;}*/
         }
+    public:
+        
         point2D1(const point2D1& p2):x(p2.x),y(p2.y){
             std::cout<<"calling copy constructor"<<std::endl;
             std::cout<<"address"<< this<<std::endl;

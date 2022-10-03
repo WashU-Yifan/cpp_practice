@@ -83,4 +83,21 @@ Code:
 
     No difference than the default copy constrcutor.
 
-7.
+7.  DC for default constrcutor 
+    CC for copy constrcutor
+
+    DC m is called in main
+        CC for m is called when calling take(m)
+        CC for m is called when take(m) returns
+    print method excutes in main
+    mutator for m excutes in main
+        CC for m is called when calling take(m)
+        CC for m is called when take(m) returns
+    print method excutes in main
+    CC for n exeuctes in main
+        CC for n is called when calling take(n)
+        CC for n is called when take(n) returns
+    print method excutes in main
+
+    
+    
