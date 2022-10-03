@@ -62,3 +62,12 @@ Code:
             int get_y()const{ return y;}
             point2D1& set_x(int _x){x=_x; return *this;}
             point2D1& set_y(int _y){y=_y; return *this;}
+
+5.
+    Output
+        m.x is 0 and m.y is 0
+        m.x is 7 and m.y is 3
+        n.x is 7 and n.y is 3
+        
+    default constructor initializes the variables to 0,
+    default copy constructor copy the values into the new object.
