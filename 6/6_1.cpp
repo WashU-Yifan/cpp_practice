@@ -25,7 +25,7 @@ int main(int argc, char * argv[]){
     }
     for(int i=0;i<num_days;++i){
         cout<<w;
-        ++w;
+        w++;
     }
     return SUCCESS;
 }
