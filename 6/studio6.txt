@@ -34,3 +34,11 @@
                 ^
     
 5
+    using namespace enumerations;
+
+    The definition of the members are also within the scope of the namespace.
+    Then there is no need to explicitly state the scope operator in the same scope.
+6.
+
+    using enumerations::Pressure;
+    using enumerations::Weekday;
