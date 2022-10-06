@@ -1,5 +1,5 @@
-#include "studio3.h"
-using namespace std;
+#include "6.h"
+using std::cout;
 const int SUCCESS = 0;
 const int days=7;
 const int num_pressure=3;

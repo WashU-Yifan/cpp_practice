@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 using namespace std;
 #inclue"6.h"
 
+=======
+using std::cout;
+#include"6.h"
+>>>>>>> 9711c7a21bbdfa59b2cc97d603aa6fe0cb482298
 const int num_days=7;
 const int num_pressure=4;
+const int SUCCESS = 0;
 int main(int argc, char * argv[]){
     
     
