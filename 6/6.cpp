@@ -4,6 +4,7 @@ using std::ostream;
 const int SUCCESS = 0;
 const int days=7;
 const int num_pressure=3;
+namespace enumerations{
 Weekday  operator++ (Weekday &day,int){
     
     switch (day){
@@ -108,4 +109,5 @@ Pressure operator++ (Pressure &p){
         default: break;
     }
     return p;
+}
 }

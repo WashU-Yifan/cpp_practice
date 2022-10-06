@@ -2,6 +2,7 @@
 #include <set>
 #include <algorithm>
 #include <iterator>
+namespace enumerations{
 enum class Weekday{
     Monday,
     Tuesday,
@@ -27,3 +28,4 @@ Weekday operator-- (Weekday &day,int);
 
 std::ostream &operator<< (std::ostream &os, const Pressure &p);
 Pressure operator++ (Pressure &p);
+}

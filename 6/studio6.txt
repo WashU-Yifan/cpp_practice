@@ -1,1 +1,12 @@
-LOW MEDIUM HIGH POP MON TUE WED THU FRI SAT SUN 
+1. Yifan Wang 488500
+
+2. OutPut:
+
+    LOW MEDIUM HIGH POP 
+    MON TUE WED THU FRI SAT SUN 
+
+3. Code added to source file:
+    using std::cout;
+    using std::ostream;
+
+4. 
