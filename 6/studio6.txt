@@ -9,4 +9,25 @@
     using std::cout;
     using std::ostream;
 
-4. 
+4. sure p= Pressure::lo;
+     ^~~~~~~~
+6_1.cpp:10:5: note: suggested alternative:
+In file included from 6_1.cpp:2:
+6.h:17:12: note:   'enumerations::Pressure'
+ enum class Pressure{
+            ^~~~~~~~
+6_1.cpp:11:5: error: 'Weekday' was not declared in this scope
+     Weekday w=Weekday::Monday;
+     ^~~~~~~
+6_1.cpp:11:5: note: suggested alternative:
+In file included from 6_1.cpp:2:
+6.h:6:12: note:   'enumerations::Weekday'
+ enum class Weekday{
+            ^~~~~~~
+6_1.cpp:23:15: error: 'p' was not declared in this scope
+         cout<<p;
+               ^
+6_1.cpp:27:15: error: 'w' was not declared in this scope
+         cout<<w;
+               ^
+ 
