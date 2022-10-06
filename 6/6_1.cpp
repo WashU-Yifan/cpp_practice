@@ -1,5 +1,6 @@
 using namespace std;
 #inclue"6.h"
+
 const int num_days=7;
 const int num_pressure=4;
 int main(int argc, char * argv[]){
