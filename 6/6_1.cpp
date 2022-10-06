@@ -1,6 +1,7 @@
 
 #include"6.h"
 using std::cout;
+using namespace enumerations;
 const int num_days=7;
 const int num_pressure=4;
 const int SUCCESS = 0;
