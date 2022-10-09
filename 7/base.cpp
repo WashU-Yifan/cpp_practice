@@ -2,12 +2,9 @@
 #include<iostream>
 using std::cout;
 using std::endl;
-class base{
-    public:
-    base(){
+base::base(){
         std::cout<<"base::base()"<<std::endl;
     }
-    ~base(){
+base::~base(){
         std::cout<<"base::~base()"<<endl;
     }
-};

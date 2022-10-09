@@ -1,3 +1,8 @@
 #include "base.h"
 
-class derived;
+class derived: public base{
+    public:
+        derived();
+        
+        ~derived();
+};

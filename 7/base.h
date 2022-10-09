@@ -1,1 +1,5 @@
-class base;
+class base{
+    public:
+    base();
+    ~base();
+};
