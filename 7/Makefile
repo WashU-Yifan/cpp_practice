@@ -1,16 +1,16 @@
 #		The name of the executable file you want to build
-EXECUTABLE	= studio1
+EXECUTABLE	= 7
 
 #		Source (.cpp) files you want to compile
 #		(NOTE: Don't include header (.h) files, or any source (.cpp) files
 #		that only contain template class method definitions.)
-CMPL_SRCS	= studio1.cpp 
+CMPL_SRCS	= base.cpp main.cpp derived.cpp
 
 #               Source files containing only template class method definitions
-TMPL_SRCS	= studio1.h
+TMPL_SRCS	= 
 
 #               Header (.h) files
-HEADER_FILES    = 
+HEADER_FILES    = base.h derived.h
 
 #               Any special flags that should be set for compilation
 SPECIAL_FLAGS  = -std=c++17
