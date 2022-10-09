@@ -40,6 +40,9 @@ int main(){
 	cout<< "derived  pointer function call"<<endl;
 	dp->foo();
 
+	delete bp1;
+	delete bp2;
+	delete dp;
 
     return success;
 }
