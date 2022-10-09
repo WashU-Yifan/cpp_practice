@@ -8,13 +8,14 @@ using std::shared_ptr;
 using std:: make_shared;
 #define success 0
 int main(){
-    /*
+    
     base b;
     derived d;
+    /*
     base &br1=b;
     base &br2=d;
     derived& dr1=d;
-    */
+    /*
     base *bp1=new base();
     base*bp2=new derived();
     derived *dp=new derived();
@@ -32,17 +33,61 @@ int main(){
     shared_ptr<base> sb1=make_shared<base>();
     shared_ptr<base> sb2=make_shared<derived>();
     shared_ptr<base> sd=make_shared<derived>();
-    */
+    
     cout<< "base pointer function call"<<endl;
     bp1->foo();
 	cout<< "base points to derived function call"<<endl;
 	bp2->foo();
 	cout<< "derived  pointer function call"<<endl;
 	dp->foo();
+    */
+    try{
+        cout<<"throw base"<<endl;
+        throw b;
 
-	delete bp1;
-	delete bp2;
-	delete dp;
+    }
+    catch(derived d){
+        cout<<"derived catch by object"<<endl;
+    }
+    catch (base b){
+        cout<<"base catch by object"<<endl;
+    }
+
+    try{
+        cout<<"throw derived"<<endl;
+        throw d;
+
+    }
+    catch(derived d){
+        cout<<"derived catch by object"<<endl;
+    }
+    catch (base b){
+        cout<<"base catch by object"<<endl;
+    }
+
+    try{
+        cout<<"throw base"<<endl;
+        throw b;
+
+    }
+    catch(derived &d){
+        cout<<"derived catch by reference"<<endl;
+    }
+    catch (base &b){
+        cout<<"base catch by reference"<<endl;
+    }
+    try{
+        cout<<"throw derived"<<endl;
+        throw d;
+
+    }
+    catch(derived &d){
+        cout<<"derived catch by reference"<<endl;
+    }
+    catch (base &b){
+        cout<<"base catch by reference"<<endl;
+    }
+
 
     return success;
 }
