@@ -13,3 +13,20 @@
     then the base class's destructor is evoked to destroy the base part.
 
 3.
+[wang.y1@shell 7]$ ./7
+base::base()
+base::base()
+derived::derived()
+base object function call
+base::foo()
+derived object function call
+derived::foo()
+base reference base function call
+base::foo()
+base reference derived function call
+base::foo()
+derived reference function call
+derived::foo()
+derived::~derived()
+base::~base()
+base::~base()

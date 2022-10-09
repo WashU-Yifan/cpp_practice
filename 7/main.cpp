@@ -1,4 +1,5 @@
 
+#include<iostream>
 #include "derived.h"
 using std::cout;
 using std:: endl;
@@ -14,10 +15,10 @@ int main(){
     cout<< "derived object function call"<<endl;
     d.foo();
     cout<< "base reference base function call"<<endl;
-    br1->foo();
+    br1.foo();
     cout<< "base reference derived function call"<<endl;
-    br2->foo();
+    br2.foo();
     cout<< "derived reference function call"<<endl;
-    dr1->foo();
+    dr1.foo();
     return success;
 }
