@@ -4,8 +4,8 @@
 #include "derived.h"
 using std::cout;
 using std:: endl;
-using std::shared_ptr
-using std:: make_shared
+using std::shared_ptr;
+using std:: make_shared;
 #define success 0
 int main(){
     /*

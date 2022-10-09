@@ -62,3 +62,22 @@ derived::foo()
 derived::~derived()
 base::~base()
 base::~base()
+
+6.
+base::base()
+base::base()
+derived::derived()
+base::base()
+derived::derived()
+base shared pointer function call
+base::foo()
+base points to derived function call
+derived::foo()
+derived shared pointer function call
+derived::foo()
+derived::~derived()
+base::~base()
+derived::~derived()
+base::~base()
+base::~base(
+)
