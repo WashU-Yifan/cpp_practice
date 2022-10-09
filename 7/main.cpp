@@ -10,7 +10,10 @@ int main(){
     base &br1=b;
     base &br2=d;
     derived& dr1=d;
-    cout<< "base object function call"<<endl;
+    base *bp1=&b;
+    base*bp2=&d;
+    derived *dp=&d;
+ /*   cout<< "base object function call"<<endl;
     b.foo();
     cout<< "derived object function call"<<endl;
     d.foo();
@@ -20,5 +23,14 @@ int main(){
     br2.foo();
     cout<< "derived reference function call"<<endl;
     dr1.foo();
+ */
+     cout<< "base pointer function call"<<endl;
+         bp1->foo();
+	     cout<< "base points to derived function call"<<endl;
+	         bp2->foo();
+		  cout<< "derived pointer function call"<<endl;
+		      dp->foo();
+
+
     return success;
 }

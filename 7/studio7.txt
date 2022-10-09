@@ -48,4 +48,17 @@ derived::foo()
 derived::~derived()
 base::~base()
 base::~base()
-[wang.y1@shell
+
+5:
+base::base()
+base::base()
+derived::derived()
+base pointer function call
+base::foo()
+base points to derived function call
+derived::foo()
+derived pointer function call
+derived::foo()
+derived::~derived()
+base::~base()
+base::~base()
