@@ -14,9 +14,10 @@ int main(){
     base &br1=b;
     base &br2=d;
     derived& dr1=d;
-    base *bp1=&b;
-    base*bp2=&d;
-    derived *dp=&d;
+    */
+    base *bp1=new base();
+    base*bp2=new derived();
+    derived *dp=new derived();
  /*   cout<< "base object function call"<<endl;
     b.foo();
     cout<< "derived object function call"<<endl;
@@ -27,10 +28,11 @@ int main(){
     br2.foo();
     cout<< "derived reference function call"<<endl;
     dr1.foo();
- */
+ 
     shared_ptr<base> sb1=make_shared<base>();
     shared_ptr<base> sb2=make_shared<derived>();
     shared_ptr<base> sd=make_shared<derived>();
+    */
     cout<< "base shared pointer function call"<<endl;
     sb1->foo();
 	cout<< "base points to derived function call"<<endl;
