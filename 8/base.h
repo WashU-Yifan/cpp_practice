@@ -1,7 +1,10 @@
 #include<string>
 class base{
+     std::string s;
     public:
-    std::string s;
+    static const std::string base::*sp(){
+        return &base::s;
+    }
     base();
     virtual void foo();
      virtual ~base();
