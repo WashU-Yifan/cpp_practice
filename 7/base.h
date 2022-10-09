@@ -1,6 +1,6 @@
 class base{
     public:
     base();
-    void foo();
+    virtual void foo();
     ~base();
 };

@@ -3,7 +3,7 @@
 class derived: public base{
     public:
         derived();
-        void foo();
-        ~derived();
+        virtual  void foo();
+        virtual ~derived();
 
 };
