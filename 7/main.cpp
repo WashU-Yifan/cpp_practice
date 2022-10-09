@@ -43,50 +43,44 @@ int main(){
     */
     try{
         cout<<"throw base"<<endl;
-        throw b;
-
-    }
-    catch(derived d){
-        cout<<"derived catch by object"<<endl;
-    }
-    catch (base b){
-        cout<<"base catch by object"<<endl;
-    }
+        throw b;}
+    catch(derived dc){
+        dc.foo();
+        cout<<"derived catch by object"<<endl;}
+    catch (base bc){
+        bc.foo();
+        cout<<"base catch by object"<<endl;}
 
     try{
         cout<<"throw derived"<<endl;
-        throw d;
-
-    }
-    catch(derived d){
-        cout<<"derived catch by object"<<endl;
-    }
-    catch (base b){
-        cout<<"base catch by object"<<endl;
-    }
+        throw d;}
+    catch(derived dc){
+        dc.foo();
+        cout<<"derived catch by object"<<endl;}
+    catch (base bc){
+        bc.foo();
+        cout<<"base catch by object"<<endl;}
 
     try{
         cout<<"throw base"<<endl;
-        throw b;
+        throw b;}
+    catch(derived &dc){
+        dc.foo();
+        cout<<"derived catch by reference"<<endl;}
+    catch (base &bc){
+        bc.foo();
+        cout<<"base catch by reference"<<endl;}
 
-    }
-    catch(derived &d){
-        cout<<"derived catch by reference"<<endl;
-    }
-    catch (base &b){
-        cout<<"base catch by reference"<<endl;
-    }
+
     try{
         cout<<"throw derived"<<endl;
-        throw d;
-
-    }
-    catch(derived &d){
-        cout<<"derived catch by reference"<<endl;
-    }
-    catch (base &b){
-        cout<<"base catch by reference"<<endl;
-    }
+        throw d;}
+    catch(derived &dc){
+        dc.foo();
+        cout<<"derived catch by reference"<<endl;}
+    catch (base &bc){
+        bc.foo();
+        cout<<"base catch by reference"<<endl;}
 
 
     return success;
