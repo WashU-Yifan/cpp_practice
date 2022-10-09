@@ -1,4 +1,12 @@
 1. Yifan Wang 488500
 
 2.
-    
+  base::base()
+base::base()
+derived::derived()
+derived fetched by ptr 1derived
+derived fetched by ptr 2base
+base fetched by ptr 3base
+derived::~derived()
+base::~base()
+base::~base()  

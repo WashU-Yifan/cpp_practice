@@ -1,3 +1,4 @@
+#include<string>
 class base{
     public:
     std::string s;
