@@ -1,6 +1,5 @@
 #		The name of the executable file you want to build
-EXECUTABLE	= 7
-
+EXECUTABLE	= 8
 
 #		Source (.cpp) files you want to compile
 #		(NOTE: Don't include header (.h) files, or any source (.cpp) files
