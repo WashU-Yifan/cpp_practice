@@ -33,12 +33,12 @@ int main(){
     shared_ptr<base> sb2=make_shared<derived>();
     shared_ptr<base> sd=make_shared<derived>();
     */
-    cout<< "base shared pointer function call"<<endl;
-    sb1->foo();
+    cout<< "base pointer function call"<<endl;
+    bp1->foo();
 	cout<< "base points to derived function call"<<endl;
-	sb2->foo();
-	cout<< "derived shared pointer function call"<<endl;
-	sd->foo();
+	bp2->foo();
+	cout<< "derived  pointer function call"<<endl;
+	dp->foo();
 
 
     return success;
