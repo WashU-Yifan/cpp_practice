@@ -139,3 +139,29 @@ base::~base())
 
 The destructor must be virtual or other wise the derived portion of the object
 might not be freed after the program finished, leading to memory leak.
+
+10
+catched block:
+    catch sequence: catch base then derived
+                catch by value               catch by reference
+    throw base       base                          base
+    throw derived    base                           base
+
+    catch sequence: catch derived then base
+                catch by value               catch by reference
+    throw base       base                          base
+    throw derived    derived                       derived
+
+foo called:
+    catch sequence: catch base then derived
+                catch by value               catch by reference
+    throw base       base                          base
+    throw derived    base                          derived
+
+    catch sequence: catch derived then base
+                catch by value               catch by reference
+    throw base       base                          base
+    throw derived    derived                       derived
+
+
+11.

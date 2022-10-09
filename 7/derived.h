@@ -1,6 +1,6 @@
 #include "base.h"
 
-class derived: public base{
+class derived: protected base{
     public:
         derived();
         virtual  void foo();
