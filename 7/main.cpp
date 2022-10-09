@@ -44,43 +44,47 @@ int main(){
     try{
         cout<<"throw base"<<endl;
         throw b;}
+     catch (base bc){
+        bc.foo();
+        cout<<"base catch by object"<<endl;}
     catch(derived dc){
         dc.foo();
         cout<<"derived catch by object"<<endl;}
-    catch (base bc){
-        bc.foo();
-        cout<<"base catch by object"<<endl;}
+   
 
     try{
         cout<<"throw derived"<<endl;
         throw d;}
+      catch (base bc){
+        bc.foo();
+        cout<<"base catch by object"<<endl;}
     catch(derived dc){
         dc.foo();
         cout<<"derived catch by object"<<endl;}
-    catch (base bc){
-        bc.foo();
-        cout<<"base catch by object"<<endl;}
+  
 
     try{
         cout<<"throw base"<<endl;
         throw b;}
+      catch (base &bc){
+        bc.foo();
+        cout<<"base catch by reference"<<endl;}
     catch(derived &dc){
         dc.foo();
         cout<<"derived catch by reference"<<endl;}
-    catch (base &bc){
-        bc.foo();
-        cout<<"base catch by reference"<<endl;}
+  
 
 
     try{
         cout<<"throw derived"<<endl;
         throw d;}
+     catch (base &bc){
+        bc.foo();
+        cout<<"base catch by reference"<<endl;}
     catch(derived &dc){
         dc.foo();
         cout<<"derived catch by reference"<<endl;}
-    catch (base &bc){
-        bc.foo();
-        cout<<"base catch by reference"<<endl;}
+
 
 
     return success;
