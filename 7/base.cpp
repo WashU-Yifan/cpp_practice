@@ -8,3 +8,6 @@ base::base(){
 base::~base(){
         std::cout<<"base::~base()"<<endl;
     }
+void base::foo(){
+    cout<<"base::foo()"<<endl;
+}

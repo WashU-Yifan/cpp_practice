@@ -1,0 +1,15 @@
+1 Yifan Wang 488500
+
+2.
+    base::base()
+    base::base()
+    derived::derived()
+    derived::~derived()
+    base::~base()
+    base::~base()
+
+    When calling derived class's default constructor, the base class constructor is first
+    called. When destructing a derived class object, the derived part is destructed first,
+    then the base class's destructor is evoked to destroy the base part.
+
+3.

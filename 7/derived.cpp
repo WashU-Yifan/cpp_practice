@@ -8,5 +8,8 @@ using std::endl;
 
         }
   derived::~derived(){
-            cout<<"derived::~derived"<<endl;     
+            cout<<"derived::~derived()"<<endl;     
        }
+   void  derived::foo(){
+        cout<<"derived::foo()"<<endl;     
+    }
