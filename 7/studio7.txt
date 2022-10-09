@@ -63,6 +63,10 @@ derived::~derived()
 base::~base()
 base::~base()
 
+    When the type that calls the function is a reference or pointer type, the function call
+    is resolved in run type not compile time. By defining the function as virtual means the 
+    derived class will support override function and shalled be invoked during run time.
+
 6.
 base::base()
 base::base()
@@ -94,6 +98,9 @@ derived::foo()
 derived  pointer function call
 derived::foo()
  
+    The plain pointer still evoke the overrided virtual function as the shared_ptrs do.
+    But the destructor was not evoked as the main function returns.
+
 8;
 base::base()
 base::base()
@@ -128,3 +135,7 @@ derived::~derived()
 base::~base()
 derived::~derived()
 base::~base())
+
+
+The destructor must be virtual or other wise the derived portion of the object
+might not be freed after the program finished, leading to memory leak.
