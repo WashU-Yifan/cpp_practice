@@ -3,6 +3,6 @@
 #define success 0
 int main(){
     base b;
-    dervied d;
+    derived d;
     return success;
 }
