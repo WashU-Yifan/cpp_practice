@@ -8,21 +8,22 @@ using std::cout;
 using std:: endl;
 using std::shared_ptr;
 using std:: make_shared;
-using std::function
+using std::function;
 using std::mem_fn;
 #define success 0
 using fun=void(base::*)();
 int main(){
     base b;
     derived d;
-    function<void()>basefoo=&base::foo;
-    function<void()>derivedfoo=&derived::foo;
-     cout<<"base foo evoked by base :  "<<endl;
+    function<void(base::*)()>basefoo=&base::foo;
+    function<void(base::*)()>dfoo1=&derived::foo;
+    function<void(derived::*)()>dfoo2=&derived::foo; 
+    cout<<"base foo evoked by base :  "<<endl;
     b.basefoo();
     cout<<"base foo evoked by derived :  "<<endl;
-    d.basefoo();
+    d.dfoo1();
     cout<<"derived foo evoked by derived : "<<endl;
-    d.derivedfoo();
+    d.dfoo2();
 
     auto bf=mem_fn(&base::foo);
     auto df=mem_fn(&derived::foo);
