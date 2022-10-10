@@ -15,24 +15,24 @@ using fun=void(base::*)();
 int main(){
     base b;
     derived d;
-    function<void(base::*)()>basefoo=&base::foo;
-    function<void(base::*)()>dfoo1=&derived::foo;
-    function<void(derived::*)()>dfoo2=&derived::foo; 
+    function<void(base&)>basefoo=&base::foo;
+    function<void(base&)>dfoo1=&derived::foo;
+    function<void(derived&)>dfoo2=&derived::foo; 
     cout<<"base foo evoked by base :  "<<endl;
-    b.basefoo();
+    basefoo(b);
     cout<<"base foo evoked by derived :  "<<endl;
-    d.dfoo1();
+    dfoo1(d);
     cout<<"derived foo evoked by derived : "<<endl;
-    d.dfoo2();
+    dfoo2(d);
 
     auto bf=mem_fn(&base::foo);
     auto df=mem_fn(&derived::foo);
     cout<<"base foo evoked by base :  "<<endl;
-    b.bf();
+    bf(b);
     cout<<"base foo evoked by derived :  "<<endl;
-    d.bf();
+    bf(d);
     cout<<"derived foo evoked by derived : "<<endl;
-    d.df();
+    df(d);
     /*
     void (base::*bfp)();
     bfp=&base::foo;
