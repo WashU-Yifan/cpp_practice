@@ -43,30 +43,32 @@ Code:
     cout<<"derived foo evoked by derived pointing to base:  "<<(d.*dfp1)()<<endl;
     cout<<"derived foo evoked by derived pointing to derived: "<<(d.*dfp2)()<<endl;
 
-base::base()
-base::base()
-derived::derived()
-base foo evoked by base ptr:  
-base::foo()
-derived foo evoked by derived pointing to base:  
-derived::foo()
-derived foo evoked by derived pointing to derived: 
-derived::foo()
-derived::~derived()
-base::~base()
-base::~base()
+    base::base()
+    base::base()
+    derived::derived()
+    base foo evoked by base ptr:  
+    base::foo()
+    derived foo evoked by derived pointing to base:  
+    derived::foo()
+    derived foo evoked by derived pointing to derived: 
+    derived::foo()
+    derived::~derived()
+    base::~base()
+    base::~base()
 
 5.
-base::base()
-base::base()
-derived::derived()
-base foo evoked by base ptr:  
-base::foo()
-derived foo evoked by derived pointing to base:  
-base::foo()
-derived foo evoked by derived pointing to derived: 
-derived::foo()
-derived::~derived()
-base::~base()
-base::~base()
+  Since the foo() function is no longer virtual, even though it's called by a pointer,
+  the version of foo() will be decided during compile time. Then the base version will be called. 
+    base::base()
+    base::base()
+    derived::derived()
+    base foo evoked by base ptr:  
+    base::foo()
+    derived foo evoked by derived pointing to base:  
+    base::foo()
+    derived foo evoked by derived pointing to derived: 
+    derived::foo()
+    derived::~derived()
+    base::~base()
+    base::~base()
 

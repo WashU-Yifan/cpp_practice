@@ -2,15 +2,35 @@
 #include<iostream>
 #include<memory>
 #include "derived.h"
+#include<functional>
 using std::string;
 using std::cout;
 using std:: endl;
 using std::shared_ptr;
 using std:: make_shared;
 #define success 0
+using fun=void(base::*)();
 int main(){
     base b;
     derived d;
+    function<void()>basefoo=&base::foo;
+    function<void()>derivedfoo=&derived::foo;
+     cout<<"base foo evoked by base :  "<<endl;
+    b.(*basefoo);
+    cout<<"base foo evoked by derived :  "<<endl;
+    d.(*basefoo);
+    cout<<"derived foo evoked by derived : "<<endl;
+    d.(*derivedfoo);
+
+    auto bf=mem_fn(&base::foo);
+    auto df=mem_fn(&derived::foo);
+    cout<<"base foo evoked by base :  "<<endl;
+    b.(*bf)();
+    cout<<"base foo evoked by derived :  "<<endl;
+    d.(*bf)();
+    cout<<"derived foo evoked by derived : "<<endl;
+    d.(*df)();
+    /*
     void (base::*bfp)();
     bfp=&base::foo;
     void (derived::*dfp1)();
@@ -18,10 +38,11 @@ int main(){
     void (derived::*dfp2)();
     dfp2=&derived::foo;
     cout<<"base foo evoked by base ptr:  "<<endl;
-    (b.*bfp)();
+    //(b.*bfp)();
     cout<<"derived foo evoked by derived pointing to base:  "<<endl;
-    (d.*dfp1)();
+    //(d.*dfp1)();
     cout<<"derived foo evoked by derived pointing to derived: "<<endl;
-    (d.*dfp2)();
+    //(d.*dfp2)();
+    */
     return success;
 }
