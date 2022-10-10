@@ -16,8 +16,11 @@ int main(){
     void (derived::*dfp1)();
     dfp1=&base::foo;
     auto dfp2=&derived::foo;
-    cout<<"base foo evoked by base ptr:  "<<(b.*bfp)()<<endl;
-    cout<<"derived foo evoked by derived pointing to base:  "<<(d.*dfp1)()<<endl;
-    cout<<"derived foo evoked by derived pointing to derived: "<<(d.*dfp2)()<<endl;
+    cout<<"base foo evoked by base ptr:  "<<endl;
+    (b.*bfp)();
+    cout<<"derived foo evoked by derived pointing to base:  "<<endl;
+    (d.*dfp1)()
+    cout<<"derived foo evoked by derived pointing to derived: "<<endl;
+    (d.*dfp2)()
     return success;
 }
