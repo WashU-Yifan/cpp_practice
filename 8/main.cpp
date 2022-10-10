@@ -8,6 +8,8 @@ using std::cout;
 using std:: endl;
 using std::shared_ptr;
 using std:: make_shared;
+using std::function
+using std::mem_fn;
 #define success 0
 using fun=void(base::*)();
 int main(){
