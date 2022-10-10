@@ -15,12 +15,13 @@ int main(){
     bfp=&base::foo;
     void (derived::*dfp1)();
     dfp1=&base::foo;
-    auto dfp2=&derived::foo;
+    void (derived::*dfp2)();
+    dfp2=&derived::foo;
     cout<<"base foo evoked by base ptr:  "<<endl;
     (b.*bfp)();
     cout<<"derived foo evoked by derived pointing to base:  "<<endl;
-    (d.*dfp1)()
+    (d.*dfp1)();
     cout<<"derived foo evoked by derived pointing to derived: "<<endl;
-    (d.*dfp2)()
+    (d.*dfp2)();
     return success;
 }

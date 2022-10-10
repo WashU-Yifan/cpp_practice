@@ -7,7 +7,7 @@ class derived: public base{
         static const std::string derived::*sp(){
             return &derived::s;
         }
-        virtual  void foo();
+         void foo();
          virtual ~derived();
 
 };

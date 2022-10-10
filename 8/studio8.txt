@@ -42,3 +42,31 @@ Code:
     cout<<"base foo evoked by base ptr:  "<<(b.*bfp)()<<endl;
     cout<<"derived foo evoked by derived pointing to base:  "<<(d.*dfp1)()<<endl;
     cout<<"derived foo evoked by derived pointing to derived: "<<(d.*dfp2)()<<endl;
+
+base::base()
+base::base()
+derived::derived()
+base foo evoked by base ptr:  
+base::foo()
+derived foo evoked by derived pointing to base:  
+derived::foo()
+derived foo evoked by derived pointing to derived: 
+derived::foo()
+derived::~derived()
+base::~base()
+base::~base()
+
+5.
+base::base()
+base::base()
+derived::derived()
+base foo evoked by base ptr:  
+base::foo()
+derived foo evoked by derived pointing to base:  
+base::foo()
+derived foo evoked by derived pointing to derived: 
+derived::foo()
+derived::~derived()
+base::~base()
+base::~base()
+

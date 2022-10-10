@@ -6,6 +6,6 @@ class base{
         return &base::s;
     }
     base();
-    virtual void foo();
+    void foo();
      virtual ~base();
 };
