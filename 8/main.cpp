@@ -16,7 +16,7 @@ int main(){
     base b;
     derived d;
     function<void(base&)>basefoo=&base::foo;
-    function<void(base&)>dfoo1=&derived::foo;
+    function<void(derived&)>dfoo1=&base::foo;
     function<void(derived&)>dfoo2=&derived::foo; 
     cout<<"base foo evoked by base :  "<<endl;
     basefoo(b);
