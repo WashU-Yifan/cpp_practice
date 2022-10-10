@@ -16,20 +16,20 @@ int main(){
     function<void()>basefoo=&base::foo;
     function<void()>derivedfoo=&derived::foo;
      cout<<"base foo evoked by base :  "<<endl;
-    b.(*basefoo);
+    (b.basefoo)();
     cout<<"base foo evoked by derived :  "<<endl;
-    d.(*basefoo);
+    d.basefoo();
     cout<<"derived foo evoked by derived : "<<endl;
-    d.(*derivedfoo);
+    d.derivedfoo();
 
     auto bf=mem_fn(&base::foo);
     auto df=mem_fn(&derived::foo);
     cout<<"base foo evoked by base :  "<<endl;
-    b.(*bf)();
+    b.bf();
     cout<<"base foo evoked by derived :  "<<endl;
-    d.(*bf)();
+    d.bf();
     cout<<"derived foo evoked by derived : "<<endl;
-    d.(*df)();
+    d.df();
     /*
     void (base::*bfp)();
     bfp=&base::foo;
