@@ -19,7 +19,7 @@ void CardSet<R,S>::print(std::ostream& os,std::size_t size){
 }
 
 
-template<typenameR,typename S>
+template<typename R,typename S>
 CardSet<R,S>& CardSet<R,S>::operator>>(CardSet<R,S>& set2){
     if(is_empty()){
         throw std::runtime_error("current cardset is empty");
