@@ -5,7 +5,7 @@ using std::size_t;
 using std::cout;
 using std::endl;
 template <typename R, typename S>
-void CardSet::print(std::ostream& os,std::size_t size){
+void CardSet<R,S>::print(std::ostream& os,std::size_t size){
     size_t cnt=0;
     for(auto card:this->cardset){
         os<<card<<" ";

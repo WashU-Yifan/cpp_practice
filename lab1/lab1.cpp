@@ -8,10 +8,10 @@ int main(int , char**){
     Pinochle p=Pinochle();
     HoldEm T=HoldEm();
 
-    p.print(cout);
+    p.print(cout,4);
     cout<<" print method1  done"<<endl;
     
-    T.print(cout);
+    T.print(cout,4);
     cout<<" print method2  done"<<endl;
     return SUCCESS;
 }
