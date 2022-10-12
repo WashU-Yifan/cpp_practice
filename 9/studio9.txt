@@ -10,13 +10,7 @@ Output
 Definition & Declaration:
     class MyClass{
         public:
-            static size_t NumObjecttructor called OBJECTID: 0 ADDRESS: 0x216dc30
-Copy constructor called OBJECTID: 0 ADDRESS: 0x216dc50
-assigning sp1=sp2
-Destructor called OBJECTID: 0 ADDRESS: 0x216dc30
-assignment done
-weak ptr wp1 is no longer pointing to a valid object
-Destructor called OBJECTID: 0 ADDRESS: 0x216dc50
+            static size_t NumObject;
             size_t ObjectID;
             MyClass():ObjectID(NumObject++){
                 std::cout<<"Default constructor called OBJECTID: "<<ObjectID<<" ADDRESS: "<<this<<std::endl;
@@ -106,20 +100,26 @@ Main:
     Using delete over delete[] on dynamic aloocated array would cause memory leak.
 
 4.
-
+    shared_ptr<MyClass> sp1=make_shared<MyClass>(),sp2=make_shared<MyClass>(*sp1);
+	
 
 5.
-Default constructor called OBJECTID: 0 ADDRESS: 0x21aac30
-Copy constructor called OBJECTID: 0 ADDRESS: 0x21aac50
-2
-Fun() called OBJECTID: 0 ADDRESS: 0x21aac30
-1
-Destructor called OBJECTID: 0 ADDRESS: 0x21aac50
-Destructor called OBJECTID: 0 ADDRESS: 0x21aac30
-[wang.y1@linuxlab005 9]$ 
+    Default constructor called OBJECTID: 0 ADDRESS: 0x21aac30
+    Copy constructor called OBJECTID: 0 ADDRESS: 0x21aac50
+    Fun() called OBJECTID: 0 ADDRESS: 0x21aac30
+    Destructor called OBJECTID: 0 ADDRESS: 0x21aac50
+    Destructor called OBJECTID: 0 ADDRESS: 0x21aac30
+
 
 6.
 
-Destructor called OBJECTID: 0 ADDRESS: 0x1b8ec50
+    Default constructor called OBJECTID: 0 ADDRESS: 0x216dc30
+    Copy constructor called OBJECTID: 0 ADDRESS: 0x216dc50
+    assigning sp1=sp2
+    Destructor called OBJECTID: 0 ADDRESS: 0x216dc30
+    assignment done
+    weak ptr wp1 is no longer pointing to a valid object
+    Destructor called OBJECTID: 0 ADDRESS: 0x216dc50
 
-
+After we assigned sp1=sp2, the wp1's pointing object now have use_count of 0, it will be freed.
+Then wp1 points to a nullptr.
