@@ -7,17 +7,7 @@ int main(int , char**){
 
     Pinochle p,p2;
     HoldEm T=HoldEm();
-    try{
-        while(1){
-            p>>p2;
-
-        }
-
-    }
-    catch(runtime_error & e){
-        cout<<e.what()<<endl;
-        
-    }
+    p.collect(p2);
     p2.print(cout,4);
     cout<<" print method1  done"<<endl;
     

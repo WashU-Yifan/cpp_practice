@@ -10,6 +10,7 @@ class Deck:public CardSet<R,S>{
 
 public:
     void shuffle();
+    void collect(CardSet<R,S>& set2);
 };
 
  #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
