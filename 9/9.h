@@ -13,4 +13,7 @@ class MyClass{
         ~MyClass(){
              std::cout<<"Destructor called OBJECTID: "<<ObjectID<<" ADDRESS: "<<this<<std::endl;
         }
+        void fun(){
+            std::cout<<"Fun() called OBJECTID: "<<ObjectID<<" ADDRESS: "<<this<<std::endl;
+        }
 };
