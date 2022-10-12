@@ -19,18 +19,6 @@ HoldEm::HoldEm(){
         ++Trank;
     }
 }
-/*print the cards' suit & rank in the format of 
-rs rs rs rs
-rs rs rs rs
-.....
-*/
-void HoldEm::print(std::ostream& os){
-    for(vector<Card_T<HoldEmRank, Suit> >::size_type i=0;i<cardset.size();++i){
-        os<<cardset[i]<<" ";
-        if(!((i+1)%suit_num)) os<<endl;
-    }
-
-}
 
 
 

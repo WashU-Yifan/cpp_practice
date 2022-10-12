@@ -31,19 +31,6 @@ Pinochle::Pinochle(){
 }
 
 
-//print every card in the deck
-/*print the cards' suit & rank in the format of 
-rs rs rs rs
-rs rs rs rs
-.....
-*/
-void Pinochle::print(std::ostream& os){
-    
-    for(vector<Card_T<PinochleRank, Suit> >::size_type i=0;i<cardset.size();++i){
-        os<<cardset[i]<<" ";
-        if(!((i+1)%suit_num)) os<<endl;
-    }
-}
 
 
 
