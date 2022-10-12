@@ -24,5 +24,5 @@ class Pinochle :public Deck<PinochleRank,Suit>{
     std::vector< Card_T<PinochleRank,Suit> > deck;
     public:
         Pinochle();
-        virtual void print(std::ostream& os);
+     
 };

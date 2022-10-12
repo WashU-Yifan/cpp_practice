@@ -31,5 +31,5 @@ class HoldEm :public Deck<HoldEmRank,Suit>{
     std::vector< Card_T<HoldEmRank,Suit> > deck;
     public:
         HoldEm();
-        virtual void print(std::ostream& os);
+     
 };
