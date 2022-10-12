@@ -12,6 +12,6 @@ void Deck<R,S>::collect(CardSet<R,S>& set2){
         while(!set2.is_empty()) set2>>*this;
     }
     catch(runtime_error &e){
-        cout<<e.waht()<<endl;
+	    std:: cout<<e.what()<<std::endl;
     }
 }
