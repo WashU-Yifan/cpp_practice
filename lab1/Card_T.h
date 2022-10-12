@@ -13,13 +13,9 @@ class Card_T{
         suit=suit_;
     }
 };
-
+template <typename R, typename S> ostream& operator<< (ostream& os,const Card_T<R,S>& card);
 
 
  #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
 #include "Card_T.cpp"
-<<<<<<< HEAD
   #endif
-=======
-  #endif
->>>>>>> 749a9722c9bd07f9f1a0c74866de2d67cab77f01
