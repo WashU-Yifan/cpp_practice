@@ -14,7 +14,7 @@ int main(){
 	//size_t MyClass::NumObject=0;
     	//MyClass O1,O2(O1);
 	
-	unique_ptr<Myclass> up1=make_unique();
+	unique_ptr<MyClass> upt=make_unique();
 	call_fun(upt);
 	upt->fun();
     return success;

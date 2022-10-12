@@ -123,3 +123,9 @@ Main:
 
 After we assigned sp1=sp2, the wp1's pointing object now have use_count of 0, it will be freed.
 Then wp1 points to a nullptr.
+
+7:
+Default constructor called OBJECTID: 0 ADDRESS: 0x17d9c20
+Fun() called OBJECTID: 0 ADDRESS: 0x17d9c20
+Fun() called OBJECTID: 0 ADDRESS: 0x17d9c20
+Destructor called OBJECTID: 0 ADDRESS: 0x17d9c20
