@@ -12,6 +12,6 @@ template <typename R, typename S> struct card_T{
     }
 };
 // template function has to be defined insid the header file
-template <typename R, typename S>std::ostream& operator<< (std::ostream& os,const card_T<R,S>& card){
-    return os<<card.rank<<card.suit;
+template <typename R, typename S>std::ostream& operator<< (std::ostream& os,const card_T<R,S>& card)
+{    return os<<card.rank<<card.suit;
 }

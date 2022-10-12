@@ -13,8 +13,9 @@ class Card_T{
         suit=suit_;
     }
 };
-template <typename R, typename S> ostream& operator<< (ostream& os,const Card_T<R,S>& card);
-
+template <typename R, typename S>
+std::ostream& operator<< (std::ostream& os,const Card_T<R,S>& card){
+	return os<<card.rank<<card.suit;}
 
  #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
 #include "Card_T.cpp"
