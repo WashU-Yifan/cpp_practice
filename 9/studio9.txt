@@ -10,7 +10,13 @@ Output
 Definition & Declaration:
     class MyClass{
         public:
-            static size_t NumObject;
+            static size_t NumObjecttructor called OBJECTID: 0 ADDRESS: 0x216dc30
+Copy constructor called OBJECTID: 0 ADDRESS: 0x216dc50
+assigning sp1=sp2
+Destructor called OBJECTID: 0 ADDRESS: 0x216dc30
+assignment done
+weak ptr wp1 is no longer pointing to a valid object
+Destructor called OBJECTID: 0 ADDRESS: 0x216dc50
             size_t ObjectID;
             MyClass():ObjectID(NumObject++){
                 std::cout<<"Default constructor called OBJECTID: "<<ObjectID<<" ADDRESS: "<<this<<std::endl;
@@ -100,3 +106,20 @@ Main:
     Using delete over delete[] on dynamic aloocated array would cause memory leak.
 
 4.
+
+
+5.
+Default constructor called OBJECTID: 0 ADDRESS: 0x21aac30
+Copy constructor called OBJECTID: 0 ADDRESS: 0x21aac50
+2
+Fun() called OBJECTID: 0 ADDRESS: 0x21aac30
+1
+Destructor called OBJECTID: 0 ADDRESS: 0x21aac50
+Destructor called OBJECTID: 0 ADDRESS: 0x21aac30
+[wang.y1@linuxlab005 9]$ 
+
+6.
+
+Destructor called OBJECTID: 0 ADDRESS: 0x1b8ec50
+
+
