@@ -14,9 +14,7 @@ class Card_T{
     }
 };
 template <typename R, typename S>
-std::ostream& operator<< (std::ostream& os,const Card_T<R,S>& card){
-	return os<<card.rank<<card.suit;}
-
+std::ostream& operator<< (std::ostream& os,const Card_T<R,S>& card);
  #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
 #include "Card_T.cpp"
   #endif
