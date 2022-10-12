@@ -1,7 +1,39 @@
 1. Yifan Wang 488500
 
 2.
-Default constructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad8
-Copy constructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad0
-Destructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad0
-Destructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad8 
+Output
+    Default constructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad8
+    Copy constructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad0
+    Destructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad0
+    Destructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad8 
+
+Definition & Declaration:
+    class MyClass{
+        public:
+            static size_t NumObject;
+            size_t ObjectID;
+            MyClass():ObjectID(NumObject++){
+                std::cout<<"Default constructor called OBJECTID: "<<ObjectID<<" ADDRESS: "<<this<<std::endl;
+            }
+            MyClass(const  MyClass& copy):ObjectID(copy.ObjectID){
+                ++NumObject;
+                std::cout<<"Copy constructor called OBJECTID: "<<ObjectID<<" ADDRESS: "<<this<<std::endl;
+            }
+            ~MyClass(){
+                std::cout<<"Destructor called OBJECTID: "<<ObjectID<<" ADDRESS: "<<this<<std::endl;
+            }
+    };
+
+Main:
+
+    #include "9.h"
+    #define success 0;
+    size_t MyClass::NumObject;//have no idea why we have to explicitly define this in source file.
+    int main(){
+
+            MyClass O1,O2(O1);
+        
+        return success;
+    }
+ 
+
