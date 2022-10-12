@@ -5,20 +5,20 @@ using namespace std;
 const int SUCCESS=0;
 int main(int , char**){
 
-    Pinochle p=Pinochle();
+    Pinochle p,p2;
     HoldEm T=HoldEm();
     try{
         while(1){
-            p>>T;
+            p>>p2;
 
         }
 
     }
-    catch(runtime_error e){
+    catch(runtime_error & e){
         cout<<e.what()<<endl;
         
     }
-    p.print(cout,4);
+    p2.print(cout,4);
     cout<<" print method1  done"<<endl;
     
     T.print(cout,4);
