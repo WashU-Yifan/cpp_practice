@@ -1,4 +1,7 @@
 1. Yifan Wang 488500
 
 2.
- 
+Default constructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad8
+Copy constructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad0
+Destructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad0
+Destructor called OBJECTID: 0 ADDRESS: 0x7ffc74f99ad8 
