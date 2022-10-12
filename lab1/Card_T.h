@@ -18,4 +18,8 @@ class Card_T{
 
  #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
 #include "Card_T.cpp"
+<<<<<<< HEAD
   #endif
+=======
+  #endif
+>>>>>>> 749a9722c9bd07f9f1a0c74866de2d67cab77f01
