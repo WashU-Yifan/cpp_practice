@@ -1,16 +1,16 @@
 #		The name of the executable file you want to build
-EXECUTABLE	= 8
+EXECUTABLE	= 9
 
 #		Source (.cpp) files you want to compile
 #		(NOTE: Don't include header (.h) files, or any source (.cpp) files
 #		that only contain template class method definitions.)
-CMPL_SRCS	= base.cpp main.cpp derived.cpp
+CMPL_SRCS	= 9.cpp
 
 #               Source files containing only template class method definitions
 TMPL_SRCS	= 
 
 #               Header (.h) files
-HEADER_FILES    = base.h derived.h
+HEADER_FILES    = 9.h
 
 #               Any special flags that should be set for compilation
 SPECIAL_FLAGS  = -std=c++17
