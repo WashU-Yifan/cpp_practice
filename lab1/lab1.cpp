@@ -7,7 +7,8 @@ int main(int , char**){
 
     Pinochle p=Pinochle();
     HoldEm T=HoldEm();
-
+    p.shuffle();
+    T.shuffle();
     p.print(cout,4);
     cout<<" print method1  done"<<endl;
     
