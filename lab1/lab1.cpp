@@ -9,11 +9,11 @@
 using namespace std;
 #define SUCCESS 0
 #define invalid_command 1
-#define start_index 2//player's name start at index 2
-#define game_index 1//argv[1] speficies which game to run
-#define pino_count 4
-#define holdem_count_min 2
-#define holdem_count_max 9
+const int  start_index=2;//player's name start at index 2
+const int game_index =1;//argv[1] speficies which game to run
+const int pino_count=4;
+const int  holdem_count_min=2;
+const int holdem_count_max=9;
 using std::shared_ptr;
 using std::make_shared;
 enum class GameType{
@@ -51,7 +51,7 @@ shared_ptr<Game> create(int argc, const char * argv[]){
     switch(gametype){
         case(GameType::Pinochle): {
             if(argc==pino_count){
-                cout<<"pino game++++++++++"<<endl;
+              
                 Game_ptr=make_shared<PinochleGame>(argc,argv);
             }
             
@@ -59,7 +59,7 @@ shared_ptr<Game> create(int argc, const char * argv[]){
         }
         case (GameType::HoldEm):{
             if(argc>=holdem_count_min&& argc<=holdem_count_max){
-                cout<<"Holdem game ++++++++++++"<<endl;
+              
                 Game_ptr=make_shared<HoldEmGame>(argc,argv);
             }
             break;
@@ -73,14 +73,20 @@ shared_ptr<Game> create(int argc, const char * argv[]){
 }
 
 GameType check_game(const char* game ){
-    if (game=="Pinochle") return GameType::Pinochle;
-    else if (game=="HoldEm") return GameType::HoldEm;
+    if (game=="Pinochle") {
+          cout<<"pino game++++++++++"<<endl;
+        return GameType::Pinochle;
+    }
+    else if (game=="HoldEm") {
+          cout<<"Holdem game ++++++++++++"<<endl;
+        return GameType::HoldEm;
+    }
     else return GameType::undefined;
 }
 
 
 
 void user_message(){
-    cout<<"usage: ./lab1 Pinochle p1 p2 p3 p4\n"<<
-    "or \nusage: ./lab1 HoldEm p1 p2 [p3...p9]"<<endl;
+    cout<<"usage: ./lab1 Pinochle p1 p2 p3 p4"<<endl;
+    cout<<"or usage: ./lab1 HoldEm p1 p2 [p3...p9]"<<endl;
 }
