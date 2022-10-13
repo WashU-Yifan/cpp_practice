@@ -1,9 +1,14 @@
 Lab1 Yifan Wang 488500 wang.y1@wustl.edu 
 
 Difficulties ran into:
+
+Compiling issue:
     Forget to remove the definition and declaration of print from HoldEmDeck and PinochleDeck. Although the compilation succeed, the correct version of print was not excuted.
     Didn't remove the extra R in the Makefile's flag, leads to linking errors.
 
+Runtime Issue:
+    Decide to initialize HoldEmGame's PLayerHands vector with HoldEmDeck constructor, causing
+players to have all the cards at the begining.
 
 Design of the printing format:
 

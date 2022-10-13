@@ -9,7 +9,7 @@ using std::cin;
 
 
 HoldEmGame:: HoldEmGame(int argc, const char *argv[]):Game(argc,argv),
-GameState(HoldEmState::preflop),PlayerHands(argc,HoldEmDeck()){}
+GameState(HoldEmState::preflop),PlayerHands(argc){}
 
 void HoldEmGame::deal(){
     switch(GameState){
