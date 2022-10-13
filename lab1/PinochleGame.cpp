@@ -6,7 +6,7 @@ using std::endl;
 using std::runtime_error;
 
 
-PinochleGame::PinochleGame(int argc, const char* argv[]):Game(argc,argv),PlayerHands(argc){}
+PinochleGame::PinochleGame(int argc, const char* argv[]):Game(argc,argv),PlayerHands(argc,CardSet<PinochleRank,Suit>()){}
 
 void PinochleGame::deal(){
     while(!Deck.is_empty()){

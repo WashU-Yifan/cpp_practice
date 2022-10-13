@@ -9,7 +9,7 @@ using std::cin;
 
 
 HoldEmGame:: HoldEmGame(int argc, const char *argv[]):Game(argc,argv),
-GameState(HoldEmState::preflop),PlayerHands(argc){}
+GameState(HoldEmState::preflop),PlayerHands(argc,CardSet<HoldEmRank,Suit>()){}
 
 void HoldEmGame::deal(){
     switch(GameState){
@@ -84,6 +84,7 @@ void HoldEmGame::deal_flop(){
         Deck>>Shared>>Shared>>Shared;
         cout<<"BOARD(flop): ";
         Shared.print(cout,CardPerLine);
+        cout<<endl;
         ++GameState;
     }
     catch(runtime_error &e){
@@ -99,6 +100,7 @@ void HoldEmGame:: deal_turn(){
         ++GameState;
         cout<<"BOARD(turn): ";
         Shared.print(cout,CardPerLine);
+        cout<<endl;
     }
     catch(runtime_error &e){
         cout<< e.what()<<endl;
@@ -113,6 +115,7 @@ void HoldEmGame:: deal_river(){
         ++GameState;
         cout<<"BOARD(river): ";
         Shared.print(cout,CardPerLine);
+        cout<<endl;
     }
     catch(runtime_error &e){
         cout<< e.what()<<endl;
