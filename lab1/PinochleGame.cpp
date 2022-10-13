@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 using std::runtime_error;
-typedef std::vector<CardSet<PinochleRank,Suit> >::size_type size;
+typedef std::vector<int >::size_type size;
 
 PinochleGame::PinochleGame(int argc, const char* argv[]):Game(argc,argv),PlayerHands(argc,PinochleDeck()){}
 

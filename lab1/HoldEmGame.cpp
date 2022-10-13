@@ -7,9 +7,9 @@ using std::endl;
 using std::runtime_error;
 using std::cin;
 
-typedef std::vector<CardSet<HoldEmRank,Suit> >::size_type size;
+typedef std::vector<int>::size_type size;
 HoldEmGame:: HoldEmGame(int argc, const char *argv[]):Game(argc,argv),
-PlayerHands(argc,HoldEmDeck()),GameState(HoldEmState::preflop){}
+GameState(HoldEmState::preflop),PlayerHands(argc,HoldEmDeck()){}
 
 void HoldEmGame::deal(){
     switch(GameState){
