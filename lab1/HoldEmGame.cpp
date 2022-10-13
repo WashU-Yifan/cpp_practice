@@ -7,7 +7,7 @@ using std::endl;
 using std::runtime_error;
 using std::cin;
 
-typedef std::vector<int>::size_type size;
+
 HoldEmGame:: HoldEmGame(int argc, const char *argv[]):Game(argc,argv),
 GameState(HoldEmState::preflop),PlayerHands(argc,HoldEmDeck()){}
 
@@ -51,7 +51,7 @@ int HoldEmGame::play(){
 }
 
 void HoldEmGame::printstatus(){
-     for(size i=0;i<PlayerHands.size();++i){
+     for(std::vector<CardSet<HoldEmRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
         cout<<"Player Name: "<<PlayerNames[i]<<"\n Hands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
     }

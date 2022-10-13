@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 using std::runtime_error;
-typedef std::vector<int >::size_type size;
+
 
 PinochleGame::PinochleGame(int argc, const char* argv[]):Game(argc,argv),PlayerHands(argc,PinochleDeck()){}
 
@@ -41,7 +41,7 @@ int PinochleGame::play(){
 
 //helper function that print player's naem and their cards
 void PinochleGame::printstatus(){
-    for(size i=0;i<PlayerHands.size();++i){
+    for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
         cout<<"Player Name: "<<PlayerNames[i]<<"\n Hands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
         Deck.collect(PlayerHands[i]);
