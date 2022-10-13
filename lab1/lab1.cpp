@@ -3,6 +3,9 @@
 #include "HoldEmGame.h"
 #include "PinochleGame.h"
 #include<memory>
+#include <iostream>
+#include <cstdint>
+#include <cstring>
 using namespace std;
 #define SUCCESS 0
 #define invalid_command 1
@@ -18,7 +21,7 @@ enum class GameType{
     HoldEm,
     undefined    
 };
-const char** process_input(int &argc, const char *argv[]);
+void process_input(int &argc, const char **&argv);
 shared_ptr<Game> create(int arc, const char * argv[]);
 GameType check_game(const char* game);
 void user_message();
@@ -33,28 +36,25 @@ int main(int argc, const char *argv[]){
 
 
 
-
-const char ** process_input(int &argc, const char *argv[]){
+void process_input(int &argc, const char **&argv){
     argc-=start_index;
-    const char *name[sizeof(argv)-start_index];
-    memcpy(name,argv,sizeof (name));
-    return name;
+    argv+=start_index;
 }
 
 shared_ptr<Game> create(int argc, const char * argv[]){
     shared_ptr<Game> Game_ptr;
     GameType gametype=check_game(argv[game_index]);
-    const char **names=process_input(argc,argv);
+    process_input(argc,argv);
     switch(gametype){
         case(GameType::Pinochle): {
             if(argc==pino_count)
-                Game_ptr=make_shared<PinochleGame>(argc,names);
+                Game_ptr=make_shared<PinochleGame>(argc,argv);
             
             break;
         }
         case (GameType::HoldEm):{
             if(argc>=holdem_count_min&& argc<=holdem_count_max)
-                Game_ptr=make_shared<HoldEmGame>(argc,names);
+                Game_ptr=make_shared<HoldEmGame>(argc,argv);
             break;
         }
         default:
