@@ -64,8 +64,9 @@ shared_ptr<Game> create(int argc, const char * argv[]){
             }
             break;
         }
-        default:
+        default:{
             Game_ptr=nullptr;
+        }
     }
 
     return Game_ptr;
@@ -73,13 +74,13 @@ shared_ptr<Game> create(int argc, const char * argv[]){
 
 GameType check_game(const char* game ){
     if (game=="Pinochle") return GameType::Pinochle;
-    if (game=="HoldEm") return GameType::HoldEm;
-    return GameType::undefined;
+    else if (game=="HoldEm") return GameType::HoldEm;
+    else return GameType::undefined;
 }
 
 
 
 void user_message(){
-    cout<<"usage: ./lab1 Pinochle p1 p2 p3 p4\n";
-    cout<<"or \nusage: ./lab1 HoldEm p1 p2 [p3...p9]"<<endl;
+    cout<<"usage: ./lab1 Pinochle p1 p2 p3 p4\n"<<
+    "or \nusage: ./lab1 HoldEm p1 p2 [p3...p9]"<<endl;
 }
