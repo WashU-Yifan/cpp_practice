@@ -51,6 +51,7 @@ int HoldEmGame::play(){
 }
 
 void HoldEmGame::printstatus(){
+    Deck.print(cout,CardPerLine);
      for(std::vector<CardSet<HoldEmRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
         cout<<"Player Name: "<<PlayerNames[i]<<"\n Hands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);

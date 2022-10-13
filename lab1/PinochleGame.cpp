@@ -41,6 +41,7 @@ int PinochleGame::play(){
 
 //helper function that print player's naem and their cards
 void PinochleGame::printstatus(){
+    Deck.print(cout,CardPerLine);
     for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
         cout<<"Player Name: "<<PlayerNames[i]<<"\n Hands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);

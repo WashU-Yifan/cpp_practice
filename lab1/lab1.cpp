@@ -46,14 +46,10 @@ void process_input(int &argc, const char **&argv){
 shared_ptr<Game> create(int argc, const char * argv[]){
     shared_ptr<Game> Game_ptr;
     GameType gametype=check_game(argv[game_index]);
-    cout<<"game type: "<<argv[game_index]<<endl;
     process_input(argc,argv);
-    cout<<"argc: "<<argc<<endl;
-    cout<<"argv: "<<argv[0]<<argv[1]<<argv[2]<<argv[3]<<endl;
     switch(gametype){
         case(GameType::Pinochle): {
             if(argc==pino_count){
-              
                 Game_ptr=make_shared<PinochleGame>(argc,argv);
             }
             
