@@ -60,6 +60,7 @@ void HoldEmGame::printstatus(){
 
 void HoldEmGame::Collect_hands(){
     for(auto &hand:PlayerHands)Deck.collect(hand);
+    Deck.collect(Shared);
 }
 //2 cards to each player's hand
 void HoldEmGame::deal_preflop(){
