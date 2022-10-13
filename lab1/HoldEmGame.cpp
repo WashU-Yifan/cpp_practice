@@ -1,10 +1,13 @@
 #include "HoldEmGame.h"
 #define CardPerLine 5
 #define success 0
+
 using std::cout;
 using std::endl;
 using std::runtime_error;
 using std::cin;
+
+typedef std::vector<CardSet<HoldEmRank,Suit> >::size_type size;
 HoldEmGame:: HoldEmGame(int argc, const char *argv[]):Game(argc,argv),
 PlayerHands(argc,HoldEmDeck()),GameState(HoldEmState::preflop){}
 
@@ -48,7 +51,7 @@ int HoldEmGame::play(){
 }
 
 void HoldEmGame::printstatus(){
-     for(int i=0;i<PlayerHands.size();++i){
+     for(size i=0;i<PlayerHands.size();++i){
         cout<<"Player Name: "<<PlayerNames[i]<<"\n Hands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
     }
