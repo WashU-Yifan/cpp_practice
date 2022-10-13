@@ -65,12 +65,15 @@ void HoldEmGame::Collect_hands(){
 //2 cards to each player's hand
 void HoldEmGame::deal_preflop(){
     try{
+        cout<<"sending first card for all players"<<endl;
         for(CardSet playerhand:PlayerHands){
             Deck>>playerhand;
         }
+        cout<<"sending second card for all players"<<endl;
         for(CardSet playerhand:PlayerHands){
             Deck>>playerhand;
         }
+        
         ++GameState;
     }
     catch(runtime_error &e){
@@ -85,7 +88,6 @@ void HoldEmGame::deal_flop(){
         Deck>>Shared>>Shared>>Shared;
         cout<<"BOARD(flop): ";
         Shared.print(cout,CardPerLine);
-        cout<<endl;
         ++GameState;
     }
     catch(runtime_error &e){
@@ -101,7 +103,6 @@ void HoldEmGame:: deal_turn(){
         ++GameState;
         cout<<"BOARD(turn): ";
         Shared.print(cout,CardPerLine);
-        cout<<endl;
     }
     catch(runtime_error &e){
         cout<< e.what()<<endl;
@@ -116,7 +117,6 @@ void HoldEmGame:: deal_river(){
         ++GameState;
         cout<<"BOARD(river): ";
         Shared.print(cout,CardPerLine);
-        cout<<endl;
     }
     catch(runtime_error &e){
         cout<< e.what()<<endl;

@@ -16,6 +16,7 @@ void CardSet<R,S>::print(std::ostream& os,std::size_t size){
             os<<endl;
         }
     }
+    if(cnt) os<<endl;
 }
 
 

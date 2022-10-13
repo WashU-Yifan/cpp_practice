@@ -9,6 +9,8 @@ Compiling issue:
 Runtime Issue:
     Decide to initialize HoldEmGame's PLayerHands vector with HoldEmDeck constructor, causing
 players to have all the cards at the begining.
+    In HoldEmGame::Collect_hands
+        forget to collect the Shared deck.
 
 Design of the printing format:
 
