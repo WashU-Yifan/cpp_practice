@@ -10,7 +10,7 @@ PinochleGame::PinochleGame(int argc, const char* argv[]):Game(argc,argv),PlayerH
 
 void PinochleGame::deal(){
     while(!Deck.is_empty()){
-        for(auto playerdeck:PlayerHands){
+        for(auto &playerdeck:PlayerHands){
             try{
                 Deck>>playerdeck>>playerdeck>>playerdeck;
             }
