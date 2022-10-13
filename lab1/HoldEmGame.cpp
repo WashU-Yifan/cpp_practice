@@ -14,6 +14,7 @@ GameState(HoldEmState::preflop),PlayerHands(argc,CardSet<HoldEmRank,Suit>()){}
 void HoldEmGame::deal(){
     switch(GameState){
         case(HoldEmState::preflop):{
+            cout<<"preflop"<<endl;
             deal_preflop();
             break;
         }
