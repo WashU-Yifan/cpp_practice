@@ -37,7 +37,7 @@ int main(int argc, const char *argv[]){
 const char ** process_input(int &argc, const char *argv[]){
     argc-=start_index;
     const char *name[sizeof(argv)-start_index];
-    std::memcpy(name,argv,sizeof (name));
+    memcpy(name,argv,sizeof (name));
     return name;
 }
 
