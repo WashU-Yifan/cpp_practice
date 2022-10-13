@@ -50,14 +50,18 @@ shared_ptr<Game> create(int argc, const char * argv[]){
     cout<<"argv: "<<argv[0]<<argv[1]<<argv[2]<<argv[3]<<endl;
     switch(gametype){
         case(GameType::Pinochle): {
-            if(argc==pino_count)
+            if(argc==pino_count){
+                cout<<"pino game++++++++++"<<endl;
                 Game_ptr=make_shared<PinochleGame>(argc,argv);
+            }
             
             break;
         }
         case (GameType::HoldEm):{
-            if(argc>=holdem_count_min&& argc<=holdem_count_max)
+            if(argc>=holdem_count_min&& argc<=holdem_count_max){
+                cout<<"Holdem game ++++++++++++"<<endl;
                 Game_ptr=make_shared<HoldEmGame>(argc,argv);
+            }
             break;
         }
         default:
