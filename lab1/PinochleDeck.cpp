@@ -4,7 +4,7 @@ using namespace std;
 
 // constructor of Pinochle 
 // push each of every possible valid card combination twice into the vector
-Pinochle::Pinochle(){
+PinochleDeck::PinochleDeck(){
     
     PinochleRank prank=PinochleRank::nine;
     while(prank!=PinochleRank::undefined){

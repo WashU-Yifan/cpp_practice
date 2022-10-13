@@ -20,9 +20,9 @@ std::ostream &operator<< (std::ostream& os, const PinochleRank& prank);
 
 void operator++(PinochleRank &prank);
 
-class Pinochle :public Deck<PinochleRank,Suit>{
+class PinochleDeck :public Deck<PinochleRank,Suit>{
     std::vector< Card_T<PinochleRank,Suit> > deck;
     public:
-        Pinochle();
+        PinochleDeck();
      
 };

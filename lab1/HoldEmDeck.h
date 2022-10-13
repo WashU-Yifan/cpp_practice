@@ -27,9 +27,9 @@ std::ostream &operator<< (std::ostream& os, const HoldEmRank& Trank);
 
 void operator++( HoldEmRank &Trank);
 
-class HoldEm :public Deck<HoldEmRank,Suit>{
+class HoldEmDeck :public Deck<HoldEmRank,Suit>{
     std::vector< Card_T<HoldEmRank,Suit> > deck;
     public:
-        HoldEm();
+        HoldEmDeck();
      
 };
