@@ -14,6 +14,8 @@ const int game_index =1;//argv[1] speficies which game to run
 const int pino_count=4;
 const int  holdem_count_min=2;
 const int holdem_count_max=9;
+const char* const Pinochle="Pinochle";
+const char* const HoldEm="HoldEm";
 using std::shared_ptr;
 using std::make_shared;
 enum class GameType{
@@ -73,12 +75,10 @@ shared_ptr<Game> create(int argc, const char * argv[]){
 }
 
 GameType check_game(const char* game ){
-    if (game=="Pinochle") {
-          cout<<"pino game++++++++++"<<endl;
+    if (!strcmp(game, Pinochle)) {
         return GameType::Pinochle;
     }
-    else if (game=="HoldEm") {
-          cout<<"Holdem game ++++++++++++"<<endl;
+    else if (!strcmp(game,HoldEm)) {
         return GameType::HoldEm;
     }
     else return GameType::undefined;
