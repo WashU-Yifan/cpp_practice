@@ -14,7 +14,6 @@ GameState(HoldEmState::preflop),PlayerHands(argc,CardSet<HoldEmRank,Suit>()){}
 void HoldEmGame::deal(){
     switch(GameState){
         case(HoldEmState::preflop):{
-            cout<<"preflop"<<endl;
             deal_preflop();
             break;
         }
@@ -66,12 +65,12 @@ void HoldEmGame::Collect_hands(){
 //2 cards to each player's hand
 void HoldEmGame::deal_preflop(){
     try{
-        cout<<"sending first card for all players"<<endl;
-        for(CardSet playerhand:PlayerHands){
+     
+        for(auto & playerhand:PlayerHands){
             Deck>>playerhand;
         }
-        cout<<"sending second card for all players"<<endl;
-        for(CardSet playerhand:PlayerHands){
+    
+        for(auto& playerhand:PlayerHands){
             Deck>>playerhand;
         }
         
