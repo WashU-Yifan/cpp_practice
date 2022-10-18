@@ -8,6 +8,7 @@ using std::runtime_error;
 
 PinochleGame::PinochleGame(int argc, const char* argv[]):Game(argc,argv),PlayerHands(argc,CardSet<PinochleRank,Suit>()){}
 
+//distribute 3 cards to each player and repeat until there is no cards in Deck.
 void PinochleGame::deal(){
     while(!Deck.is_empty()){
         for(auto &playerdeck:PlayerHands){
@@ -41,9 +42,9 @@ int PinochleGame::play(){
 
 //helper function that print player's naem and their cards
 void PinochleGame::printstatus(){
-    Deck.print(cout,CardPerLine);
+ 
     for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
-        cout<<"Player Name: "<<PlayerNames[i]<<"\n Hands:"<<endl;
+        cout<<"Player Name: "<<PlayerNames[i]<<"\nHands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
         Deck.collect(PlayerHands[i]);
     }

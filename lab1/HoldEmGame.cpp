@@ -50,18 +50,22 @@ int HoldEmGame::play(){
     }
 }
 
+//print every player's name and their current hand
 void HoldEmGame::printstatus(){
-    Deck.print(cout,CardPerLine);
+
      for(std::vector<CardSet<HoldEmRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
-        cout<<"Player Name: "<<PlayerNames[i]<<"\n Hands:"<<endl;
+        cout<<"Player Name: "<<PlayerNames[i]<<"\nHands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
     }
 }
 
+//take cards from players and the shared deck
 void HoldEmGame::Collect_hands(){
     for(auto &hand:PlayerHands)Deck.collect(hand);
     Deck.collect(Shared);
 }
+
+
 //2 cards to each player's hand
 void HoldEmGame::deal_preflop(){
     try{
@@ -110,7 +114,7 @@ void HoldEmGame:: deal_turn(){
     }
 }
 
-//1 card to shared b
+//1 card to shared deck
 void HoldEmGame:: deal_river(){
      try{
         Deck>>Shared;
