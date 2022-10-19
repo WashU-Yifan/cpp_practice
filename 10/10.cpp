@@ -12,12 +12,13 @@ using std::endl;
 using std::unique_ptr;
 typedef unique_ptr<MyClass> upt;
 
-void fun(upt up);
+upt fun(upt up);
 int main(){
     upt up(new MyClass("hello"));
     upt up2(std::move(up));
-    fun (up2);
-    //fun(std::move(up2));
+    //fun (up2);
+    up=fun(std::move(up2));
+    up->foo();
     return success;
 }
 
@@ -27,6 +28,7 @@ void MyClass::foo(){
             cout<<"string member: "<<my_string<<endl;
 }
 
-void fun(upt& up){
-    up->foo();
+upt fun(upt up){
+    //up->foo();
+    return up;
 }
