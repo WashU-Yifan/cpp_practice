@@ -78,4 +78,13 @@ destructor
 this address: 0xf9ac20
 string member: hello
 
-
+8.
+constructor
+this address: 0x1a2ac20
+string member: hello
+foo
+this address: 0x1a2ac20
+string member: hello
+destructor
+this address: 0x1a2ac20
+string member: hello
