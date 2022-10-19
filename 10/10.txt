@@ -56,3 +56,15 @@ destructor
 this address: 0x7ffd14240900
 string member: hello
 
+6.
+
+constructor
+this address: 0x182cc20
+string member: hello
+destructor
+this address: 0x182cc20
+string member: hello
+
+The constructor was invoked only once.
+
+
