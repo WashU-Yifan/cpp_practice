@@ -25,3 +25,34 @@ string member: hello
 destructor
 this address: 0x7ffe482f4d50
 string member: hello
+
+5.
+\constructor
+this address: 0x7ffd14240900
+string member: hello
+constructor
+this address: 0x7ffd142408e0
+string member: greetings
+constructor
+this address: 0x7ffd142408c0
+string member: bye
+copy assignment
+this address: 0x7ffd142408e0
+this string member: greetings
+copy address: 0x7ffd14240900
+copy string member: hello
+copy assignment
+this address: 0x7ffd142408c0
+this string member: bye
+copy address: 0x7ffd142408e0
+copy string member: hello
+destructor
+this address: 0x7ffd142408c0
+string member: hello
+destructor
+this address: 0x7ffd142408e0
+string member: hello
+destructor
+this address: 0x7ffd14240900
+string member: hello
+
