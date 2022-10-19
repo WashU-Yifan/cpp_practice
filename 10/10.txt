@@ -11,4 +11,17 @@ this address: 0x7fff9d83b3a0
 copy address: 0x7fff9d83b3c0
 
 
-
+4.
+constructor
+this address: 0x7ffe482f4d50
+string member: hello
+copy constrctor
+this address: 0x7ffe482f4d30
+copy address: 0x7ffe482f4d50
+string member: hello
+destructor
+this address: 0x7ffe482f4d30
+string member: hello
+destructor
+this address: 0x7ffe482f4d50
+string member: hello
