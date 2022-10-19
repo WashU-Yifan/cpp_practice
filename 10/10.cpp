@@ -12,6 +12,6 @@ using std::endl;
 using std::unique_ptr;
 
 int main(){
-    MyClass obj,obj2(obj);
+    MyClass obj("hello"),obj2(obj);
     return success;
 }
