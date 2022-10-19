@@ -11,8 +11,21 @@ using std::cout;
 using std::endl;
 using std::unique_ptr;
 typedef unique_ptr<MyClass> upt;
+
+void fun(upt up);
 int main(){
     upt up(new MyClass("hello"));
     upt up2(std::move(up));
+    fun(std::move(up2));
     return success;
+}
+
+void MyClass::foo(){
+         cout<<"foo"<<endl;
+            cout<<"this address: "<<this<<endl;
+            cout<<"string member: "<<my_string<<endl;
+}
+
+void fun(upt up){
+    up->foo();
 }

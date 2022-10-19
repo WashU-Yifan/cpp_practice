@@ -7,6 +7,7 @@ using std::endl;
 class MyClass{
     std::string my_string;
     public:
+        virtual void foo();
         MyClass()=default;
         MyClass(const MyClass & copy):my_string(copy.my_string){
             cout<<"copy constrctor"<<endl;
@@ -30,7 +31,7 @@ class MyClass{
         }
 
 
-        ~MyClass(){
+        virtual ~MyClass(){
             cout<<"destructor"<<endl;
             cout<<"this address: "<<this<<endl;
             cout<<"string member: "<<my_string<<endl;
