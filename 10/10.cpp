@@ -16,7 +16,8 @@ void fun(upt up);
 int main(){
     upt up(new MyClass("hello"));
     upt up2(std::move(up));
-    fun(std::move(up2));
+    fun (up2);
+    //fun(std::move(up2));
     return success;
 }
 
@@ -26,6 +27,6 @@ void MyClass::foo(){
             cout<<"string member: "<<my_string<<endl;
 }
 
-void fun(upt up){
+void fun(upt& up){
     up->foo();
 }

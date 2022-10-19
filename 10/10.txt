@@ -67,4 +67,15 @@ string member: hello
 
 The constructor was invoked only once.
 
+7.
+constructor
+this address: 0xf9ac20
+string member: hello
+foo
+this address: 0xf9ac20
+string member: hello
+destructor
+this address: 0xf9ac20
+string member: hello
+
 
