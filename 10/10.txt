@@ -1,0 +1,7 @@
+1.Yifan Wang 488500
+
+2
+    class MyClass{
+    std::string my_string;
+
+    };
