@@ -19,6 +19,17 @@ class MyClass{
             cout<<"this address: "<<this<<endl;
             cout<<"string member: "<<my_string<<endl;
         }
+        MyClass& operator=(const MyClass& copy){
+            cout<<"copy assignment"<<endl;
+            cout<<"this address: "<<this<<endl;
+            cout<<"this string member: "<<my_string<<endl;
+            cout<<"copy address: "<<&copy<<endl;
+            cout<<"copy string member: "<<copy.my_string<<endl;
+            this->my_string=copy.my_string;
+            return *this;
+        }
+
+
         ~MyClass(){
             cout<<"destructor"<<endl;
             cout<<"this address: "<<this<<endl;
