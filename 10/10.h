@@ -3,6 +3,7 @@
 #include<iostream>
 using std::cout;
 using std::string;
+using std::endl;
 class MyClass{
     std::string my_string;
     public:
