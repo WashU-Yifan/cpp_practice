@@ -10,9 +10,9 @@ using std::weak_ptr;
 using std::cout;
 using std::endl;
 using std::unique_ptr;
-
+typedef unique_ptr<MyClass> upt;
 int main(){
-    MyClass a("hello"),b("greetings"),c("bye");
-    c=b=a;
+    upt up(new MyClass("hello"));
+    upt up2(std::move(up));
     return success;
 }
