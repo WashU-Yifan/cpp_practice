@@ -77,7 +77,7 @@ std::vector<PinochleMelds>& MeldsV){
     //sort the player's hands by the rank first
     sort(CardSet<PinochleRank,Suit>::get_cards(copy)->begin(),CardSet<PinochleRank,Suit>::get_cards(copy)->end(),
          Compare_Rank<PinochleRank,Suit>);
-    
+
     check_TH(CardSet<PinochleRank,Suit>::get_cards(copy),MeldsV);
     check_Pino(CardSet<PinochleRank,Suit>::get_cards(copy),MeldsV);
 }   
@@ -177,7 +177,7 @@ std::ostream& operator<<(std::ostream& os, const PinochleMelds& PM){
     int index=to_PinochlePoints_index(PM);
     os<<std::setw(longest_meld_name)<<PinochleGame::PinochleNames[index]
     <<": "<<std::setw(largest_meld_point)<<PinochleGame::PinochlePoints[index];
-
+    return os;
 }
 
 
