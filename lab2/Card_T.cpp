@@ -1,8 +1,15 @@
 #include "Card_T.h"
+#include "PinochleDeck.h"
+#include "HoldEmDeck.h"
 using namespace std;
-template <typename R, typename S>
-R Card_T<R,S>::get_rank(){return this->rank;}
-S Card_T<R,S>::get_suit(){return this->suit;}
+template <PinochleRank, typename S>
+PinochleRank Card_T<PinochleRank,S>::get_rank(){return this->rank;}
+
+template <HoldEmRank, typename S>
+HoldEmRank Card_T<HoldEmRank,S>::get_rank(){return this->rank;}
+
+template <typename R, Suit>
+Suit Card_T<R,Suit>::get_suit(){return this->suit;}
 
 template <typename R, typename S>
 ostream& operator<< (ostream& os,const Card_T<R,S>& card){
