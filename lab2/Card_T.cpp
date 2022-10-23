@@ -1,8 +1,8 @@
 #include "Card_T.h"
 using namespace std;
 template <typename R, typename S>
-R Card_T<R,S>::get_rank(return this->rank);
-S Card_T<R,S>::get_suit(return this->suit);
+R Card_T<R,S>::get_rank(){return this->rank;}
+S Card_T<R,S>::get_suit(){return this->suit;}
 
 template <typename R, typename S>
 ostream& operator<< (ostream& os,const Card_T<R,S>& card){
