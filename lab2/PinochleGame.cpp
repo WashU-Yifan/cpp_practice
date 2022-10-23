@@ -75,9 +75,11 @@ void PinochleGame::suit_independent_evaluation(const CardSet<PinochleRank,Suit>&
 std::vector<PinochleMelds>& MeldsV){
     CardSet<PinochleRank,Suit> copy(card);
     //sort the player's hands by the rank first
-    sort(CardSet::get_cards(copy)->begin(),CardSet::get_cards(copy)->end(),Compare_Rank<PinochleRank,Suit>);
-    check_TH(CardSet::get_cards(copy),MeldsV);
-    check_Pino(CardSet::get_cards(copy),MeldsV);
+    sort(CardSet<PinochleRank,Suit>::get_cards(copy)->begin(),CardSet<PinochleRank,Suit>::get_cards(copy)->end(),
+         Compare_Rank<PinochleRank,Suit>);
+    
+    check_TH(CardSet<PinochleRank,Suit>::get_cards(copy),MeldsV);
+    check_Pino(CardSet<PinochleRank,Suit>::get_cards(copy),MeldsV);
 }   
 
 //this function is responsible for checking 8 cards with same Rank and 4 cards with 
