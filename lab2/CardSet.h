@@ -7,14 +7,15 @@ class CardSet{
         CardSet()=default;
         CardSet(const CardSet<R,S>& );
 
-        static std::vector<Card_T<R,S>>* get_cards();
+        static std::vector<Card_T<R,S>>* get_cards(CardSet<R,S>&);
         CardSet<R,S>& operator>>(CardSet<R,S>& set2);
         inline bool is_empty(){return cardset.empty();}
         void print(std::ostream& os,std::size_t size);
     protected:
-        std::vector< Card_T<R,S> > cardset;
         R rank;
         S suit;
+        std::vector< Card_T<R,S> > cardset;
+
 };
 
 

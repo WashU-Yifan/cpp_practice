@@ -25,6 +25,7 @@ void PinochleGame::deal(){
     
 }
 
+
 /*
     1 shuffle the deck
     2 distribute the card
@@ -34,32 +35,49 @@ void PinochleGame::deal(){
 */
 int PinochleGame::play(){
     while(1){
+        vector<PinochleMelds>melds;
         Deck.shuffle();
         deal();
-        printstatus();
+        print_status();
+        for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
+            suit_independent_evaluation(PlayerHands[i],melds);
+            print_melds(i,melds);
+            melds.clear();
+        }    
+
+        for(auto & hands:PlayerHands)
+            Deck.collect(hands);
        if (end()) return success;
     }
 }
 
-//helper function that print player's naem and their cards
-void PinochleGame::printstatus(){
+void PinochleGame::print_melds(std::vector<CardSet<PinochleRank,Suit> >::size_type i,const std::vector<PinochleMelds>& melds){
+    cout<<"Player Name: "<<PlayerNames[i]<<"\n Melds:"<<endl;
+    for (PinochleMelds meld:melds){
+        cout<<left<<meld<<right<<endl;
+    }
+
+}
+
+//helper function that print player's name and their cards
+void PinochleGame::print_status(){
  
     for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
         cout<<"Player Name: "<<PlayerNames[i]<<"\nHands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
-        Deck.collect(PlayerHands[i]);
+        
     }
 }
 
 
 
-void PinochleGame::suit_idependent_evaluation(const CardSet<PinochleRank,Suit>& card,
+void PinochleGame::suit_independent_evaluation(const CardSet<PinochleRank,Suit>& card,
 std::vector<PinochleMelds>& MeldsV){
     CardSet<PinochleRank,Suit> copy(card);
     //sort the player's hands by the rank first
-    sort(copy.get_cards()->begin(),copy.get_cards()->end(),Compare_Rank<PinochleRank,Suit>);
-    check_TH(copy.get_cards(),MeldsV);
-    check_Pino(copy.get_cards(),MeldsV);
+    sort(CardSet::get_cards(copy)->begin(),CardSet::get_cards(copy)->end(),Compare_Rank<PinochleRank,Suit>);
+    check_TH(CardSet::get_cards(copy),MeldsV);
+    check_Pino(CardSet::get_cards(copy),MeldsV);
 }   
 
 //this function is responsible for checking 8 cards with same Rank and 4 cards with 
@@ -155,7 +173,8 @@ std::vector<std::string> PinochleGame::PinochleNames={
 
 std::ostream& operator<<(std::ostream& os, const PinochleMelds& PM){
     int index=to_PinochlePoints_index(PM);
-    os<<PinochleGame::PinochleNames[index]<<PinochleGame::PinochlePoints[index];
+    os<<std::setw(longest_meld_name)<<PinochleGame::PinochleNames[index]
+    <<": "<<std::setw(largest_meld_point)<<PinochleGame::PinochlePoints[index];
 
 }
 

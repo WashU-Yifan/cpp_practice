@@ -3,7 +3,7 @@
 
 #include<iostream>
 #include"Card_T.h"
-#include "Deck.h"
+#include "Deck.h" 
 #include "Suit.h"
 // ranks in Pinochle
 enum class PinochleRank{
@@ -17,7 +17,8 @@ enum class PinochleRank{
 };
 
 std::ostream &operator<< (std::ostream& os, const PinochleRank& prank);
-
+unsigned int PinochleRank_to_val(PinochleRank&);
+bool operator<(PinochleRank&, PinochleRank&);
 void operator++(PinochleRank &prank);
 
 class PinochleDeck :public Deck<PinochleRank,Suit>{

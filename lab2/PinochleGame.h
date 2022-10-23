@@ -3,9 +3,32 @@
 #include<vector>
 #include "Game.h"
 #include<unordered_set>
+#include <iomanip>
 #include"PinochleDeck.h"
 #define thousands 8
 #define hundreds 4
+#define longest_meld_name 17
+#define largest_meld_point 4
+
+enum class PinochleMelds{
+    dix=0,
+    offsuitmarriage=1,
+    fortyjacks=2,
+    pinochle=3,
+    insuitmarriage=4,
+    sixtyqueens=5,
+    eightykings=6,
+    hundredaces=7,
+    insuitrun=8,
+    doublepinochle=9,
+    fourhundredjacks=10,
+    sixhundredqueens=11,
+    eighthundredkings=12,
+    thousandaces=13,
+    insuitdoublerun=14
+
+};
+
 class PinochleGame:public Game{
 
     protected:
@@ -18,28 +41,12 @@ class PinochleGame:public Game{
         PinochleGame(int argc, const char* argv[]);
         virtual int play() override;
     private:
-        void printstatus();
-        void suit_idependent_evaluation(const CardSet<PinochleRank,Suit>&,std::vector<PinochleMelds>&);
+        void print_status();
+        void print_melds( std::vector<CardSet<PinochleRank,Suit> >::size_type,const std::vector<PinochleMelds>&);
+        void suit_independent_evaluation(const CardSet<PinochleRank,Suit>&,std::vector<PinochleMelds>&);
 };
 
-enum class PinochleMelds{
-    dix=0, 
-    offsuitmarriage=1, 
-    fortyjacks=2, 
-    pinochle=3, 
-    insuitmarriage=4, 
-    sixtyqueens=5, 
-    eightykings=6, 
-    hundredaces=7, 
-    insuitrun=8, 
-    doublepinochle=9, 
-    fourhundredjacks=10, 
-    sixhundredqueens=11, 
-    eighthundredkings=12, 
-    thousandaces=13, 
-    insuitdoublerun=14
 
-};
 std::ostream& operator<<(std::ostream&, const PinochleMelds&);
 //convert PinochleMelds into corresponding index in Pinochlepoints and in PinochleNames
 

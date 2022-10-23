@@ -18,3 +18,16 @@ void operator++(Suit& suit){
          default: return;
     }
 }
+
+unsigned int Suit_to_val(Suit& suit){
+    switch (suit){
+        case Suit::clubs: {return 1;}
+        case Suit::diamonds: {return 2;}
+        case Suit:: hearts: {return 3;}
+        case Suit:: spades: {return 4;}
+        default: return 0;
+    }
+}
+bool operator<(Suit& suit1,Suit& suit2){
+    return Suit_to_val(suit1)< Suit_to_val(suit2);
+}

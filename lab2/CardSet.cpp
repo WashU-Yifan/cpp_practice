@@ -8,8 +8,8 @@ using std::endl;
 
 
 template<typename R, typename S>
-std::vector<Card_T<R,S>>* CardSet<R,S>::get_cards(){
-    return &cardset;
+std::vector<Card_T<R,S>>* CardSet<R,S>::get_cards(CardSet<R,S>& c){
+    return &c.cardset;
 }
 
 
