@@ -1,5 +1,5 @@
 #pragma once
-#include<iostream>
+#include<stdexcept>
 #include<random>
 #include"CardSet.h"
 #include<algorithm>

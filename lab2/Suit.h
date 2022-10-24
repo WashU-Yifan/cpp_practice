@@ -16,5 +16,5 @@ enum class Suit{
 std::ostream& operator<<(std::ostream& os,const Suit& suit);
 void operator++(Suit& suit);
 
-unsigned int Suit_to_val(Suit&);
-bool operator<(Suit&,Suit&);
+unsigned int Suit_to_val(Suit);
+bool operator<(const Suit&,const Suit&);

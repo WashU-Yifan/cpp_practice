@@ -62,3 +62,26 @@ void operator++( HoldEmRank &Trank){
         
     }
 }
+
+unsigned int HoldEmRank_to_val(HoldEmRank Trank){
+    switch (Trank){
+        case HoldEmRank::two: {return 2;}
+        case HoldEmRank::three: {return 3;}
+        case HoldEmRank::four: {return 4;}
+        case HoldEmRank::five:{return 5;}
+        case HoldEmRank::six: {return 6;}
+        case HoldEmRank::seven: {return 7;}
+        case HoldEmRank::eight: {return 8;}
+        case HoldEmRank::nine: {return 9;}
+        case HoldEmRank::ten: {return 10;}
+        case HoldEmRank::jack: {return 11;}
+        case HoldEmRank::queen: {return 12;}
+        case HoldEmRank::king: {return 13;}
+        case HoldEmRank::ace: {return 14;}
+        default:{ return 0;}
+
+    }
+}
+bool operator<(const HoldEmRank& Hrank1, const HoldEmRank& Hrank2){
+    return HoldEmRank_to_val(Hrank1)< HoldEmRank_to_val(Hrank2);
+}

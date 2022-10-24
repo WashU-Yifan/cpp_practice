@@ -69,5 +69,6 @@
         "bit": "cpp",
         "deque": "cpp",
         "numeric": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -1,8 +1,7 @@
 #pragma once
 #include<vector>
-
 #include<iostream>
-#include"Card_T.h"
+
 #include "Deck.h" 
 #include "Suit.h"
 // ranks in Pinochle

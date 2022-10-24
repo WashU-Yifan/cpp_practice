@@ -2,7 +2,7 @@
 #pragma once
 #include<vector>
 #include<iostream>
-#include"Card_T.h"
+
 #include "Deck.h"
 #include "Suit.h"
 // rank in Texas Hold em
@@ -23,9 +23,11 @@ enum class HoldEmRank{
     undefined
 };
 
-std::ostream &operator<< (std::ostream& os, const HoldEmRank& Trank);
+std::ostream &operator<< (std::ostream&, const HoldEmRank&);
 
-void operator++( HoldEmRank &Trank);
+unsigned int HoldEmRank_to_val(HoldEmRank);
+bool operator<( const HoldEmRank&, const HoldEmRank&);
+void operator++( HoldEmRank &);
 
 class HoldEmDeck :public Deck<HoldEmRank,Suit>{
     std::vector< Card_T<HoldEmRank,Suit> > deck;

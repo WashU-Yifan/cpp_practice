@@ -1,9 +1,11 @@
 #pragma once
-#include"CardSet.h"
+
 #include<vector>
-#include "Game.h"
+
 #include<unordered_set>
 #include <iomanip>
+
+#include "Game.h"
 #include"PinochleDeck.h"
 #define thousands 8
 #define hundreds 4
@@ -32,7 +34,7 @@ enum class PinochleMelds{
 class PinochleGame:public Game{
 
     protected:
-        PinochleDeck Deck;
+        PinochleDeck SharedDeck;
         std::vector<CardSet<PinochleRank,Suit> > PlayerHands;
         virtual void deal();//distribute the card among players
     public:

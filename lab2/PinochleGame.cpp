@@ -4,20 +4,20 @@
 using std::cout;
 using std::endl;
 using std::runtime_error;
-
+using std::vector;
 
 
 PinochleGame::PinochleGame(int argc, const char* argv[]):Game(argc,argv),PlayerHands(argc,CardSet<PinochleRank,Suit>()){}
 
 //distribute 3 cards to each player and repeat until there is no cards in Deck.
 void PinochleGame::deal(){
-    while(!Deck.is_empty()){
+    while(!SharedDeck.is_empty()){
         for(auto &playerdeck:PlayerHands){
             try{
-                Deck>>playerdeck>>playerdeck>>playerdeck;
+                SharedDeck>>playerdeck>>playerdeck>>playerdeck;
             }
             catch(runtime_error &e){
-                cout<<e.what()<<"Deck is empty"<<endl;
+                cout<<e.what()<<"SharedDeck is empty"<<endl;
                 return;
             }
         }
@@ -36,7 +36,7 @@ void PinochleGame::deal(){
 int PinochleGame::play(){
     while(1){
         vector<PinochleMelds>melds;
-        Deck.shuffle();
+        SharedDeck.shuffle();
         deal();
         print_status();
         for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
@@ -46,7 +46,7 @@ int PinochleGame::play(){
         }    
 
         for(auto & hands:PlayerHands)
-            Deck.collect(hands);
+            SharedDeck.collect(hands);
        if (end()) return success;
     }
 }
@@ -54,7 +54,7 @@ int PinochleGame::play(){
 void PinochleGame::print_melds(std::vector<CardSet<PinochleRank,Suit> >::size_type i,const std::vector<PinochleMelds>& melds){
     cout<<"Player Name: "<<PlayerNames[i]<<"\n Melds:"<<endl;
     for (PinochleMelds meld:melds){
-        cout<<left<<meld<<right<<endl;
+        cout<<std::left<<meld<<std::right<<endl;
     }
 
 }

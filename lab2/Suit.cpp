@@ -19,7 +19,7 @@ void operator++(Suit& suit){
     }
 }
 
-unsigned int Suit_to_val(Suit& suit){
+unsigned int Suit_to_val(Suit suit){
     switch (suit){
         case Suit::clubs: {return 1;}
         case Suit::diamonds: {return 2;}
@@ -28,6 +28,6 @@ unsigned int Suit_to_val(Suit& suit){
         default: return 0;
     }
 }
-bool operator<(Suit& suit1,Suit& suit2){
+bool operator<(const Suit& suit1,const Suit& suit2){
     return Suit_to_val(suit1)< Suit_to_val(suit2);
 }
