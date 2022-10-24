@@ -16,9 +16,8 @@ enum class PinochleRank{
 };
 
 std::ostream &operator<< (std::ostream& os, const PinochleRank& prank);
-unsigned int PinochleRank_to_val(PinochleRank&);
-bool operator<(PinochleRank&, PinochleRank&);
-void operator++(PinochleRank &prank);
+
+void operator++( PinochleRank &prank);
 
 class PinochleDeck :public Deck<PinochleRank,Suit>{
     std::vector< Card_T<PinochleRank,Suit> > deck;

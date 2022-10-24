@@ -58,18 +58,3 @@ void operator++(PinochleRank &prank){
         
     }
 }
-
-unsigned int PinochleRank_to_val(PinochleRank& prank){
-    switch (prank){
-        case PinochleRank::nine: {return 1;}
-        case PinochleRank::jack: {return 2;}
-        case PinochleRank::queen: {return 3;}
-        case PinochleRank::king:{return 4;}
-        case PinochleRank::ten: {return 5;}
-        case PinochleRank::ace: {return 6;}
-        default:{ return 0;}
-
-    }
-}
-bool operator<(PinochleRank& prank1, PinochleRank& prank2){
-    return PinochleRank_to_val(prank1)< PinochleRank_to_val(prank2); }

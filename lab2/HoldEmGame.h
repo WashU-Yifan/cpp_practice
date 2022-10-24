@@ -38,11 +38,10 @@ class HoldEmGame:public Game{
         void printstatus();
         void Collect_hands();
         struct PlayerStatus{
-            PlayerStatus(CardSet<HoldEmRank,Suit> _PHhand,std::string &_PName,HoldEmHandRank _PRank):
-                    PlayerHand(_PHand),PlayerName(_PName),PlayerRank(_PRank);
-            PlayerStatus(const PlayerStatus&)=default;
+            PlayerStatus(CardSet<HoldEmRank,Suit> _PHand,std::string &_PName,HoldEmHandRank _PRank):
+                    PlayerHand(_PHand),PlayerName(_PName),PlayerRank(_PRank){};
             CardSet<HoldEmRank,Suit> PlayerHand;
-            std::string &PlayerName;
+            std::string PlayerName;
             HoldEmHandRank PlayerRank;
 
         };
@@ -60,16 +59,16 @@ class HoldEmGame:public Game{
         void reset();
     public:
         friend bool operator<(const HoldEmGame::PlayerStatus&,const HoldEmGame::PlayerStatus&);
-        friend std::ostream& operator<<(std::ostream&,PlayerStatus& );
+        friend std::ostream& operator<<(std::ostream&,const PlayerStatus& );
         HoldEmGame(int argc, const char* argv[]);
         virtual int play() override;
 
 };
 bool operator<(const HoldEmGame::PlayerStatus&,const HoldEmGame::PlayerStatus&);
-bool operator<(HoldEmHandRank&,HoldEmHandRank&);
+
 void operator++(HoldEmState& state);
 std::ostream& operator<<(std::ostream&,const HoldEmHandRank&);
-std::ostream& operator<<(std::ostream&,HoldEmGame::PlayerStatus&);
+std::ostream& operator<<(std::ostream&,const HoldEmGame::PlayerStatus&);
 
 
 bool check_straight(vector<Card_T<HoldEmRank, Suit> >* );

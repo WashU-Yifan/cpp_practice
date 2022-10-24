@@ -28,6 +28,3 @@ unsigned int Suit_to_val(Suit suit){
         default: return 0;
     }
 }
-bool operator<(const Suit& suit1,const Suit& suit2){
-    return Suit_to_val(suit1)< Suit_to_val(suit2);
-}

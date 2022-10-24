@@ -7,21 +7,16 @@ template <typename R, typename S>
 class Card_T{
     public:
 
-    R rank;
-    S suit;
+    R Crank;
+    S Csuit;
     Card_T(R rank_, S suit_){
-        rank=rank_;
-        suit=suit_;
+        Crank=rank_;
+        Csuit=suit_;
     }
 
 };
 template <typename R, typename S>
 std::ostream& operator<< (std::ostream& os,const Card_T<R,S>& card);
-template <typename R, typename S>
-R get_rank(Card_T<R,S>& );
-
-template <typename R, typename S>
-S get_rank(Card_T<R,S>&);
 
 template<typename R, typename S>
 bool Compare_Rank(const Card_T<R,S> &c1, const Card_T<R,S>& c2);

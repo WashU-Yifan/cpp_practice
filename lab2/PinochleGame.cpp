@@ -91,7 +91,7 @@ std::vector<PinochleMelds>& MeldsV){
     PinochleRank cur_rank=PinochleRank::nine;
     std::unordered_set<Suit> suit;
     for(auto &card: *hands){
-        if(card.rank!=cur_rank){//if we have iterate through one specific rank
+        if(card.Crank!=cur_rank){//if we have iterated through one specific rank
             if(cur_cnt==thousands)add_eight(MeldsV,cur_rank);
             else if(suit.size()==hundreds)add_four(MeldsV,cur_rank);    
             cur_cnt=0;
@@ -100,7 +100,7 @@ std::vector<PinochleMelds>& MeldsV){
         }
         else{
             cur_cnt++;
-            suit.insert(card.suit);
+            suit.insert(card.Csuit);
         }
     }
     if(cur_cnt==thousands) add_eight(MeldsV,cur_rank);
@@ -137,8 +137,8 @@ void add_four(std::vector<PinochleMelds>& Mields ,PinochleRank prank){
 void check_Pino(std::vector<Card_T<PinochleRank,Suit> >*cards ,std::vector<PinochleMelds>& Mields){
     int j_count=0,q_count=0;
     for(auto & card:*cards){
-        if(card.rank==PinochleRank::jack&&card.suit==Suit::diamonds)++j_count;
-        else if(card.rank==PinochleRank::queen&&card.suit==Suit::spades)++q_count;
+        if(card.Crank==PinochleRank::jack&&card.Csuit==Suit::diamonds)++j_count;
+        else if(card.Crank==PinochleRank::queen&&card.Csuit==Suit::spades)++q_count;
     }
     if(j_count==q_count&&j_count==2) Mields.push_back(PinochleMelds::doublepinochle);
     else if(j_count>=1&&q_count>=1) Mields.push_back(PinochleMelds::pinochle);

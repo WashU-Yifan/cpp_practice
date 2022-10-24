@@ -82,6 +82,8 @@ unsigned int HoldEmRank_to_val(HoldEmRank Trank){
 
     }
 }
+/*
 bool operator<(const HoldEmRank& Hrank1, const HoldEmRank& Hrank2){
     return HoldEmRank_to_val(Hrank1)< HoldEmRank_to_val(Hrank2);
 }
+ */

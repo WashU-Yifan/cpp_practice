@@ -26,7 +26,6 @@ enum class HoldEmRank{
 std::ostream &operator<< (std::ostream&, const HoldEmRank&);
 
 unsigned int HoldEmRank_to_val(HoldEmRank);
-bool operator<( const HoldEmRank&, const HoldEmRank&);
 void operator++( HoldEmRank &);
 
 class HoldEmDeck :public Deck<HoldEmRank,Suit>{

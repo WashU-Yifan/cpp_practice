@@ -54,7 +54,7 @@ int HoldEmGame::play(){
             Players[i].PlayerRank= holdem_hand_evaluation(Players[i].PlayerHand);
         }
         sort(Players.begin(),Players.end());
-        for(auto iter=Players.end()-1;iter!=Players.begin()-1;--iter) print_player(*iter);
+        for(auto iter=Players.end()-1;iter!=Players.begin()-1;--iter)cout<<(*iter);
         Collect_hands();//collect player's cards
         if (end()) return success;
 
@@ -166,15 +166,15 @@ HoldEmHandRank HoldEmGame::holdem_hand_evaluation(const CardSet<HoldEmRank,Suit>
 
 bool check_straight(std::vector<Card_T<HoldEmRank, Suit> >* hand ){
     //hand is already sorted in ascending order
-    int previousRank=HoldEmRank_to_val((*hand)[0].rank);
+    int previousRank=HoldEmRank_to_val((*hand)[0].Crank);
     //edge case 2 3 4 5 A
     //if A is the last element in sorted array and 5 is the second last element, then the first three must be 2,3,4
     //then the cards form a valid straight.
-    if((*hand)[HoldEmHandSize-1].rank==HoldEmRank::ace&&(*hand)[HoldEmHandSize-2].rank==HoldEmRank::five){
+    if((*hand)[HoldEmHandSize-1].Crank==HoldEmRank::ace&&(*hand)[HoldEmHandSize-2].Crank==HoldEmRank::five){
         return true;
     }
     for(int i=1;i<HoldEmHandSize;++i){
-        int curRank=HoldEmRank_to_val((*hand)[i].rank);
+        int curRank=HoldEmRank_to_val((*hand)[i].Crank);
         //If there is a gap between two cards' ranks, then the card can not form a straight
         if(curRank-previousRank>1) return false;
         else previousRank=curRank;
@@ -184,10 +184,10 @@ bool check_straight(std::vector<Card_T<HoldEmRank, Suit> >* hand ){
 
 
 bool check_flush(std::vector<Card_T<HoldEmRank, Suit> >* hand){
-    int previousSuit=Suit_to_val((*hand)[0].suit);
+    int previousSuit=Suit_to_val((*hand)[0].Csuit);
     for(int i=1;i<HoldEmHandSize;++i){
         //If any two cards' suits are different, there will not be a flush.
-        if(Suit_to_val((*hand)[i].suit)==previousSuit) continue;
+        if(Suit_to_val((*hand)[i].Csuit)==previousSuit) continue;
         return false;
     }
     return true;
@@ -222,7 +222,7 @@ std::pair<int,int>get_rank_num(std::vector<Card_T<HoldEmRank, Suit> >* hand){
     std::vector<int> rankbucket(HoldEmRank_to_val(HoldEmRank::ace)+1);
     std::priority_queue<int> sortranknum;
     for(auto card:*hand){
-        ++rankbucket[HoldEmRank_to_val((card.rank))];
+        ++rankbucket[HoldEmRank_to_val((card.Crank))];
     }
     for(int rank:rankbucket)
         sortranknum.push(rank);
@@ -299,17 +299,13 @@ unsigned int Hand_rank_to_val(const HoldEmHandRank& Hrank){
         default:{return 0;}
     }
 }
-bool operator<(HoldEmHandRank& r1, HoldEmHandRank&r2){
-    return Hand_rank_to_val(r1)<Hand_rank_to_val(r2);
-}
-
 
 
 
 //v1 and v2 are already sorted
 bool straight_compare( vector<Card_T<HoldEmRank, Suit> >& v1,vector<Card_T<HoldEmRank, Suit> >& v2){
-    Card_T<HoldEmRank, Suit> c1=(*v1.begin()).rank==HoldEmRank::two?*(v1.end()-2):*(v1.end()-1);
-    Card_T<HoldEmRank, Suit> c2=(*v2.begin()).rank==HoldEmRank::two?*(v2.end()-2):*(v2.end()-1);
+    Card_T<HoldEmRank, Suit> c1=(*v1.begin()).Crank==HoldEmRank::two?*(v1.end()-2):*(v1.end()-1);
+    Card_T<HoldEmRank, Suit> c2=(*v2.begin()).Crank==HoldEmRank::two?*(v2.end()-2):*(v2.end()-1);
     return Compare_Rank <HoldEmRank,Suit>(c1,c2);
 }
 bool pair_compare(vector<Card_T<HoldEmRank, Suit> >& v1,vector<Card_T<HoldEmRank, Suit> >&v2){
@@ -318,8 +314,8 @@ bool pair_compare(vector<Card_T<HoldEmRank, Suit> >& v1,vector<Card_T<HoldEmRank
     else if(v2_pair<v1_pair) return false;
     else{
         for(int i=2;i>=0;--i) {
-            if( v1[i].rank < v2[i].rank) return true;
-            else if( v2[i].rank < v1[i].rank) return false;
+            if( v1[i].Crank < v2[i].Crank) return true;
+            else if( v2[i].Crank < v1[i].Crank) return false;
         }
 
     }
@@ -329,8 +325,8 @@ bool pair_compare(vector<Card_T<HoldEmRank, Suit> >& v1,vector<Card_T<HoldEmRank
 int extract_pair(vector<Card_T<HoldEmRank, Suit> >& v){
     int rankval=0;
     for(int i=1;i<v.size();++i){
-        if(v[i].rank==v[i-1].rank) {
-            rankval= HoldEmRank_to_val( v[i].rank);
+        if(v[i].Crank==v[i-1].Crank) {
+            rankval= HoldEmRank_to_val( v[i].Crank);
             v.erase(v.begin()+i);
             v.erase(v.begin()+i-1);
             return rankval;
@@ -347,8 +343,8 @@ bool two_pair_compare( vector<Card_T<HoldEmRank, Suit> >&v1,vector<Card_T<HoldEm
         if(v1_pair1<v2_pair1)return true;
         else if(v2_pair1<v1_pair1) return false;
         else{
-            if( (*v1.begin()).rank < (*v2.begin()).rank) return true;
-            else if( (*v2.begin()).rank < (*v1.begin()).rank) return false;
+            if( (*v1.begin()).Crank < (*v2.begin()).Crank) return true;
+            else if( (*v2.begin()).Crank < (*v1.begin()).Crank) return false;
         }
     }
     return false;
@@ -364,8 +360,8 @@ bool three_compare( vector<Card_T<HoldEmRank, Suit> >&v1,vector<Card_T<HoldEmRan
 int extract_three(vector<Card_T<HoldEmRank, Suit> >& v){
     int rankval=0;
     for(int i=2;i<v.size();++i){
-        if(v[i].rank==v[i-1].rank&&v[i].rank==v[i-2].rank) {
-            rankval= HoldEmRank_to_val( v[i].rank);
+        if(v[i].Crank==v[i-1].Crank&&v[i].Crank==v[i-2].Crank) {
+            rankval= HoldEmRank_to_val( v[i].Crank);
             v.erase(v.begin()+i);
             v.erase(v.begin()+i-1);
             v.erase(v.begin()+i-2);
@@ -393,11 +389,11 @@ bool four_compare(vector<Card_T<HoldEmRank, Suit> >&v1,vector<Card_T<HoldEmRank,
 
 //extract four cards with same rank and return the rank value
 int extract_four(vector<Card_T<HoldEmRank, Suit> >& v){
-    int rankval= v[0].rank==v[1].rank?HoldEmRank_to_val( v[0].rank):HoldEmRank_to_val( v[1].rank);
+    int rankval= v[0].Crank==v[1].Crank?HoldEmRank_to_val( v[0].Crank):HoldEmRank_to_val( v[1].Crank);
     v.erase(v.begin()+1);//remove second
     v.erase(v.begin()+1);//remove third
     v.erase(v.begin()+1);//remove fourth
-    if(v[0].rank==v[1].rank) v.erase(v.begin());//remove first
+    if(v[0].Crank==v[1].Crank) v.erase(v.begin());//remove first
     else v.erase(v.begin()+1);//remove last
     return rankval;
 }
@@ -405,12 +401,12 @@ int extract_four(vector<Card_T<HoldEmRank, Suit> >& v){
 
 bool high_compare(vector<Card_T<HoldEmRank, Suit> >&v1,vector<Card_T<HoldEmRank, Suit> >&v2){
     for(int i=4;i>=0;--i) {
-        if( v1[i].rank < v2[i].rank) return true;
-        else if( v2[i].rank < v1[i].rank) return false;
+        if( v1[i].Crank < v2[i].Crank) return true;
+        else if( v2[i].Crank < v1[i].Crank) return false;
     }
     return false;
 }
-ostream& operator<<(ostream& os,HoldEmGame::PlayerStatus& player){
+ostream& operator<<(ostream& os,const HoldEmGame::PlayerStatus& player){
     os<<"Player Name: "<<player.PlayerName<<endl;
     os<<"Player's card set:"<<endl;
     player.PlayerHand.print(os,HoldEmHandSize);

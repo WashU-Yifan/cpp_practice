@@ -20,7 +20,7 @@ rank(copy.rank),suit(copy.suit),cardset(copy.cardset){
 }
 
 template <typename R, typename S>
-void CardSet<R,S>::print(std::ostream& os,std::size_t size){
+void CardSet<R,S>::print(std::ostream& os,std::size_t size) const{
     size_t cnt=0;
     for(auto card:this->cardset){
         os<<card<<" ";
