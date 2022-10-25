@@ -55,7 +55,7 @@ std::ostream& operator<<(std::ostream&, const PinochleMelds&);
 int to_PinochlePoints_index(const PinochleMelds& PM);
 
 //helper functions to check combinations 
-void check_TH(std::vector<Card_T<PinochleRank,Suit> >*,std::vector<PinochleMelds>&);
+void check_same_rank(std::vector<Card_T<PinochleRank,Suit> >*,std::vector<PinochleMelds>&);
 void add_eight(std::vector<PinochleMelds>& ,PinochleRank);
 void add_four(std::vector<PinochleMelds>& ,PinochleRank);
 void check_Pino(std::vector<Card_T<PinochleRank,Suit> >*,std::vector<PinochleMelds>&);

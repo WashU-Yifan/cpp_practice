@@ -47,6 +47,7 @@ int PinochleGame::play(){
 
 void PinochleGame::print_melds(const std::vector<PinochleMelds>& melds){
     cout<<"Melds:"<<endl;
+
     for (PinochleMelds meld:melds){
         cout<<std::left<<meld<<std::right<<endl;
     }
@@ -60,6 +61,8 @@ void PinochleGame::print_status(){
         cout<<"Player Name: "<<PlayerNames[i]<<"\nHands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
         suit_independent_evaluation(PlayerHands[i],melds);
+        //sort the melds in descending order
+        sort(melds.begin(),melds.end(),[](PinochleMelds& a, PinochleMelds& b){return a>b;});
         print_melds(melds);
         melds.clear();
     }
@@ -74,13 +77,13 @@ std::vector<PinochleMelds>& MeldsV){
     sort(CardSet<PinochleRank,Suit>::get_cards(copy)->begin(),CardSet<PinochleRank,Suit>::get_cards(copy)->end(),
          Compare_Rank<PinochleRank,Suit>);
 
-    check_TH(CardSet<PinochleRank,Suit>::get_cards(copy),MeldsV);
+    check_same_rank(CardSet<PinochleRank,Suit>::get_cards(copy),MeldsV);
     check_Pino(CardSet<PinochleRank,Suit>::get_cards(copy),MeldsV);
 }   
 
 //this function is responsible for checking 8 cards with same Rank and 4 cards with 
 //same Rank but different Suit.
-void check_TH(std::vector<Card_T<PinochleRank,Suit> >* hands, 
+void check_same_rank(std::vector<Card_T<PinochleRank,Suit> >* hands,
 std::vector<PinochleMelds>& MeldsV){
 
     int cur_cnt=0;
@@ -88,11 +91,13 @@ std::vector<PinochleMelds>& MeldsV){
     std::unordered_set<Suit> suit;
     for(auto &card: *hands){
         if(card.Crank!=cur_rank){//if we have iterated through one specific rank
+            //either 8 cards with same rank
             if(cur_cnt==thousands)add_eight(MeldsV,cur_rank);
-            else if(suit.size()==hundreds)add_four(MeldsV,cur_rank);    
+            //or 4 cards with same ranks but different suit
+            else if(suit.size()==hundreds)add_four(MeldsV,cur_rank);
             cur_cnt=0;
             suit.clear();
-            ++cur_rank;
+            cur_rank=card.Crank;
         }
         else{
             cur_cnt++;
@@ -103,7 +108,7 @@ std::vector<PinochleMelds>& MeldsV){
     else if(suit.size()==hundreds) add_four(MeldsV,cur_rank);
     
 }
-
+//add to the melds when there are 8 cards with same rank
 void add_eight(std::vector<PinochleMelds>& Mields,PinochleRank prank){
      switch (prank){
         case PinochleRank::nine: return;
@@ -115,6 +120,7 @@ void add_eight(std::vector<PinochleMelds>& Mields,PinochleRank prank){
         default: return;
     }
 }
+//or 4 cards with same ranks but different suit
 void add_four(std::vector<PinochleMelds>& Mields ,PinochleRank prank){
     switch (prank){
         case PinochleRank::nine: return;
@@ -131,7 +137,7 @@ void add_four(std::vector<PinochleMelds>& Mields ,PinochleRank prank){
 
 //This function helps check Pinocle or Double Pinocle
 void check_Pino(std::vector<Card_T<PinochleRank,Suit> >*cards ,std::vector<PinochleMelds>& Mields){
-    int j_count=0,q_count=0;
+    int j_count=0,q_count=0;//j_count records number of J diamonds, q_count records number of Q spades
     for(auto & card:*cards){
         if(card.Crank==PinochleRank::jack&&card.Csuit==Suit::diamonds)++j_count;
         else if(card.Crank==PinochleRank::queen&&card.Csuit==Suit::spades)++q_count;
