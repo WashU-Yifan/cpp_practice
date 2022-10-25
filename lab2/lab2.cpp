@@ -54,6 +54,10 @@ void process_input(int &argc, const char **&argv){
 //return a share_ptr pointing to a game object or nullptr
 shared_ptr<Game> create(int argc, const char * argv[]){
     shared_ptr<Game> Game_ptr;
+    if(argc<start_index) {
+        Game_ptr=nullptr;
+        return Game_ptr;
+    }
     GameType gametype=check_game(argv[game_index]);
     process_input(argc,argv);
     switch(gametype){
