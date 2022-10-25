@@ -99,10 +99,9 @@ std::vector<PinochleMelds>& MeldsV){
             suit.clear();
             cur_rank=card.Crank;
         }
-        else{
-            cur_cnt++;
-            suit.insert(card.Csuit);
-        }
+        cur_cnt++;
+        suit.insert(card.Csuit);
+
     }
     if(cur_cnt==thousands) add_eight(MeldsV,cur_rank);
     else if(suit.size()==hundreds) add_four(MeldsV,cur_rank);
