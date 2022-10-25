@@ -35,24 +35,18 @@ void PinochleGame::deal(){
 */
 int PinochleGame::play(){
     while(1){
-        vector<PinochleMelds>melds;
+
         SharedDeck.shuffle();
         deal();
         print_status();
-        for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
-            suit_independent_evaluation(PlayerHands[i],melds);
-            print_melds(i,melds);
-            melds.clear();
-        }    
-
         for(auto & hands:PlayerHands)
             SharedDeck.collect(hands);
        if (end()) return success;
     }
 }
 
-void PinochleGame::print_melds(std::vector<CardSet<PinochleRank,Suit> >::size_type i,const std::vector<PinochleMelds>& melds){
-    cout<<"Player Name: "<<PlayerNames[i]<<"\n Melds:"<<endl;
+void PinochleGame::print_melds(const std::vector<PinochleMelds>& melds){
+    cout<<"Melds:"<<endl;
     for (PinochleMelds meld:melds){
         cout<<std::left<<meld<<std::right<<endl;
     }
@@ -61,11 +55,13 @@ void PinochleGame::print_melds(std::vector<CardSet<PinochleRank,Suit> >::size_ty
 
 //helper function that print player's name and their cards
 void PinochleGame::print_status(){
- 
+    vector<PinochleMelds>melds;
     for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
         cout<<"Player Name: "<<PlayerNames[i]<<"\nHands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
-        
+        suit_independent_evaluation(PlayerHands[i],melds);
+        print_melds(melds);
+        melds.clear();
     }
 }
 

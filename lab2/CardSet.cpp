@@ -19,10 +19,14 @@ rank(copy.rank),suit(copy.suit),cardset(copy.cardset){
     //vector's copy contructor does deep copy by default, no need to explicitly copy the vector.
 }
 
+//print the card set in ascending order without modifying the original object
 template <typename R, typename S>
 void CardSet<R,S>::print(std::ostream& os,std::size_t size) const{
+
+    CardSet<R,S> copy(*this);
+    sort(copy.cardset.begin(),copy.cardset.end(), Compare_Rank<R,S>);
     size_t cnt=0;
-    for(auto card:this->cardset){
+    for(auto &card:copy.cardset){
         os<<card<<" ";
         if(++cnt==size){
             cnt=0;

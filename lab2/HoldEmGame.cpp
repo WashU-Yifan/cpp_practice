@@ -39,14 +39,12 @@ void HoldEmGame::deal(){
 
 int HoldEmGame::play(){
     while(1){
+        vector<PlayerStatus> Players;
         Deck.shuffle();
         reset();//reset the HoldEmGame::GameState
         deal();//2cards to each player
         printstatus();//print player's name & hands
         deal();//flop
-        deal();//turn
-        deal();//river
-        vector<PlayerStatus> Players;
         for(int i=0;i<PlayerHands.size();++i){
             Players.push_back(PlayerStatus(PlayerHands[i],PlayerNames[i],HoldEmHandRank::undefined));
             CardSet<HoldEmRank,Suit> flopCopy(Shared);
@@ -55,6 +53,8 @@ int HoldEmGame::play(){
         }
         sort(Players.begin(),Players.end());
         for(auto iter=Players.end()-1;iter!=Players.begin()-1;--iter)cout<<(*iter);
+        deal();//turn
+        deal();//river
         Collect_hands();//collect player's cards
         if (end()) return success;
 

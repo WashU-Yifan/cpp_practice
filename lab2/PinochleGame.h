@@ -44,7 +44,7 @@ class PinochleGame:public Game{
         virtual int play() override;
     private:
         void print_status();
-        void print_melds( std::vector<CardSet<PinochleRank,Suit> >::size_type,const std::vector<PinochleMelds>&);
+        void print_melds(const std::vector<PinochleMelds>&);
         void suit_independent_evaluation(const CardSet<PinochleRank,Suit>&,std::vector<PinochleMelds>&);
 };
 
