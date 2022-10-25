@@ -408,9 +408,9 @@ bool high_compare(vector<Card_T<HoldEmRank, Suit> >&v1,vector<Card_T<HoldEmRank,
 }
 ostream& operator<<(ostream& os,const HoldEmGame::PlayerStatus& player){
     os<<"Player Name: "<<player.PlayerName<<endl;
-    os<<"Player's card set:"<<endl;
+    os<<"  Player's card set:"<<endl;
     player.PlayerHand.print(os,HoldEmHandSize);
-    os<<"Rank: "<<player.PlayerRank<<endl;
+    os<<"  Rank: "<<player.PlayerRank<<endl;
     return os;
 
 }

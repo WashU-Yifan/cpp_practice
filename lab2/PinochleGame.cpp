@@ -1,5 +1,5 @@
 #include "PinochleGame.h"
-#define CardPerLine 6
+#define CardPerLine 4
 #define success 0
 using std::cout;
 using std::endl;
@@ -46,7 +46,7 @@ int PinochleGame::play(){
 }
 
 void PinochleGame::print_melds(const std::vector<PinochleMelds>& melds){
-    cout<<"Melds:"<<endl;
+    cout<<"  Melds:"<<endl;
 
     for (PinochleMelds meld:melds){
         cout<<std::left<<meld<<std::right<<endl;
@@ -58,7 +58,7 @@ void PinochleGame::print_melds(const std::vector<PinochleMelds>& melds){
 void PinochleGame::print_status(){
     vector<PinochleMelds>melds;
     for(std::vector<CardSet<PinochleRank,Suit> >::size_type i=0;i<PlayerHands.size();++i){
-        cout<<"Player Name: "<<PlayerNames[i]<<"\nHands:"<<endl;
+        cout<<"Player Name: "<<PlayerNames[i]<<"\n  Hands:"<<endl;
         PlayerHands[i].print(cout,CardPerLine);
         suit_independent_evaluation(PlayerHands[i],melds);
         //sort the melds in descending order
@@ -176,8 +176,8 @@ std::vector<std::string> PinochleGame::PinochleNames={
 
 std::ostream& operator<<(std::ostream& os, const PinochleMelds& PM){
     int index=to_PinochlePoints_index(PM);
-    os<<std::setw(longest_meld_name)<<PinochleGame::PinochleNames[index]
-    <<": "<<std::setw(largest_meld_point)<<PinochleGame::PinochlePoints[index];
+    os<<std::right<<std::setw(longest_meld_name)<<PinochleGame::PinochleNames[index]
+    <<": "<<std::left<<std::setw(largest_meld_point)<<PinochleGame::PinochlePoints[index];
     return os;
 }
 
