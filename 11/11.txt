@@ -1,3 +1,79 @@
 1.Yifan Wang 488500
 
 2
+    const int*const p1=&i1, *const p2=&i2;
+    /* int *const p3=&i1;*/int * const p4=&i2;
+    const int *p5=&i1, *p6=&i2;
+    /*int *p7=&i1;*/int *p8=&i2;
+    
+    P3 and p7 fails because i1 is a cosnt int, p3 and p7 must have the same lower-level const 
+    as the i1's top-level const.
+
+3.
+        //++p1;     //p1 p2 p4 both keep top-level const, thus we can't modify the variable.
+        //++p2;
+        //++p4;
+        ++p5;
+        ++p6;
+        ++p8;
+
+        //++i1;   i1 is a const int and thus can't be modified
+        ++i2;
+        //++*p1;   p1 and p2 are const pointers to const value, a read-only pointer and thus is not modifiable
+        //++*p2;
+        ++*p4;
+        //++*p5;    p5 and p6 are pointer to const value, we can modify the pointer but not the value it points to.
+        //++*p6;
+        ++*p8;
+
+4
+    ++ai1;
+    ++ai2;
+    
+    ++ap1;          //all top level const are discarded when assigned to an auto typed variable.
+    ++ap2;
+    ++ap4;
+    ++ap5;
+    ++ap6;
+    ++ap8;
+
+    //++*ap1;      //but lower-level const are kept.
+    //++*ap2;       
+    ++*ap4;
+    //++*ap5;
+    //++*ap6;
+    ++*ap8;
+
+5.
+    dcltype() keeps both the top-level and lower-level const of the pointer passed in.
+    
+    //++dp1;
+    //++dp2;
+    //++dp4;
+    ++dp5;
+    ++dp6;
+    ++dp8;
+
+    //++*dp1;
+    //++*dp2;
+    ++*dp4;
+    //++*dp5;
+    //++*dp6;
+    ++*dp8;
+
+6.
+    typedef int i;
+    typedef const int ci;
+    typedef int* const icp;
+    typedef const int* const cicp;
+    typedef int * ip;
+    typedef const int * cip;
+
+        ci i1=0;
+        i  i2=1;
+        cicp p1=&i1,  p2=&i2;
+        /* int *const p3=&i1;*/
+        icp p4=&i2;
+        cip p5=&i1, p6=&i2;
+        /*int *p7=&i1;*/
+        ip p8=&i2;
