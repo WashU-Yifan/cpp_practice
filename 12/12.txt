@@ -50,4 +50,25 @@ source file:
     template<typename T>
     my_struct<T>:: my_struct( T& t):i(t){}
 
+7.
+Header file:
+    template<typename>class my_struct;
+    template<typename T>
+    std::ostream& operator<<(std::ostream&,const my_struct<T>&);
+
+    template<typename T=int> class my_struct{
+        template<typename t>
+        friend std::ostream& operator<<(std::ostream&,const my_struct<t>&);
+        T i;
+    public:
+        my_struct( T&);
+    };
+
+Source file:
+    template<typename T>
+    std::ostream& operator<<(std::ostream& os,const my_struct<T>& s){
+        os<<s.i;//<<std::endl;
+        return os;
+    }
+
 
