@@ -68,7 +68,12 @@
         "unordered_set": "cpp",
         "bit": "cpp",
         "deque": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "ctime": "cpp",
+        "iomanip": "cpp",
+        "queue": "cpp",
+        "xlocmon": "cpp",
+        "xloctime": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
