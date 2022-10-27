@@ -5,8 +5,8 @@ template<typename T>
 std::ostream& operator<<(std::ostream&,const my_struct<T>&);
 
 template<typename T=int> class my_struct{
-
-    friend std::ostream& operator<< (std::ostream&,const my_struct<T>&);
+    template<typename t>
+    friend std::ostream& operator<< (std::ostream&,const my_struct<t>&);
     T i;
 public:
     my_struct( T&);
