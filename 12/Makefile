@@ -13,7 +13,7 @@ TMPL_SRCS	= 12.cpp
 HEADER_FILES    = 12.h
 
 #               Any special flags that should be set for compilation
-SPECIAL_FLAGS  = -std=c++17
+SPECIAL_FLAGS  = -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE
 
 #               Any additional libraries that need to be linked in (e.g., -lsocket -lnsl)
 LIBS    =       
