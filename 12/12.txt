@@ -1,0 +1,10 @@
+1.Yifan Wang 488500
+
+2
+    my_struct s1(1),s2(2);
+    cout<<"s1: "<<s1.i<<", s2: "<<s2.i<<endl;
+
+    s1: 1, s2: 2
+
+3.
+    
