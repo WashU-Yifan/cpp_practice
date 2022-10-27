@@ -1,13 +1,7 @@
-#include"12.h"
-#include<iostream>
+#include "12.h"
 
-using std::cout;
-using std::endl;
-#define SUCCESS 0
-int main(){
-    my_struct<> s1(1),s2(2);
-    cout<<"s1: "<<s1.i<<", s2: "<<s2.i<<endl;
-    std::swap(s1,s2);
-    cout<<"s1: "<<s1.i<<", s2: "<<s2.i<<endl;
-    return SUCCESS;
-}
+template<typename T>
+my_struct<T>:: my_struct( T& t):i(t){}
+
+template<>
+my_struct<int>:: my_struct( int& t):i(t){}
