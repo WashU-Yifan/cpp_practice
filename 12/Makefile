@@ -4,10 +4,10 @@ EXECUTABLE	= 12
 #		Source (.cpp) files you want to compile
 #		(NOTE: Don't include header (.h) files, or any source (.cpp) files
 #		that only contain template class method definitions.)
-CMPL_SRCS	= 12.cpp
+CMPL_SRCS	= 
 
 #               Source files containing only template class method definitions
-TMPL_SRCS	= 
+TMPL_SRCS	= 12.cpp
 
 #               Header (.h) files
 HEADER_FILES    = 12.h
