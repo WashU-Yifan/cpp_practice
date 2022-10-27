@@ -32,4 +32,22 @@ Output:
     copy constructor and copy assign operator are required to perform the swap operation.
 
 6.
+header file:
+
+    #pragma once
+    template<typename T=int>
+    struct my_struct{
+        T i;
+        my_struct( T&);
+    };
+    #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
+        #include "12.cpp"
+    #endif
+
+source file:
+    #include "12.h"
+
+    template<typename T>
+    my_struct<T>:: my_struct( T& t):i(t){}
+
 
