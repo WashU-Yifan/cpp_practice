@@ -1,4 +1,4 @@
-#include"t.h"
+x
 #include<string>
 #include<iostream>
 using std::cout;
