@@ -7,13 +7,13 @@ EXECUTABLE	= 13
 CMPL_SRCS	= 13.cpp
 
 #               Source files containing only template class method definitions
-TMPL_SRCS	= 
+TMPL_SRCS	= t.cpp
 
 #               Header (.h) files
-HEADER_FILES    = 13.h
+HEADER_FILES    = 13.h t.h
 
 #               Any special flags that should be set for compilation
-SPECIAL_FLAGS  = -std=c++17
+SPECIAL_FLAGS  = -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE
 
 #               Any additional libraries that need to be linked in (e.g., -lsocket -lnsl)
 LIBS    =       
