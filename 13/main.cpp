@@ -1,7 +1,8 @@
 #include "13.h"
 #include "t.h"
 #include<memory>
-
+#include<typeinfo>
+#include<type_traits>
 #define success 0;
 
 using std::shared_ptr;
