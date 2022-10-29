@@ -15,7 +15,7 @@ typedef unique_ptr<MyClass> upt;
 
 upt fun(upt up);
 int main(){
-    upt up=make_unique<MyClass>(MyClass("hello"));
+    upt up=make_unique<MyClass>("hello");
     upt up2(my_move(up));
     up=fun(my_move(up2));
     up->foo();
