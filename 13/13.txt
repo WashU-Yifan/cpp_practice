@@ -19,3 +19,18 @@ string member: hello
 
 4.
     upt up=make_unique<MyClass>("hello");
+
+5.
+    constructor
+    this address: 0x8d8c20
+    string member: hello
+    7MyClass
+    foo
+    this address: 0x8d8c20
+    string member: hello
+    destructor
+    this address: 0x7fff957df400
+    string member: 
+    destructor
+    this address: 0x8d8c20
+    string member: hello
