@@ -13,3 +13,8 @@ this address: 0x11fac20
 string member: hello
 
 3.
+
+    upt up2(my_move(up));
+    up=fun(my_move(up2));
+
+4.

@@ -10,13 +10,13 @@ using std::weak_ptr;
 using std::cout;
 using std::endl;
 using std::unique_ptr;
+using std::make_unique;
 typedef unique_ptr<MyClass> upt;
 
 upt fun(upt up);
 int main(){
-    upt up(new MyClass("hello"));
+    upt up=make_unique(MyClass("hello"));
     upt up2(my_move(up));
-    //fun (up2);
     up=fun(my_move(up2));
     up->foo();
     return success;
