@@ -15,7 +15,10 @@ typedef unique_ptr<MyClass> upt;
 
 upt fun(upt up);
 int main(){
-    upt up=make_unique<MyClass>(MyClass("hello"));
+    upt up=make_unique<MyClass>("hello");
+
+    std::remove_reference<decltype(*up)>::type v;
+    cout << typeid(v).name() << endl;
     upt up2(my_move(up));
     up=fun(my_move(up2));
     up->foo();

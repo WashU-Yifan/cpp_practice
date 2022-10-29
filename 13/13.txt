@@ -18,3 +18,4 @@ string member: hello
     up=fun(my_move(up2));
 
 4.
+    upt up=make_unique<MyClass>("hello");
