@@ -1,0 +1,15 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+
+
+2.
+constructor
+this address: 0x11fac20
+string member: hello
+foo
+this address: 0x11fac20
+string member: hello
+destructor
+this address: 0x11fac20
+string member: hello
+
+3.
