@@ -5,6 +5,6 @@
     return os;
  }
 
-bool my_class::operator<(cosnt my_class&m)const {
+bool my_class::operator<(const my_class&m)const {
     return this.s<m.s;
 }
