@@ -6,5 +6,5 @@
  }
 
 bool my_class::operator<(const my_class&m)const {
-    return this.s<m.s;
+    return this->s<m.s;
 }
