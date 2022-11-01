@@ -34,6 +34,19 @@ Only got warnings, the output was the same as the previous run.
 
 The reason of causing the warning is the compiler doesn't know which version to choose.
 
+6.
+Declaration:
+
+    template<typename T>
+    void fun(std::ostream&, const T&);
+    
+Definition:
+    template<typename T>
+    void fun(ostream& os, const T& t){
+        os<<"from template: "<<t;
+    }
 
 7.
-from reggular fun: m1from template: m2result of comparing m1<m2: from template: 1:
+from reggular fun: m1
+from template: m2
+result of comparing m1<m2: from template: 1:
