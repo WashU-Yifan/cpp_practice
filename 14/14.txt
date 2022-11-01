@@ -34,3 +34,6 @@ Only got warnings, the output was the same as the previous run.
 
 The reason of causing the warning is the compiler doesn't know which version to choose.
 
+
+7.
+from reggular fun: m1from template: m2result of comparing m1<m2: from template: 1:
