@@ -14,4 +14,21 @@ definition & declaration:
 
     bool operator<(const my_class& m1,const my_class& m2) {
         return m1.s<m2.s;
-    }
+    
+}
+
+
+5.
+main.cpp:9:49: warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
+     cout<<"result of comparing m1<m2: "<< (m1 < m2);
+                                                 ^~
+In file included from main.cpp:1:
+14.h:17:7: note: candidate 1: 'bool operator<(const my_class&, const my_class&)'
+  bool operator<(const my_class& ,const my_class&) ;
+       ^~~~~~~~
+14.h:12:14: note: candidate 2: 'bool my_class::operator<(const my_class&) const'
+         bool operator<(const my_class&)const ;
+              ^~~~~~~~
+
+
+}
