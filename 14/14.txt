@@ -5,3 +5,13 @@
     m1 m2
 
 3.
+    result of comparing m1<m2: 1
+
+4.
+definition & declaration:
+
+    bool operator<(const my_class& ,const my_class&) ;
+
+    bool operator<(const my_class& m1,const my_class& m2) {
+        return m1.s<m2.s;
+    }
