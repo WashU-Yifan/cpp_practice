@@ -19,16 +19,18 @@ definition & declaration:
 
 
 5.
-main.cpp:9:49: warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
-     cout<<"result of comparing m1<m2: "<< (m1 < m2);
-                                                 ^~
-In file included from main.cpp:1:
-14.h:17:7: note: candidate 1: 'bool operator<(const my_class&, const my_class&)'
-  bool operator<(const my_class& ,const my_class&) ;
-       ^~~~~~~~
-14.h:12:14: note: candidate 2: 'bool my_class::operator<(const my_class&) const'
-         bool operator<(const my_class&)const ;
-              ^~~~~~~~
+Only got warnings, the output was the same as the previous run.
 
+    main.cpp:9:49: warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
+        cout<<"result of comparing m1<m2: "<< (m1 < m2);
+                                                    ^~
+    In file included from main.cpp:1:
+    14.h:17:7: note: candidate 1: 'bool operator<(const my_class&, const my_class&)'
+    bool operator<(const my_class& ,const my_class&) ;
+        ^~~~~~~~
+    14.h:12:14: note: candidate 2: 'bool my_class::operator<(const my_class&) const'
+            bool operator<(const my_class&)const ;
+                ^~~~~~~~
 
-}
+The reason of causing the warning is the compiler doesn't know which version to choose.
+

@@ -7,10 +7,10 @@ EXECUTABLE	= 14
 CMPL_SRCS	= 14.cpp main.cpp
 
 #               Source files containing only template class method definitions
-TMPL_SRCS	= 
+TMPL_SRCS	= t.cpp
 
 #               Header (.h) files
-HEADER_FILES    = 14.h
+HEADER_FILES    = 14.h t.h
 
 #               Any special flags that should be set for compilation
 SPECIAL_FLAGS  = -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE
