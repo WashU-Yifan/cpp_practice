@@ -9,7 +9,7 @@ class my_class{
     friend bool operator<(const my_class& ,const my_class&) ;
     public:
         my_class(const std::string& _s):s(_s){}
-        //bool operator<(const my_class&)const ;
+        bool operator<(const my_class&)const ;
         
 };
 
