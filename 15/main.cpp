@@ -11,7 +11,7 @@ int main(){
     const char* c="char *";
     int i=1;
     float f=1.2;
-    fun(cout,m,s,c,i,f);
+    mult_fun(cout,m,s,c,i,f);
     /*
     fun(cout,s);
     fun(cout,c);
