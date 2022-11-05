@@ -24,3 +24,10 @@
 
     5
     Class string char * 1 1.2 
+
+5.
+    5
+    Class string char * 1 1.2 Argument pack size is 80
+
+    string object would allocate more memory than it actually needs.
+    The my_class object and string object are both 32 bytes.
