@@ -15,5 +15,13 @@ void fun(std::ostream& os, const T& t, const Args&... rest){
 template< typename... Args>
 void mult_fun(std::ostream& os, const Args&... rest){
     os<<sizeof...(rest)<<std::endl;
-    fun(os,rest...);
+
+    fun(os,bar(rest)...);
+    std::cout<<"Argument pack size is "<<ui<<std::endl;
+}
+
+template< typename T>
+const T& bar( const T& t){
+    ui+=sizeof(t);
+    return t;
 }

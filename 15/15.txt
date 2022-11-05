@@ -19,3 +19,8 @@
     int i=1;
     float f=1.2;
     fun(cout,m,s,c,i,f);
+
+4.
+
+    5
+    Class string char * 1 1.2 
