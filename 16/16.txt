@@ -34,3 +34,10 @@ template:
     {Class 0x7ffedf789fc0}"string" [char * 0x403525]1 1.2 "string 2" [char * c2 0x403535]{Class 2 0x7ffedf789f40}Argument pack size is 152
 
 6.
+
+    8
+    {Class 0x7ffca8411af0}"string" [char * 0x4035e5]1 1.2 "string 2" [char * c2 0x4035f5]{Class 2 0x7ffca8411a70}
+    int variables size is 4
+    float variables size is 4
+    other variables size is 144
+    Argument pack size is 152

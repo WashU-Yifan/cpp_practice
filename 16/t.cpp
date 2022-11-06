@@ -19,9 +19,9 @@ void mult_fun(std::ostream& os, const Args&... rest){
     fun(os,bar(rest)...);
 
     std::cout<<"\nint variables size is "<<i_count<<std::endl;
-    std::cout<<"\nfloat variables size is "<<f_count<<std::endl;
-    std::cout<<"\nother variables size is "<<ui-i_count-f_count<<std::endl;
-    std::cout<<"\nArgument pack size is "<<ui<<std::endl;
+    std::cout<<"float variables size is "<<f_count<<std::endl;
+    std::cout<<"other variables size is "<<ui-i_count-f_count<<std::endl;
+    std::cout<<"Argument pack size is "<<ui<<std::endl;
 }
 
 template< typename T>
