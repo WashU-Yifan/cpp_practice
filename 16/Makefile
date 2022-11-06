@@ -4,13 +4,13 @@ EXECUTABLE	= 16
 #		Source (.cpp) files you want to compile
 #		(NOTE: Don't include header (.h) files, or any source (.cpp) files
 #		that only contain template class method definitions.)
-CMPL_SRCS	= 16.cpp main.cpp
+CMPL_SRCS	= 16.cpp main.cpp nt.cpp
 
 #               Source files containing only template class method definitions
 TMPL_SRCS	= t.cpp
 
 #               Header (.h) files
-HEADER_FILES    = 16.h t.h
+HEADER_FILES    = 16.h t.h nt.h
 
 #               Any special flags that should be set for compilation
 SPECIAL_FLAGS  = -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE

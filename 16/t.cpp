@@ -25,12 +25,9 @@ const T& bar( const T& t){
     ui+=sizeof(t);
     return t;
 }
-
-template <> void fun (std::ostream& os, const std::string& s){
-    os<<"\""<<s<<" \"";
-}
 template <typename... Args> void fun (std::ostream& os, const std::string& s, const Args&...rest){
     os<<"\""<<s<<" \"";
     fun(os,rest...);
 }
+
 

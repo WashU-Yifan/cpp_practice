@@ -2,7 +2,11 @@
 
 2.
 
-   Class string char * 1 1.2
+  t.cpp:29:18: error: ambiguous template specialization 'fun<>' for 'void fun(std::ostream&, const string&)'
+   template <> void fun (std::ostream& os, const std::string& s){
+                    ^~~
+   Here the reason causing the compiled error is that there are multiple candidates for the string instantiation template.
+   The compiler is not able to figure out which to use.
 
 3.
 

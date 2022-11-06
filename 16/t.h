@@ -1,4 +1,5 @@
 #pragma once
+#include"nt.h"
 #include<iostream>
 static unsigned int ui=0;
 template<typename T>
@@ -13,7 +14,6 @@ void mult_fun(std::ostream&, const Args&... );
 template< typename T>
 const T& bar( const T& );
 
-template <> void fun (std::ostream& , const std::string& );
 
 template <typename... Args> void fun (std::ostream& , const std::string& , const Args&...);
 #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE

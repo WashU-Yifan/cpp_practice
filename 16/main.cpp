@@ -1,5 +1,6 @@
 #include"16.h"
 #include "t.h"
+#include "nt.h"
 using std::cout;
 #define SUCCESS 0
 
