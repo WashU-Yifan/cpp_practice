@@ -9,29 +9,17 @@
    The compiler is not able to figure out which to use.
 
 3.
+output:
+  6
+  Class "string" char * 1 1.2 "string 2" Argument pack size is 112
 
- 
-    template<typename T, typename... Args>
-    void fun(std::ostream& os, const T& t, const Args&... rest){
-        os<<t<<" ";
-        fun(os,rest...);
+Non-template:
+     void fun (std::ostream& os, const std::string& s){
+        os<<"\""<<s<<"\" ";
     }
 
-    my_class m("Class");
-    std::string s("string");
-    const char* c="char *";
-    int i=1;
-    float f=1.2;
-    fun(cout,m,s,c,i,f);
-
-4.
-
-    5
-    Class string char * 1 1.2 
-
-5.
-    5
-    Class string char * 1 1.2 Argument pack size is 80
-
-    string object would allocate more memory than it actually needs.
-    The my_class object and string object are both 32 bytes.
+template:
+    template <typename... Args> void fun (std::ostream& os, const std::string& s, const Args&...rest){
+        os<<"\""<<s<<"\" ";
+        fun(os,rest...);
+    }

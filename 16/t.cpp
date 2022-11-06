@@ -26,7 +26,11 @@ const T& bar( const T& t){
     return t;
 }
 template <typename... Args> void fun (std::ostream& os, const std::string& s, const Args&...rest){
-    os<<"\""<<s<<" \"";
+    os<<"\""<<s<<"\" ";
+    fun(os,rest...);
+}
+template <typename... Args> void fun (std::ostream& os, const char * const c , const Args&... rest){
+    os<<"["<<c<<" "<<reinterpret_cast<const void*>(c)<<"]";
     fun(os,rest...);
 }
 

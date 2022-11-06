@@ -13,9 +13,8 @@ void mult_fun(std::ostream&, const Args&... );
 
 template< typename T>
 const T& bar( const T& );
-
-
 template <typename... Args> void fun (std::ostream& , const std::string& , const Args&...);
+template <typename... Args> void fun (std::ostream& , const char * const , const Args&...);
 #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
     #include "t.cpp"
   #endif
