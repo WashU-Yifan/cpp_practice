@@ -1,5 +1,6 @@
 #pragma once
 #include "16.h"
+
 #include <iostream>
  void fun (std::ostream& os, const std::string& s);
 void fun (std::ostream& os, const char * const);
