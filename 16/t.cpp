@@ -33,5 +33,9 @@ template <typename... Args> void fun (std::ostream& os, const char * const c , c
     os<<"["<<c<<" "<<reinterpret_cast<const void*>(c)<<"]";
     fun(os,rest...);
 }
+template <typename... Args> void fun (std::ostream& os, const my_class& c, const Args&... rest){
+    os << "{" << c <<" "<< &c <<  "}";
+    fun(os,rest...);
+}
 
 

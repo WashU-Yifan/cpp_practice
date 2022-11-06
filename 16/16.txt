@@ -23,3 +23,7 @@ template:
         os<<"\""<<s<<"\" ";
         fun(os,rest...);
     }
+4.
+
+    7
+    Class "string" [char * 0x403335]1 1.2 "string 2" [char * c2 0x403345]Argument pack size is 120
