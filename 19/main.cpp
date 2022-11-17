@@ -6,9 +6,15 @@
 #include<set>
 #include<list>
 
-using namespace::std;
+#include<cstring>
+using namespace std;
+bool foo(const char* c1, const char* c2){
+    return strcmp(c1,c2)>0;
+}
+
 int main(int argc,  char* tmp[]) {
-    set<char*>s;
+    set<char*,decltype(foo)*>s(foo);
+
 
 
     
