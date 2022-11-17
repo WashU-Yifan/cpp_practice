@@ -1,0 +1,96 @@
+1. Yifan Wang
+
+2.
+
+Code:
+    int* arr_end=int_arr+sizeof(int_arr)/sizeof(*int_arr);
+    int * iter=int_arr;
+    copy(iter,arr_end,ostream_iterator<int>(cout," "));
+
+Output:
+
+   -2 19 80 -47 80 80 -2 19 19
+
+3.
+Code:
+
+    vector<int>v;
+    copy(iter,arr_end, back_inserter<vector<int>>(v));
+    copy(v.begin(),v.end(),ostream_iterator<int>(cout," "));
+
+Output:
+    -2 19 80 -47 80 80 -2 19 19
+
+4.
+
+Code added:
+    sort(int_arr,arr_end);
+    copy(iter,arr_end,ostream_iterator<int>(cout," "));
+
+Output:
+    -47 -2 -2 19 19 19 80 80 80 
+
+5.
+
+
+Code:
+        while((iter=adjacent_find(iter,arr_end))!=arr_end){
+            int *next=iter;
+            cout<< *iter<<" ";
+            while(adjacent_find(++next,arr_end)==next){
+                cout<<*next<<" ";
+            }
+            cout<<*next<<endl;
+            iter=next;
+        }
+
+Output:
+    -2 -2
+    19 19 19
+    80 80 80
+
+6.
+Code:
+    sort(int_arr,arr_end,greater<int>());
+    ostream_iterator<int> int_it(cout," ");
+    copy(int_arr,arr_end,int_it);
+
+Output:
+   80 80 80 19 19 19 -2 -2 -47
+
+
+7.
+
+Code:
+
+    //median
+    size_t size=sizeof(int_arr)/sizeof(*int_arr);
+    float median=*(int_arr+size/2)+*(int_arr+(size-1)/2);
+    cout<<"median is "<<median/2<<endl;
+
+
+    //mean
+    float sum=accumulate(int_arr,arr_end,sum);
+    cout<<"mean is "<<sum/(sizeof(int_arr)/sizeof(*int_arr))<<endl;
+
+
+    //mode
+    iter=int_arr;
+    int max_count=0,max_val=*int_arr;
+    int cnt=0;
+    while(iter!=arr_end){
+        cnt=count(iter,arr_end,*iter);
+        if(max_count<cnt){
+            max_count=cnt;
+            max_val=*iter;
+        }
+        iter+=cnt;
+    }
+    cout<<"most frequent element is "<<max_val<<endl;
+
+
+Output:
+   80 80 80 19 19 19 -2 -2 -47
+    median is 19
+    mean is 27.3333
+    most frequent element is 80

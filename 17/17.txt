@@ -1,0 +1,88 @@
+2.
+
+Code:
+
+    int int_arr[]={1,2,3,4,5,6};
+    cout<<"sizeof the array "<<sizeof(int_arr)<<endl;
+    cout<<"sizeof the type in array "<<sizeof(*int_arr)<<endl;
+
+Output:
+
+    sizeof the array 24
+    sizeof the type in array 4
+
+3.
+Code:
+
+    int* arr_end=int_arr+sizeof(int_arr)/sizeof(*int_arr);
+    int * iter=int_arr;
+    while(iter!=arr_end){
+        cout<<*iter<<endl;
+        iter++;
+    }
+
+Output:
+    1
+    2
+    3
+    4
+    5
+    6
+
+4.
+    template<typename T> void  foo(T t1,T t2){
+        while(t1!=t2){
+            std::cout<<*t1<<" ";
+            t1++;
+        }
+        std::cout<<std::endl;
+    };
+    int* arr_end=int_arr+sizeof(int_arr)/sizeof(*int_arr);
+    int * iter=int_arr;
+    foo(iter,arr_end);
+
+5.
+Code:
+
+    deque<int>dq;
+    vector<int>v;
+    list<int>l;
+    for(iter=int_arr;iter!=arr_end;++iter){
+        dq.emplace_back(*iter);
+        v.emplace_back(*iter);
+        l.emplace_back(*iter);
+    }
+    foo(dq.begin(),dq.end());
+    foo(v.begin(),v.end());
+    foo(l.begin(),l.end());
+
+Output:
+    1 2 3 4 5 6
+    1 2 3 4 5 6
+    1 2 3 4 5 6
+    1 2 3 4 5 6
+
+6.
+Code:
+    decltype(v)::iterator vi=v.begin()+1;
+    foo(v.begin(),vi);
+    foo(vi,v.end());
+    vi=(v.end()-v.begin())/2+v.begin();
+    foo(v.begin(),vi);
+    foo(vi,v.end());
+
+Output:
+    1
+    2 3 4 5 6
+    1 2 3
+    4 5 6
+
+7.
+
+    cout<<v[0];  vector supports []
+    cout<<dq[0]; deque supports []
+    //  cout<<l[0];  List does not support []
+
+    This is because vector and deque are contiguous on the memory while lists' element
+    are disjoint. It would take linear time for list to support [] operator and thus is not
+    worth it.
