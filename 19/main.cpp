@@ -5,7 +5,7 @@
 #include<vector>
 #include<set>
 #include<list>
-#include<span>
+
 #include"17.h"
 using namespace::std;
 int main(int argc, const char* argv[]) {
