@@ -3,6 +3,18 @@
 2.
     The set container enforce uniqueness on the key it contains.
 
-    input ./19 12 13 12 13 
+    input 
+        ./19 2 3 4 2 3 4
+    Output
+        ./19 2 3 4
 
-    
+3.
+    input 
+        ./19 2 3 4 2 3 4
+    Output
+        ./19 2 3 4 2 3 4
+   
+     This time the duplicate are not removed, because the set only eliminate duplicate pointer
+     , it does not check for the value the pointer points to.
+
+4.
