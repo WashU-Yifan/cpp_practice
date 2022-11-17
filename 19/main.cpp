@@ -14,12 +14,12 @@ bool foo(const char* c1, const char* c2){
 
 int main(int argc,  char* tmp[]) {
     set<char*,decltype(foo)*>s(foo);
-
+    multiset<string, decltype(foo)*>ms(foo);
 
 
     
 
-    copy(tmp,tmp+argc,inserter(s,s.begin()));
-    copy(s.begin(),s.end(),ostream_iterator<char *>(cout," "));
+    copy(tmp,tmp+argc,inserter(ms,ms.begin()));
+    copy(ms.begin(),ms.end(),ostream_iterator<char *>(cout," "));
     return 0;
 }
