@@ -13,7 +13,7 @@ int main(int argc, const char* tmp[]) {
 
     
 
-    copy(tmp,tmp+sizeof(tmp)/sizeof(*tmp),inserter(s,s.end()));
+    copy(tmp,tmp+argc,inserter(s,s.begin()));
     copy(s.begin(),s.end(),ostream_iterator<decltype(*s.begin())>(cout," "));
     return 0;
 }

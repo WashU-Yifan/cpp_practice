@@ -22,6 +22,8 @@ void mult_fun(std::ostream& os, const Args&... rest){
 
 template< typename T>
 const T& bar( const T& t){
-    ui+=sizeof(t);
+	using std::cout,std::endl;
+	cout<<t<<" "<<sizeof(t)<<endl;
+    	ui+=sizeof(t);
     return t;
 }
