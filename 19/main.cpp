@@ -6,7 +6,6 @@
 #include<set>
 #include<list>
 
-#include"17.h"
 using namespace::std;
 int main(int argc, const char* argv[]) {
     set<string>s;
