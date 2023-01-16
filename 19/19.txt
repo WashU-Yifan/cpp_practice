@@ -18,7 +18,54 @@
      , it does not check for the value the pointer points to.
 
 4.
-     input 
+    bool foo(const char* c1, const char* c2){
+        return strcmp(c1,c2)>0;
+    }
+
+    int main(int argc,  char* tmp[]) {
+        set<char*,decltype(foo)*>s(foo);
+
+        copy(tmp,tmp+argc,inserter(s,s.begin()));
+        copy(s.begin(),s.end(),ostream_iterator<char *>(cout," "));
+        return 0;
+    }
+
+
+    input 
         ./19 2 3 4 2 3 4
     Output
         4 3 2 ./19
+
+5.
+
+    input 
+        ./19 2 3 4 2 3 4
+    Output
+        4 4 3 3 2 2 ./19
+     
+    Because multiset accepts duplicate keys
+
+6.
+    input 
+        ./19 2 3 4 2 3 4
+    Output
+        2 2 3 3
+
+    Code:
+
+        multiset<string>ms;
+        copy(tmp,tmp+argc,inserter(ms,ms.begin()));
+        auto pii=ms.equal_range("2");
+        copy(pii.first,pii.second,ostream_iterator<string>(cout," "));
+        pii=ms.equal_range("3");
+        copy(pii.first,pii.second,ostream_iterator<string>(cout," "));
+
+7.
+
+    input ./19 2 2 3 3 3
+
+    erase(pii.first) will only remove one element, which is pointed by the ostream_iterator
+Output: ./19 2 3 3 3 
+    erase(pii.first, pii.second) will remove elements in [pii.first,pii.second)
+
+Output: ./19 3 3 3 
