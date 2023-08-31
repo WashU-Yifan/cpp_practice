@@ -1,0 +1,95 @@
+1 Yifan Wang 488500
+
+2.
+
+
+
+struct MyStruct {
+    int a;
+
+    MyStruct(int _a) : a(_a) {}
+};
+
+
+#include "s1.h"
+#include <iostream>
+using namespace :: std;
+
+const int SUCCESS = 0;
+int main(int argc, char ** argv) {
+
+    MyStruct struct1(10), struct2(20);
+    cout << struct1.a << " " << struct2.a << endl;
+    return SUCCESS;
+}
+
+
+[wang.y1@linuxlab007 s1]$ ./studio1 
+10 20
+
+
+3.
+
+cannot comment out the destructor as objects are automatically called with their destructor after going out of scope.
+s1.cpp:8:37: error: use of deleted function ‘MyStruct::~MyStruct()’
+     MyStruct struct1(10), struct2(20)
+
+4.
+    [wang.y1@linuxlab007 s1]$ ./studio1 
+    10 20
+    20 10
+
+5.
+
+     // MyStruct(const MyStruct &) = delete;
+    // MyStruct operator= (const MyStruct &) = delete;
+    //~MyStruct() = delete;
+    All have to be commented out since swap require evoked object to have all three functions ready
+
+6.
+
+    [wang.y1@linuxlab007 s1]$ ./studio1 
+    10 20
+    20 10
+
+    template <typename T = int>
+    struct MyStruct {
+        T a;
+
+    public:
+        MyStruct(T _a) : a(_a) {}
+
+        // MyStruct(const MyStruct &) = delete;
+        //MyStruct operator= (const MyStruct &) = delete;
+        //~MyStruct() = delete;
+
+    };
+7.
+    #pragma once
+
+#include <iostream>
+using std::ostream;
+
+template <typename T = int>
+class MyStruct {
+    T a;
+
+public:
+    MyStruct(T _a) : a(_a) {}
+
+    // MyStruct(const MyStruct &) = delete;
+    //MyStruct operator= (const MyStruct &) = delete;
+    //~MyStruct() = delete;
+
+
+    template <typename F>
+    friend ostream& operator<< (ostream& os, const MyStruct<F> &t);
+};
+
+
+template <typename T>
+ostream& operator<< (ostream& os, const MyStruct<T> &t);
+
+#ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE /* test whether guard symbol is defined */
+#include "s1.cpp"
+#endif
