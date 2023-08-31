@@ -3,50 +3,71 @@ using namespace std;
 const int SUCCESS = 0;
 const int days=7;
 const int num_pressure=3;
-void operator++ (Weekday &day,int){
+void operator++ (Weekday &day, int){
     
-    switch (day){
+    switch (day) {
         case Weekday::Monday:{
-            day=Weekday::Tuesday;
+            day = Weekday::Tuesday;
             break;
         }
         case Weekday::Tuesday:{
-            day= Weekday::Wednesday;
-             break;
+            day = Weekday::Wednesday;
+            break;
         }
         case Weekday::Wednesday:{
-            day=Weekday::Thursday;
-             break;
+            day = Weekday::Thursday;
+            break;
         }
         case Weekday::Thursday:{
-            day= Weekday::Friday;
-             break;
+            day = Weekday::Friday;
+            break;
         }
         case Weekday::Friday:{
-            day=Weekday::Saturday;
-             break;
+            day = Weekday::Saturday;
+            break;
         }   
         case Weekday::Saturday:{
-            day=Weekday::Sunday;
-             break;
+            day = Weekday::Sunday;
+            break;
         }
         default:{
-            day= Weekday::Monday;
-             break;
+            day = Weekday::Monday;
+            break;
         }
     }
 }
 
-void operator-- (Weekday &day,int){
+void operator-- (Weekday &day, int){
     
     switch (day){
-        case Weekday::Monday:{ day=Weekday::Sunday;break;}
-        case Weekday::Tuesday:{day= Weekday::Monday;break;}
-        case Weekday::Wednesday:{ day=Weekday::Tuesday; break;}
-        case Weekday::Thursday:{  day= Weekday::Wednesday;break;}
-        case Weekday::Friday:{day=Weekday::Thursday;break; }   
-        case Weekday::Saturday:{day= Weekday::Friday; break;}
-        default:{day=Weekday::Saturday;break;}
+        case Weekday::Monday:{ 
+            day = Weekday::Sunday;
+            break;
+        }
+        case Weekday::Tuesday: {
+            day = Weekday::Monday;
+            break;
+        }
+        case Weekday::Wednesday: { 
+            day = Weekday::Tuesday; 
+            break;
+        }
+        case Weekday::Thursday: {
+            day= Weekday::Wednesday;
+            break;
+        }
+        case Weekday::Friday: {
+            day = Weekday::Thursday;
+            break; 
+        }   
+        case Weekday::Saturday: {
+            day = Weekday::Friday; 
+            break;
+        }
+        default: {
+            day = Weekday::Saturday;
+            break;
+        }
     }
 }
 

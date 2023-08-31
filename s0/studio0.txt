@@ -1,0 +1,54 @@
+1.Yifan Wang  488500
+
+2.
+
+[wang.y1@shell 428]$ qlogin
+Job <715947> is submitted to queue <linuxlab>.
+<<Waiting for dispatch ...>>
+<<Starting on linuxlab007.engr.wustl.edu>>
+bash: /project/scratch01/compile/wang.y1/linux_source/linux: Is a directory
+[wang.y1@linuxlab007 428]$ 
+
+
+3.
+
+[wang.y1@linuxlab007 428]$ which g++
+/project/compute/compilers/gcc-8.3.0/bin/g++
+[wang.y1@linuxlab007 428]$ g++ -v
+Using built-in specs.
+COLLECT_GCC=g++
+COLLECT_LTO_WRAPPER=/project/engineering/compilers/gcc-8.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/8.3.0/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: ../gcc-8.3.0/configure --prefix=/project/compute/compilers/gcc-8.3.0 --enable-languages=c,c++,fortran,go --disable-multilib
+Thread model: posix
+gcc version 8.3.0 (GCC) 
+
+
+4.
+[wang.y1@linuxlab007 s0]$ make
+g++ -o studio0 -DUNIX   -Wall -W -g -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE studio0.cpp 
+[wang.y1@linuxlab007 s0]$ ./studio0 
+hello, world!
+
+5.
+
+[wang.y1@linuxlab007 s0]$ ./studio0 
+usage: studio0 <arg1> [<arg2> ...]
+[wang.y1@linuxlab007 s0]$ echo $?
+1
+
+
+[wang.y1@linuxlab007 s0]$ ./studio0  1
+hello, world!
+[wang.y1@linuxlab007 s0]$ echo $?
+0
+
+
+6.
+[wang.y1@linuxlab007 s0]$ ./studio0 a.txt
+[wang.y1@linuxlab007 s0]$ cat a.txt 
+hello, world!
+
+[wang.y1@linuxlab007 s0]$ ./studio0 a.txt
+[wang.y1@linuxlab007 s0]$ echo $?
+3
