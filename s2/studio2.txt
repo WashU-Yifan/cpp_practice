@@ -79,38 +79,41 @@
 
     added to the the source file:
 
-        void operator++ (Weekday &day,int){
-        
-            switch (day){
+ 
+        Weekday operator++ (Weekday &day, int){
+            Weekday oldDay = day;
+            switch (day) {
                 case Weekday::Monday:{
-                    day=Weekday::Tuesday;
+                    day = Weekday::Tuesday;
                     break;
                 }
                 case Weekday::Tuesday:{
-                    day= Weekday::Wednesday;
+                    day = Weekday::Wednesday;
                     break;
                 }
                 case Weekday::Wednesday:{
-                    day=Weekday::Thursday;
+                    day = Weekday::Thursday;
                     break;
                 }
                 case Weekday::Thursday:{
-                    day= Weekday::Friday;
+                    day = Weekday::Friday;
                     break;
                 }
                 case Weekday::Friday:{
-                    day=Weekday::Saturday;
+                    day = Weekday::Saturday;
                     break;
                 }   
                 case Weekday::Saturday:{
-                    day=Weekday::Sunday;
+                    day = Weekday::Sunday;
                     break;
                 }
-                case Weekday::Sunday:{
-                    day= Weekday::Monday;
+                default:{
+                    day = Weekday::Monday;
                     break;
                 }
             }
+            
+            return oldDay;
         }
 
 
@@ -119,8 +122,8 @@
 
             int i=1;
             do {
-                cout<<day;
-                day++;
+                cout<<day++;
+                
             }while(i++<days);
         
             return SUCCESS;
@@ -133,21 +136,45 @@
 
     Code:
         added to the header file:
-            void operator-- (Weekday &day,int);
+            Weekday operator-- (Weekday &day,int);
 
         added to the source file:
-            void operator-- (Weekday &day,int){
-                
-                switch (day){
-                    case Weekday::Monday:{ day=Weekday::Sunday;break;}
-                    case Weekday::Tuesday:{day= Weekday::Monday;break;}
-                    case Weekday::Wednesday:{ day=Weekday::Tuesday; break;}
-                    case Weekday::Thursday:{  day= Weekday::Wednesday;break;}
-                    case Weekday::Friday:{day=Weekday::Thursday;break; }   
-                    case Weekday::Saturday:{day= Weekday::Friday; break;}
-                    case Weekday::Sunday:{day=Weekday::Saturday;break;}
+        Weekday operator-- (Weekday &day, int){
+            Weekday oldDay = day;
+            switch (day){
+                case Weekday::Monday:{ 
+                    day = Weekday::Sunday;
+                    break;
+                }
+                case Weekday::Tuesday: {
+                    day = Weekday::Monday;
+                    break;
+                }
+                case Weekday::Wednesday: { 
+                    day = Weekday::Tuesday; 
+                    break;
+                }
+                case Weekday::Thursday: {
+                    day= Weekday::Wednesday;
+                    break;
+                }
+                case Weekday::Friday: {
+                    day = Weekday::Thursday;
+                    break; 
+                }   
+                case Weekday::Saturday: {
+                    day = Weekday::Friday; 
+                    break;
+                }
+                default: {
+                    day = Weekday::Saturday;
+                    break;
                 }
             }
+
+   
+    return oldDay;
+}
 
 
 5.
@@ -182,23 +209,34 @@
         LOW MEDIUM HIGH
 
     Code added to the source file
-        void operator++ (Pressure &p){
+       
+        Pressure& operator++ (Pressure &p){
             switch (p){
-                case Pressure::lo:{p=Pressure::med;return ;}
-                case Pressure::med:{p=Pressure::hi;return ;}
-
-                case Pressure::hi:{p=Pressure::pop;return ;}
-                default: return;
+                case Pressure::lo : {
+                    p = Pressure::med;
+                    break;
+                }
+                case Pressure::med : {
+                    p=Pressure::hi;
+                    break;
+                }
+                case Pressure::hi : {
+                    p=Pressure::pop;
+                    break;
+                }
+                default: break;
             }
+            return p;
         }
         int main(int argc, char * argv[]){
             Pressure p= Pressure::lo;
             for(int i=0;i<num_pressure;++i){
-                cout<<p;
-                ++p;
+                cout<<++p;
+
             }
             return SUCCESS;
         }
 
     Code added to the header file
-        void operator++ (Pressure &p);
+       Pressure& operator++ (Pressure &p);
+
