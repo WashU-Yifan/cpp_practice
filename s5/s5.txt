@@ -1,0 +1,46 @@
+1. Yifan Wang  488500
+    Duy Huynh 520644
+
+2.
+    const char *s1 = "Hello", *s2 = "World!";
+    cout << "\"" << s1 << "\"" << s2 << "\"" << endl;
+    cout << s1 << "length: " << strlen(s1) << endl;
+    cout << s2 << "length: " << strlen(s2) << endl;
+
+    [wang.y1@linuxlab008 s5]$ ./studio5 
+    "Hello"World!"
+    Hellolength: 5
+    World!length: 6
+
+3.
+    size_t (* f) (const char*) = std:: strlen;
+    cout << "\"" << s1 << "\"" << s2 << "\"" << endl;
+    cout << s1 << "length: " << (f(s1))<< endl;
+    cout << s2 << "length: " << (f(s2)) << endl;
+
+4. 
+    [wang.y1@linuxlab008 s5]$ ./studio5 
+     0: 0.841471
+
+    float f = 0.0;
+    cout << f << ": " << sin(cos(f)) << endl;
+
+5.
+
+    function<float(float)> sn = [](auto i) { return sin(i); }, cs = [](auto i) { return cos(i); }; 
+    cout << f << ": " << sn(cs(f)) << endl;
+  
+6.
+
+
+    function<float(float)> sn =
+	 	 [](auto i) { return sin(i); }, cs = [](auto i) { return cos(i); }; 
+  
+    auto com = compose(sn, cs);
+    cout << f << ": " << com(f) << endl;
+
+7.
+    auto com = compose(sn, cs);
+    auto bd = bind(com, f);
+    cout << f << ": " << bd() << endl;
+    return SUCCESS;
