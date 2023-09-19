@@ -1,0 +1,114 @@
+1. Yifan Wang  488500
+    Duy Huynh 520644
+
+
+2.
+Both versions successfully compiled, the no contructor version get a compiler warning.
+
+[wang.y1@shell s6]$ make
+g++ -o studio6 -DUNIX   -Wall -W -g -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE main.cpp MyStruct.cpp 
+main.cpp: In function ‘int main()’:
+main.cpp:6:22: warning: ‘myStruct.MyStruct::a’ is used uninitialized in this function [-Wuninitialized]
+     cout << myStruct.a << myStruct.b << endl;
+                      ^
+main.cpp:6:36: warning: ‘myStruct.MyStruct::b’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     cout << myStruct.a << myStruct.b << endl;
+                                    ^
+[wang.y1@shell s6]$ ./studio6 
+00
+[wang.y1@shell s6]$ make
+g++ -o studio6 -DUNIX   -Wall -W -g -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE main.cpp MyStruct.cpp 
+[wang.y1@shell s6]$ ./studio6 
+00
+                                    ^
+
+
+3.
+    Everything is public default in struct,
+    Everything is private default in class,
+    to make member variables visible outside of a class, need to make them public
+
+4.
+    inline int getA() const {return a;};
+        inline int getB() const {return b;};
+        MyStruct&  setA(int val);
+        MyStruct&  setB(int val);
+
+    MyStruct&  MyStruct::setA(int val) {
+        a = val;
+        return *this;
+    }
+    MyStruct&  MyStruct::setB(int val) {
+        b = val;
+        return *this;
+    }
+    int main() {
+        MyStruct ms1;
+        const MyStruct ms2;
+        cout << ms1.setA(1).getA() << ms1.setB(2).getB() << endl;
+        cout << ms2.setA(1).getA() << ms2.setB(2).getB() << endl;
+        return 0;
+
+        main.cpp: In function ‘int main()’:
+    main.cpp:8:23: error: passing ‘const MyStruct’ as ‘this’ argument discards qualifiers [-fpermissive]
+        cout << ms2.setA(1).getA() << ms2.setB(2).getB() << endl;
+                        ^
+    In file included from main.cpp:1:
+    MyStruct.h:8:20: note:   in call to ‘MyStruct& MyStruct::setA(int)’
+            MyStruct&  setA(int val);
+                        ^~~~
+    main.cpp:8:45: error: passing ‘const MyStruct’ as ‘this’ argument discards qualifiers [-fpermissive]
+        cout << ms2.setA(1).getA() << ms2.setB(2).getB() << endl;
+                                                ^
+    In file included from main.cpp:1:
+    MyStruct.h:9:20: note:   in call to ‘MyStruct& MyStruct::setB(int)’
+            MyStruct&  setB(int val);
+                        ^~~~
+
+5.
+
+    g++ -o studio6 -DUNIX   -Wall -W -g -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE main.cpp MyStruct.cpp 
+    [wang.y1@linuxlab004 s6]$ ./studio6 
+    m.x is 0 and m.y is 0
+    m.x is 7 and m.y is 7
+    n.x is 7 and n.y is 7
+
+6.
+    They are the same, the compiler synthesis one is the same as the user compiled one
+    [wang.y1@linuxlab004 s6]$ ./studio6 
+    m.x is 0 and m.y is 0
+    m.x is 7 and m.y is 7
+    n.x is 7 and n.y is 7
+
+7.
+
+    Default constructor is called only when the object first created.
+    The passing object into function, returning object, and copy assign
+    both use the copy constructor.
+
+    Default Constructor : 0x7ffcfa8fc1b8
+    0, 0
+    Copy Constructor : 0x7ffcfa8fc1c8
+    0, 0
+    Copy Constructor : 0x7ffcfa8fc1c0
+    0, 0
+    m.x is 0 and m.y is 0
+    Copy Constructor : 0x7ffcfa8fc1d8
+    7, 3
+    Copy Constructor : 0x7ffcfa8fc1d0
+    7, 3
+    m.x is 7 and m.y is 7
+    Copy Constructor : 0x7ffcfa8fc1b0
+    7, 3
+    Copy Constructor : 0x7ffcfa8fc1e8
+    7, 3
+    Copy Constructor : 0x7ffcfa8fc1e0
+    7, 3
+    n.x is 7 and n.y is 7
+
+8. 
+No, once you declare the contructor as private, the compiler will not synthesis one for you.
+
+g++ -o studio6 -DUNIX   -Wall -W -g -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE main.cpp MyStruct.cpp 
+/tmp/ccTVg3fK.o: In function `main':
+/home/warehouse/wang.y1/428/s6/main.cpp:12: undefined reference to `MyStruct::MyStruct()'
