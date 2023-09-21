@@ -1,0 +1,52 @@
+1. Yifan Wang  488500
+    Duy Huynh 520644
+
+
+2.
+    [wang.y1@linuxlab004 s7]$ ./studio7 
+    LOW  MEDIUM  HIGH  POP  
+    MON  TUE  WED  THU  FRI  SAT  SUN 
+
+
+3.
+    in Enum.cpp
+    using std ::cout, std::endl, std::ostream;
+
+    in main.cpp
+    using std ::cout, std::endl;
+
+4.
+
+    g++ -o studio7 -DUNIX   -Wall -W -g -std=c++17 Enum.cpp main.cpp 
+    main.cpp: In function ‘int main(int, const char**)’:
+    main.cpp:13:5: error: ‘Pressure’ was not declared in this scope
+        Pressure p = Pressure::lo;
+        ^~~~~~~~
+    main.cpp:13:5: note: suggested alternative:
+    In file included from main.cpp:1:
+    Enum.h:15:12: note:   ‘enumerations::Pressure’
+    enum class Pressure{
+                ^~~~~~~~
+    main.cpp:14:5: error: ‘Weekday’ was not declared in this scope
+        Weekday w = Weekday::Monday;
+        ^~~~~~~
+    main.cpp:14:5: note: suggested alternative:
+    In file included from main.cpp:1:
+    Enum.h:4:12: note:   ‘enumerations::Weekday’
+    enum class Weekday{
+                ^~~~~~~
+    main.cpp:17:17: error: ‘p’ was not declared in this scope
+            cout << p << " ";
+                    ^
+    main.cpp:22:17: error: ‘w’ was not declared in this scope
+            cout << w++ << " ";
+                    ^
+    make: *** [studio7] Error 1
+    [wang.y1@linuxlab004 s7]$ 
+
+5.
+    using namespace enumerations;
+
+    This is because in the Enum.cpp file, the entire file is wrapped by
+    calling namespace enumerations. Then all the declaration are within the 
+    scope.
