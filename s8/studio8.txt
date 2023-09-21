@@ -1,0 +1,74 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+    [wang.y1@shell s8]$ ./studio8 
+    BaseClass::BaseClass
+    BaseClass::BaseClass
+    DerivedClass:: DerivedClass(
+    DerivedClass:: ~DerivedClass(
+    BaseClass::~BaseClass()
+    BaseClass::~BaseClass()
+
+    The constructor is called sequentially based on the order of initializing the objects
+    First initialized object's constructor is called first.
+    For derived class, the base constructor is called first and itself's constructor is then called.
+
+3.
+
+    BaseClass:: nonVirtual()
+    BaseClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+    
+    Since they are nonvirtual, the function be called will be based on the pointer type
+
+4.
+    BaseClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+
+    Now as the function being declared as virtual, the function will be called based on the object that the
+    reference is referencing to .
+
+5.
+    BaseClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+    Similar behavior for using reference and pointer
+
+6.
+    BaseClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+
+    Same behavior for using shared pointer
+
+7.
+    BaseClass::BaseClass
+    BaseClass::BaseClass
+    DerivedClass:: DerivedClass()
+    BaseClass::BaseClass
+    DerivedClass:: DerivedClass()
+    BaseClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+
+    The destructor is not evoked;
+
+8.
+    BaseClass::~BaseClass()
+    BaseClass::~BaseClass()
+    DerivedClass:: ~DerivedClass()
+    BaseClass::~BaseClass()
+
+    The derived version of the second pointer's destructor is not evoked
+
+9.
+    BaseClass::~BaseClass()
+    DerivedClass:: ~DerivedClass()
+    BaseClass::~BaseClass()
+    DerivedClass:: ~DerivedClass()
+    BaseClass::~BaseClass()
+
+    Now the derived portion is called.
+    Destructor must be virtual or dynamic memory allocated inside derived constructor might
+    not be freed.

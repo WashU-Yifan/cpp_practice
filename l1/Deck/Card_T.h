@@ -8,7 +8,7 @@ template
 struct Card_T {
     R rank;
     S suit;
-    Card_T(R _rank, S _suit): rank(_rank), suit(_suit){}
+    Card_T(R, S);
 };
 
 

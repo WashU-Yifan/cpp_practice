@@ -4,8 +4,8 @@
 using namespace std;
 
 
-// constructor of Pinochle 
-// push each of every possible valid card combination twice into the vector
+// constructor of HoldEm
+// push each of every possible valid card combination into the vector
 HoldEm::HoldEm(){
     HoldEmRank tRank = HoldEmRank::two;
     while(tRank != HoldEmRank::undefined) {

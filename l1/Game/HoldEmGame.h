@@ -5,6 +5,9 @@
 #include <vector>
 #include <iostream>
 
+// A simple Texas HoldEm game that support 2 - 9 players.
+// deal cards to each
+
 enum class HoldEmState {
     preflop,
     flop,
