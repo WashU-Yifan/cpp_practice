@@ -1,0 +1,70 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+    BaseClass b;
+    DerivedClass d;
+    string *const sp1 = &d.derived;
+    string *const sp2 = &d.base;
+    string *const sp3 = &b.base;
+    cout << *sp1 << endl;
+    cout << *sp2 << endl;
+    cout << *sp3 << endl;
+
+    [wang.y1@linuxlab007 s9]$ ./studio9 
+    BaseClass::BaseClass
+    BaseClass::BaseClass
+    DerivedClass:: DerivedClass()
+    Derived
+    Base
+    Base
+    DerivedClass:: ~DerivedClass()
+    BaseClass::~BaseClass()
+    BaseClass::~BaseClass()
+
+3.
+
+    const string * sp1 = DerivedClass::getDerived(d);
+    const string * sp2 = BaseClass::getBase(d);
+    const string * sp3 = BaseClass::getBase(b);
+    cout << *sp1 << endl;
+    cout << *sp2 << endl;
+    cout << *sp3 << endl;
+4.
+    BaseClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+
+    BaseClass b;
+    DerivedClass d;
+    void (BaseClass::*p1)() = &BaseClass::nonVirtual;
+    void (DerivedClass::*p2)() = &BaseClass::nonVirtual;
+    void (DerivedClass::*p3)() = &DerivedClass::nonVirtual;
+    (b.*p1)();
+    (d.*p2)();
+    (d.*p3)();
+
+5.
+    BaseClass:: nonVirtual()
+    BaseClass:: nonVirtual()
+    DerivedClass:: nonVirtual()
+
+    As the function is now not virtual, the second function will be 
+    finalized at compile time.
+
+6.
+    function<void (BaseClass&)> p1 = &BaseClass::nonVirtual;
+    function<void (DerivedClass&)> p2 = &BaseClass::nonVirtual;
+    function<void (DerivedClass&)> p3 = &DerivedClass::nonVirtual;
+   
+    p1(b);
+    p2(d);
+    p3(d);
+
+7.
+    auto p1 = mem_fn(&BaseClass::nonVirtual);
+    auto p2 = mem_fn(&BaseClass::nonVirtual);
+    auto p3 = mem_fn(&DerivedClass::nonVirtual);
+
+    p1(b);
+    p2(d);
+    p3(d);
