@@ -1,0 +1,56 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+   Default Count(), id: 0, address: 0x7ffd8472ccb8
+    Copy Count(), id: 0, address: 0x7ffd8472ccb0
+    ~Count(), id: 0, address: 0x7ffd8472ccb0
+    ~Count(), id: 0, address: 0x7ffd8472ccb8
+
+3.
+    [wang.y1@linuxlab008 s10]$ ./studio10 
+    Default Count(), id: 0, address: 0x10cbc28
+    Default Count(), id: 1, address: 0x10cbc30
+    Default Count(), id: 2, address: 0x10cbc38
+    Default Count(), id: 3, address: 0x10cbc40
+    Default Count(), id: 4, address: 0x10cbc48
+    ~Count(), id: 0, address: 0x10cbc28
+    Segmentation fault (core dumped)
+
+    There will be a memory leak.
+
+4.
+    Default Count(), id: 0, address: 0xdbfc30
+    Copy Count(), id: 0, address: 0xdbfc50
+    ~Count(), id: 0, address: 0xdbfc50
+    ~Count(), id: 0, address: 0xdbfc30
+
+5.
+
+    Default Count(), id: 0, address: 0xc60c30
+    Copy Count(), id: 0, address: 0xc60c50
+    call print: id: 0, address: 0xc60c30
+    ~Count(), id: 0, address: 0xc60c50
+    ~Count(), id: 0, address: 0xc60c30
+
+6.
+    wang.y1@linuxlab008 s10]$ ./studio10 
+    Default Count(), id: 0, address: 0x194dc30
+    Copy Count(), id: 0, address: 0x194dc50
+    assigning sptr with sptr2
+    ~Count(), id: 0, address: 0x194dc30
+    assigning sptr with sptr2 finished
+    shared_ptr is nullptr
+    ~Count(), id: 0, address: 0x194dc50
+
+    Since we have assign the spt with sptr2, first Count object will be deallocated from the heap,
+    and the destructor will be called. Then the weak pointer will be pointing to a nullptr. 
+
+7
+
+    [wang.y1@linuxlab008 s10]$ ./studio10 
+    Default Count(), id: 0, address: 0x17e6c20
+    call print: id: 0, address: 0x17e6c20
+    call print: id: 0, address: 0x17e6c20
+    ~Count(), id: 0, address: 0x17e6c20
+
+    They point to the same address in heap.
