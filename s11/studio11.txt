@@ -1,0 +1,66 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+    class Foo{
+        std::string fooString;
+
+        public:
+            Foo() = default;
+            Foo(const std::string &);
+            Foo(const Foo&);
+            ~Foo();
+    };
+
+3.
+    [wang.y1@linuxlab002 s11]$ ./studio11 
+    copy construct 
+    
+4.
+    Constructor, fooString : hello, address: 0x7ffcafd7a020
+    copy construct, fooString : hello, address: 0x7ffcafd7a000
+    Destructor, fooString : hello, address: 0x7ffcafd7a000
+    Destructor, fooString : hello, address: 0x7ffcafd7a020
+
+5.
+
+    Constructor, fooString : f1, address: 0x7ffcda274210
+    Constructor, fooString : f2, address: 0x7ffcda2741f0
+    Constructor, fooString : f3, address: 0x7ffcda2741d0
+    Copy Assign Operator, fooString : f2, address: 0x7ffcda2741f0
+        Other Object, fooString : f3, address: 0x7ffcda2741d0
+    Copy Assign Operator, fooString : f1, address: 0x7ffcda274210
+        Other Object, fooString : f3, address: 0x7ffcda2741f0
+    Destructor, fooString : f3, address: 0x7ffcda2741d0
+    Destructor, fooString : f3, address: 0x7ffcda2741f0
+    Destructor, fooString : f3, address: 0x7ffcda274210
+
+6.
+
+    [wang.y1@linuxlab002 s11]$ make
+    g++ -o studio11 -DUNIX   -Wall -W -g -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE Main.cpp Foo.cpp 
+    Main.cpp: In function ‘int main(int, const char**)’:
+    Main.cpp:9:50: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = Foo; _Dp = std::default_delete<Foo>]’
+        unique_ptr<Foo> uptr(new Foo("f1")), uptr2 = uptr;
+                                                    ^~~~
+    In file included from /project/engineering/compilers/gcc-8.3.0/include/c++/8.3.0/memory:80,
+                    from Main.cpp:3:
+    /project/engineering/compilers/gcc-8.3.0/include/c++/8.3.0/bits/unique_ptr.h:394:7: note: declared here
+        unique_ptr(const unique_ptr&) = delete;
+        ^~~~~~~~~~
+    make: *** [studio11] Error 1
+
+
+    [wang.y1@linuxlab002 s11]$ ./studio11 
+    Constructor, fooString : f1, address: 0x17f4c20
+    Destructor, fooString : f1, address: 0x17f4c20
+
+7.
+    Constructor, fooString : f1, address: 0x8e9c20
+    Print: f1, address: 0x8e9c20
+    Destructor, fooString : f1, address: 0x8e9c20
+
+8.
+    [wang.y1@linuxlab002 s11]$ ./studio11 
+    Constructor, fooString : f1, address: 0x21e7c20
+    Print: f1, address: 0x21e7c20
+    Destructor, fooString : f1, address: 0x21e7c20
