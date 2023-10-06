@@ -1,8 +1,7 @@
 #include "PinochleGame.h"
 #include <algorithm>
-using std:: sort;
-using std:: cout;
-using std:: endl;
+using std::sort, std:: cout, std::vector, std::string, std::runtime_error;
+
 
 vector<unsigned int> PinochleGame::pinochlePoint = {10, 20, 40, 40, 40, 60, 80, 100, 150, 300, 400, 600, 800, 1000, 1500};
 vector<string> PinochleGame::pinochleName = {
@@ -30,6 +29,7 @@ PinochleGame::PinochleGame(int argc, const char ** argv):
         
 }
 
+//deal 3 cards to each player until the end
 void PinochleGame::deal() {
     long unsigned int index = 0;
     while(!deck.isEmpty()) {
@@ -46,7 +46,14 @@ void PinochleGame::deal() {
 
 void PinochleGame:: printPlayers() {
     for (long unsigned int i = 0; i < playersHands.size(); ++i) {
+        //Has levitate the sorting process from the suitIndependentEvaluation function
+        //Since printing the players's hand with rank would give a better intuition if 
+        //the score checking function fails
+        auto deck = CardSet<PinochleRank, Suit>::getDeck(playersHands[i]);
+        sort(deck->begin(), deck->end(), rankCompare<PinochleRank, Suit>);
+
         cout << players[i] << endl;
+
         playersHands[i].print(cout, PINOCHLENUM);
         finalizeScore(playersHands[i]);
     }
@@ -64,7 +71,6 @@ int PinochleGame::play() {
         deck.shuffle();
         deal();
         printPlayers();
-        
         collectHands();
        
         int gameStatus = continueGame();
@@ -77,6 +83,9 @@ int PinochleGame::play() {
     }
 }
 
+/*
+*finalize the score for each player, and then print out their scores
+*/
 void PinochleGame::finalizeScore(const CardSet<PinochleRank, Suit>& cardSet) {
     vector<PinochleMelds> melds;
     suitIndependentEvaluation(cardSet, melds);
@@ -85,13 +94,9 @@ void PinochleGame::finalizeScore(const CardSet<PinochleRank, Suit>& cardSet) {
     }
 }
 
-int PinochleGame::suitIndependentEvaluation(const CardSet<PinochleRank, Suit> cardSet, vector<PinochleMelds>& melds) {
+void PinochleGame::suitIndependentEvaluation(const CardSet<PinochleRank, Suit>& cardSet, vector<PinochleMelds>& melds) {
     CardSet<PinochleRank, Suit> copy(cardSet);
     vector<Card_T<PinochleRank, Suit> > * copyDeck = CardSet<PinochleRank, Suit>::getDeck(copy);
-    sort(copyDeck->begin(), copyDeck->end(),
-    [](auto& card1, auto& card2){
-        return rankCompare(card1, card2);
-    });
     int aCount = 0, kCount = 0, qCount = 0, jCount = 0;
     int aBitMap = 0, kBitMap = 0, qBitMap = 0, jBitMap = 0;
     int jDiamond = 0, qSapdes = 0;
@@ -124,7 +129,7 @@ int PinochleGame::suitIndependentEvaluation(const CardSet<PinochleRank, Suit> ca
     if(jCount == PINOCHLE_FULLRANK) melds.push_back(PinochleMelds::fourhundredjacks);
     else if (jBitMap == PINOCHLE_FOURSUITSMAP) melds.push_back(PinochleMelds::fortyjacks);
     
-    if (jDiamond == qSapdes == PINOCHLE_DOUBLE) melds.push_back(PinochleMelds::doublepinochle);
+    if (jDiamond == qSapdes && jDiamond == PINOCHLE_DOUBLE) melds.push_back(PinochleMelds::doublepinochle);
     else if(jDiamond && qSapdes) melds.push_back(PinochleMelds::pinochle);
 }
 

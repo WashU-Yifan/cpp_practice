@@ -19,6 +19,9 @@ template <typename R, typename S>
 bool rankCompare(const Card_T<R,S>& card1, const Card_T<R,S>& card2);
 
 template <typename R, typename S>
+bool operator==(const Card_T<R,S>& card1, const Card_T<R,S>& card2);
+
+template <typename R, typename S>
 bool suitCompare(const Card_T<R,S>& card1, const Card_T<R,S>& card2);
 #ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
     #include "Card_T.cpp"

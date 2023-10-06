@@ -1,7 +1,8 @@
-using namespace std;
+
 #include "PinochleDeck.h"
 #include<iostream>
 
+using std::ostream;
 // constructor of Pinochle 
 // push each of every possible valid card combination twice into the vector
 Pinochle::Pinochle() {

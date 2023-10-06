@@ -5,8 +5,9 @@
 #include <vector>
 #include <iostream>
 
+using std::sort, std:: cout, std::vector, std::string, std::ostream;
 const int PINOCHLE_FULLRANK = 8; //when we have 8 cards of same rank
-const int PINOCHLE_FOURSUITSMAP = 17; // when we have 4 suits, 0xf
+const int PINOCHLE_FOURSUITSMAP = 15; // when we have 4 suits, 0xf
 const int PINOCHLE_DOUBLE = 2;
 enum class PinochleMelds {
     dix,
@@ -37,12 +38,12 @@ class PinochleGame : public Game {
         virtual void finalizeScore(const CardSet<PinochleRank, Suit>&);
     public:
         static std::vector<unsigned int> pinochlePoint;
-        static std::vector<string> pinochleName;
+        static std::vector<std::string> pinochleName;
 
         PinochleGame(int, const char **);
         virtual int play();
-        int suitIndependentEvaluation(const CardSet<PinochleRank, Suit>, vector<PinochleMelds>&);
+        void suitIndependentEvaluation(const CardSet<PinochleRank, Suit>&, vector<PinochleMelds>&);
 };
 
 void countCard(const Suit&, int&, int&);
-std::ostream& operator<<(std::ostream&, const PinochleMelds&);
+ostream& operator<<(ostream&, const PinochleMelds&);

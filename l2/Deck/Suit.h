@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
-const int suitNum = 4;
-
+const int SUITNUM = 5;
+const int CLUBBIT = 1, DIAMONDSBIT = 2, HEARTSBIT = 4, SPADESBIT = 8;
 // Suits of a card 
 // for now there is only one enum class for Suit
 enum class Suit {

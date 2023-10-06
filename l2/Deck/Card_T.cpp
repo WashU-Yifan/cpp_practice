@@ -1,5 +1,5 @@
-#include "Card_T.h"
-using namespace std;
+
+using std::ostream, std::endl;
 // Definition of the Card_T classes, just a constructor and a 
 // simple operator overloading
 
@@ -25,4 +25,10 @@ bool suitCompare(const Card_T<R,S>& card1, const Card_T<R,S>& card2) {
         return card1.rank < card2.rank;
     }
     return card1.suit < card2.suit;
+}
+
+
+template <typename R, typename S>
+bool operator==(const Card_T<R,S>& card1, const Card_T<R,S>& card2) {
+    return card1.rank == card2.rank && card1.suit == card2.suit;
 }

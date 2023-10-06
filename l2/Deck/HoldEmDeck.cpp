@@ -1,7 +1,7 @@
 #include "HoldEmDeck.h"
 #include<iostream>
 
-using namespace std;
+using std::ostream;
 
 
 // constructor of HoldEm

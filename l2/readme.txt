@@ -1,79 +1,61 @@
 1. Yifan Wang 488500 wang.y1@wustl.edu
      Duy Huynh 520644
 
-Errors for step 7:
-    Bad name for card_T class, didn't capitalize the starting char of class
+Compile Time errors:
+1.
+   Deck/Card_T.cpp:19:31: error: type/value mismatch at argument 1 in template parameter list for ‘template<class> struct std::rank’
+     return card1.rank < card2.rank;
 
-    CardSet.cpp:6:6: error: ‘template<class R, class S> class CardSet’ used without template parameters
- void CardSet::print(std::ostream& os, size_t size) {
-      ^~~~~~~
-    Caused by forgot to add template declaration at the begining of the definition of the print method
+     This is caused by adding using namespace std at the top of the source file. The compiler has mistakenly choose to 
+     pattern match rank with std::rank instead of card.rank. Solved by explicitly scoping the class from STL.
 
-Errors for step 8:
-     have to manually add CardSet<R, S>:: before the deck iterator or otherwise the compiler fails to 
-     compile.
+2. got a compile time error for sorting the HoldEmHand struct. The error messages was long and inconclusive. It basically
+says that if a member variable is a reference, the default operator= and move constructor is deleted, and thus std::sort()
+can not be used. 
 
-Errors in Step 16:
-
-Forgot to modify the makefile after changing the lab structure
-     [wang.y1@linuxlab009 l1]$ make
-     make: *** No rule to make target `Suit.cpp', needed by `lab1'.  Stop.
-     
-Some syntax errors:
-
-     Game/PinochleGame.h:17:39: error: ISO C++ forbids declaration of ‘PinocleGame’ with no type [-fpermissive]
-         PinocleGame(int, const char **);
-                                       ^
-     Game/PinochleGame.h:19:2: error: expected ‘;’ after class definition
-     }
-
-     Game/Game.h:9:9: error: ‘vector’ does not name a type; did you mean ‘perror’?
-         vector<std::string> players;
-         ^~~~~~
-         perror
-     Game/Game.cpp: In constructor ‘Game::Game(int, char**)’:
-     Game/Game.cpp:5:15: error: ‘class Game’ has no member named ‘players’; did you mean ‘play’?
-          this->players.push_back(players[i]);
-                    ^~~~~~~
-                    play
-
-
-     Game/HoldEmGame.cpp:39:9: note: suggested alternative: ‘pselect’
-         collect(playerHands[i]);
-         ^~~~~~~
-         pselect
-     Game/HoldEmGame.cpp:41:5: error: ‘collect’ was not declared in this scope
-          collect(sharedHands);
-          ^~~~~~~
-     Game/HoldEmGame.cpp:41:5: note: suggested alternative: ‘pselect’
-          collect(sharedHands);
-     ^~~~~~~
-
-
-     Game/PinochleGame.cpp: In member function ‘virtual void PinochleGame::deal()’:
-     Game/PinochleGame.cpp:13:19: error: ‘inddex’ was not declared in this scope
-          index = ++inddex % argc;
-                    ^~~~~~
-     Game/PinochleGame.cpp:13:19: note: suggested alternative: ‘index’
-          index = ++inddex % argc;
-                    ^~~~~~
-                    index
+     Fixed by changing string reference to string.
 
 Runtime Errors:
 
-     caused by failing to check the deck size
-     [wang.y1@linuxlab009 l1]$ ./lab1 Pinochle 1 2 3 4
-     1
-     2
-     3
-     4
-     Segmentation fault (core dumped)
+     I was luck enough to not face any runtime error that could crash the process. However, there is a small error causing
+     the program to not sort playerhand + sharedhands deck, which was caused by evoking sort on the wrong vector.
 
-     [wang.y1@linuxlab008 l1]$ ./lab1 HoldEm 1 2
-1
-JH 7S 2
-5C 8D BOARD (turn):QC 7C JC BOARD (river):QC 7C JC 9H Continue Game? [yes/no]
-
+     
 
 In terms of behaving correctly, I have tested the program with serveral different 
 command line arguments and the program bahaved as expected.
+
+Example of the HoldEm game ouput of the eval feature:
+
+     Current rank after flop:
+     Player Name: 2, cardSet: 2H 4H 5D 6D 6S 
+     Rank: pair
+     Player Name: 4, cardSet: 2C 2H 5D 6S AC 
+     Rank: pair
+     Player Name: 5, cardSet: 2H 5D 6S JC QC 
+     Rank: xhigh
+     Player Name: 3, cardSet: 2H 5D 6S 7D AH 
+     Rank: xhigh
+     Player Name: 1, cardSet: 2H 3D 5D 6S 9D 
+     Rank: xhigh
+     BOARD (turn):6S 2H 5D 7C 
+     BOARD (river):6S 2H 5D 7C 3H 
+
+Example of the Pinochle game ouput of the eval feature:
+     1
+     9D JS QC QC 
+     QD QS QS KS 
+     10C 10D 10S AS 
+     2
+     9H JC JD QD 
+     QH QH KH 10D 
+     10H 10H 10S AD 
+     3
+     9C 9H 9S JC 
+     JH KD KS 10C 
+     AC AD AH AS 
+     hundredaces 100
+     4
+     9C 9D 9S JD 
+     JH JS KC KC 
+     KD KH AC AH 

@@ -26,6 +26,7 @@ enum class HoldEmRank {
     undefined
 };
 
+const int HOLDEMRANKNUM = 14;
 std::ostream &operator<< (std::ostream& os, const HoldEmRank& Trank);
 
 HoldEmRank& operator++(HoldEmRank &Trank);
