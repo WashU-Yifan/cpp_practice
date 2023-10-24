@@ -1,0 +1,67 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+   p3 and p7 are not valid, since the lower level const can not be ignored.
+
+3.
+    p1, p2  p5  p6  are failing since they points to const int and thus shall not
+    be modified
+
+4.
+    Main.cpp:23:8: error: increment of read-only location ‘* ap1’
+     ++*ap1;
+        ^~~
+    Main.cpp:24:8: error: increment of read-only location ‘* ap2’
+        ++*ap2;
+            ^~~
+    Main.cpp:26:8: error: increment of read-only location ‘* ap5’
+        ++*ap5;
+            ^~~
+    Main.cpp:27:8: error: increment of read-only location ‘* ap6’
+        ++*ap6;
+    
+    The lower level const is kept by auto, but the top level const are discarded.
+    Since modifying the pointer does not fail, but on the value pointing to fails.
+5.
+   Main.cpp:26:8: error: increment of read-only location ‘*(const int*)dp1’
+     ++*dp1;
+        ^~~
+Main.cpp:27:8: error: increment of read-only location ‘*(const int*)dp2’
+     ++*dp2;
+        ^~~
+Main.cpp:29:8: error: increment of read-only location ‘* dp5’
+     ++*dp5;
+        ^~~
+Main.cpp:30:8: error: increment of read-only location ‘* dp6’
+     ++*dp6;
+        ^~~
+Main.cpp:33:7: error: increment of read-only variable ‘dp1’
+     ++dp1;
+       ^~~
+Main.cpp:34:7: error: increment of read-only variable ‘dp2’
+     ++dp2;
+       ^~~
+Main.cpp:35:7: error: increment of read-only variable ‘dp4’
+     ++dp4;
+       ^~~
+
+    decltype kept both the top-level and low-level const.
+
+6.
+
+typedef int i;
+typedef const int ci;
+typedef int* const cpi;
+typedef const int* const cpci;
+typedef int*  pi;
+typedef const int* pci;
+
+
+int main(int, const char **) {
+    ci i1 = 0;
+    i i2 = 1;
+    cpci p1 = &i1;
+    cpci p2 = &i2;
+    cpi p4 = &i2;
+    pci p5 = &i1, p6 = &i2;
+    pi p8 = &i2;
