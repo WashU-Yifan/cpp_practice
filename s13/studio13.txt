@@ -1,0 +1,47 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+
+[wang.y1@linuxlab008 s13]$ ./studio13 
+Constructor, fooString : f1, address: 0x2215c20
+Print: f1, address: 0x2215c20
+Destructor, fooString : f1, address: 0x2215c20
+
+3.
+template <typename T>
+typename remove_reference<T>::type && myMove(T&& t) {
+  
+    return static_cast<typename remove_reference<T>::type  &&> (t);
+}
+int main(int, const char **) {
+    unique_ptr<Foo> uptr(new Foo("f1")), uptr2 = myMove(uptr);
+
+    
+    uptr = fun(myMove(uptr2));
+    return SUCCESS;
+}
+
+4.
+template <typename T>
+typename remove_reference<T>::type && myMove(T&& t) {
+  
+    return static_cast<typename remove_reference<T>::type  &&> (t);
+}
+int main(int, const char **) {
+    unique_ptr<Foo> uptr(std::make_unique<Foo>("f1")), uptr2 = myMove(uptr);
+
+    
+    uptr = fun(myMove(uptr2));
+    return SUCCESS;
+
+}
+
+5.
+[wang.y1@linuxlab008 s13]$ ./studio13 
+Constructor, fooString : f1, address: 0x211cc20
+ 3Foo
+Print: f1, address: 0x211cc20
+Destructor, fooString : f1, address: 0x211cc20
+
+
+    
