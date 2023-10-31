@@ -1,0 +1,66 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+
+[wang.y1@linuxlab004 s14]$ ./studio14 
+string 1 string 2
+
+3.
+
+[wang.y1@linuxlab004 s14]$ ./studio14 
+string 1 string 2
+1
+
+4.
+friend bool operator< (const MyClass&, const MyClass&);
+bool operator< (const MyClass&, const MyClass&);
+
+bool operator< (const MyClass& myClass1, const MyClass& myClass2) {
+    return myClass1.s < myClass2.s;
+}
+
+
+5.
+
+Main.cpp: In function ‘int main(int, char**)’:
+Main.cpp:7:24: warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
+     cout << (myclass < myclass2) << endl;
+                        ^~~~~~~~
+In file included from Main.cpp:1:
+MyClass.h:15:6: note: candidate 1: ‘bool operator<(const MyClass&, const MyClass&)’
+ bool operator< (const MyClass&, const MyClass&);
+      ^~~~~~~~
+MyClass.h:9:10: note: candidate 2: ‘bool MyClass::operator<(const MyClass&) const’
+     bool operator< (const MyClass&) const;
+          ^~~~~~~~
+[wang.y1@linuxlab004 s14]$ ./studio14 
+string 1 string 2
+1
+
+the compiler suggests that the nonmember operator< is chosen over the member one
+
+6
+#include <iostream>
+#pragma once
+using std::ostream;
+
+template <typename T>
+void print (ostream& , const T&);
+
+#ifdef TEMPLATE_HEADERS_INCLUDE_SOURCE
+#include "MyTem.cpp"
+#endif
+
+
+#include "MyTem.h"
+
+template <typename T>
+void print (ostream& os, const T& t) {
+    os << t;
+}
+
+
+7.
+
+[wang.y1@linuxlab004 s14]$ ./studio14 
+string 1 from template print funcitonstring 2 from non-template funciton1
