@@ -1,6 +1,6 @@
 #include "MyClass.h"
 #define SUCCESS 0
-using std:: cout, std::endl;
+using std:: cout, std::endl, std::string;
 
 namespace p{
 void print (ostream& os, const MyClass & m) {
@@ -9,6 +9,7 @@ void print (ostream& os, const MyClass & m) {
 };
 
 int main(int, char**) {
+
     MyClass myclass("string 1"), myclass2("string 2");
     print(cout, myclass);
     p::print(cout, myclass2);
