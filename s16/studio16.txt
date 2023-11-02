@@ -1,0 +1,96 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+
+MyTem.cpp:30:18: error: ambiguous template specialization ‘print<>’ for ‘void print(std::ostream&, const string&)’
+ template <> void print(std::ostream& os, const std::string& s) {
+                  ^~~~~
+MyTem.cpp:4:6: note: candidates are: ‘template<class T> void print(std::ostream&, const T&)’
+ void print (ostream& os, const T& t) {
+      ^~~~~
+MyTem.cpp:10:6: note:                 ‘template<class T, class ... Args> void print(std::ostream&, const T&, const Args& ...)’
+ void print (ostream& os, const T& t, const Args&... args) {
+      ^~~~~
+In file included from MyClass.h:2,
+                 from Main.cpp:1:
+MyTem.h:21:34: note:                 ‘template<class ... Args> void print(std::ostream&, const string&, const Args& ...)’
+ template <typename... Args> void print (std::ostream&, const std::string&, const Args&...);
+                                  ^~~~~
+In file included from My
+
+This is caused by the compiler does not think that the string specialization is a competitvely more
+clear candidate.
+
+3.
+template <typename T>
+void print (ostream& , const T&);
+template <typename T, typename... Args>
+void print (ostream& , const T&, const Args&...);
+template <typename... Args>
+void prePrint(ostream& , const Args&...);
+template <typename T>
+const T& addSize(const T&);
+
+
+template <typename T>
+void print (ostream& os, const T& t) {
+    os << t;
+}
+
+
+template <typename T, typename... Args>
+void print (ostream& os, const T& t, const Args&... args) {
+    os << t << " ";
+    print(os, args...);
+}
+
+
+template <typename... Args>
+void prePrint(ostream& os, const Args&... args) {
+    os << "variadic size is " << sizeof...(args);
+    print(os, addSize(args)...);
+    os << " Byte size is " << sizeSum << std::endl;
+}
+
+template <typename T>
+const T& addSize(const T& t) {
+    sizeSum += sizeof(t);
+    return t;
+}
+
+
+
+void print (std::ostream&, const std::string&);
+void print (std::ostream&);
+
+void print(std::ostream& os, const std::string& s) {
+    os << "\""  << s  << "\"";
+}
+void print (std::ostream&){}
+
+[wang.y1@linuxlab005 s16]$ ./studio16 
+variadic size is 6
+"string 1" const char 1 MyClass 1 10 3.14 "string 2" Byte size is 112
+
+
+4.
+[wang.y1@linuxlab005 s16]$ ./studio16 
+variadic size is 7
+"string 1" [const char 1,0x403356] MyClass 1 10 3.14 "string 2" [const char 20x403363]  
+Byte size is 120
+[wang.y1@linuxlab005 
+
+5.
+[wang.y1@linuxlab005 s16]$ ./studio16 
+variadic size is 8
+"string 1" [const char 1,0x403546] {MyClass 1, 0x7ffe98d59ad0}10 3.14 "string 2" [const char 2,0x403553] {MyClass 2, 0x7ffe98d59ab0} 
+Byte size is 152
+
+6.
+[wang.y1@linuxlab005 s16]$ ./studio16 
+variadic size is 8
+"string 1" [const char 1,0x403606] {MyClass 1, 0x7ffc907cee60}10 3.14 "string 2" [const char 2,0x403613] {MyClass 2, 0x7ffc907cee40} 
+ Total Bytes are 152
+int Bytes are 4
+float Bytes are 4
+others' Bytes are 144
