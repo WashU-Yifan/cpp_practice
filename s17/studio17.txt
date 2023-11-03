@@ -1,0 +1,78 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+
+    int arr[5] = {1, 2, 3, 4, 5};
+
+    cout << sizeof(arr) << endl;
+
+    cout << sizeof(*arr) << endl;
+
+3.
+
+    [wang.y1@linuxlab009 s17]$ ./studio17 
+    1 2 3 4 5 
+
+4.
+template <typename T>
+void printArr(T, T);
+
+template <typename T>
+void printArr(T head, T tail) {
+    for (T i = head; i != tail; ++i) {
+        cout << *i << " ";
+    }
+}
+
+5.
+    int arr[5] = {1, 2, 3, 4, 5};
+    deque<int> d;
+    vector<int> v;
+    list<int> l;
+    printArr(arr, arr + sizeof(arr)/sizeof(*arr));
+    for (long unsigned int i = 0; i < sizeof(arr)/sizeof(*arr); ++i) {
+        l.emplace_back(*(arr + i));
+        v.emplace_back(*(arr + i));
+        d.emplace_back(*(arr + i));
+    }
+    printArr(l.begin(), l.end());
+    printArr(v.begin(), v.end());
+    printArr(d.begin(), d.end());
+
+[wang.y1@linuxlab009 s17]$ ./studio17 
+1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 
+
+6.
+
+    int arr[5] = {1, 2, 3, 4, 5};
+    deque<int> d;
+    vector<int> v;
+    list<int> l;
+    printArr(arr, arr + sizeof(arr)/sizeof(*arr));
+    for (long unsigned int i = 0; i < sizeof(arr)/sizeof(*arr); ++i) {
+        l.emplace_back(*(arr + i));
+        v.emplace_back(*(arr + i));
+        d.emplace_back(*(arr + i));
+    }
+    // printArr(l.begin(), l.end());
+    vector<int>::iterator vi = v.begin();
+    vi++;
+    printArr(v.begin(), vi);
+    printArr(vi, v.end());
+    vi = v.begin() + (v.end() - v.begin()) / 2;
+    printArr(vi, v.end());
+
+    [wang.y1@linuxlab009 s17]$ ./studio17 
+    1 2 3 4 5 
+    1 
+    2 3 4 5 
+    3 4 5 
+
+7.
+
+    cout << v[0] << endl;
+    cout << d[0] << endl;
+    //cout << l[0] << endl;
+
+    the list data structure does not support subscript operator, since the memory layout for list node is 
+    not continuous.
