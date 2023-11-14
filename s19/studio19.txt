@@ -1,0 +1,76 @@
+1. Yifan Wang 488500 wang.y1@wustl.edu
+    Duy Huynh 520644
+2.
+
+   [wang.y1@linuxlab002 s19]$ ./studio19 1 2 3 4 5 6
+./studio19 1 2 3 4 5 6 [wang.y1@linuxlab002 s19]$ ./studio19 1 1 1 1 1 1 1
+./studio19 1 
+
+Set enforce uniqueness on the elements put in.
+
+3.
+    [wang.y1@linuxlab002 s19]$ ./studio19 1 1 1 1 1 1 1
+./studio19 1 1 1 1 1 1 1 
+
+since now the pointer value is compared instead of the value pionted to, each
+element will have different value and thus duplicated char values are allowed.
+
+4.
+
+bool myCompare(const string& s1, const string& s2) {
+    return s1 > s2;
+}
+int main(int argc, char** argv) {
+    char **start= argv, **end = argv + argc;
+    std::ostream_iterator<char*> os(cout, " ");
+    set<char*, decltype(myCompare)*> s(myCompare);
+
+    copy(start, end, inserter(s, s.begin()));
+    copy(s.begin(), s.end(), os);
+  
+
+[wang.y1@linuxlab002 s19]$ ./studio19 1 2 3 4 5
+5 4 3 2 1 ./studio19 [wang.y1@linuxlab002 s19]$ 
+
+5.
+
+bool myCompare(const string& s1, const string& s2) {
+    return s1 > s2;
+}
+int main(int argc, char** argv) {
+    char **start= argv, **end = argv + argc;
+    std::ostream_iterator<char*> os(cout, " ");
+    set<char*, decltype(myCompare)*> s(myCompare);
+    multiset<char*, decltype(myCompare)*> ms(myCompare);
+    copy(start, end, inserter(s, s.begin()));
+    copy(start, end, inserter(ms, ms.begin()));
+
+    copy(s.begin(), s.end(), os);
+    copy(ms.begin(), ms.end(), os);
+
+
+   wang.y1@linuxlab002 s19]$ ./studio19 1 2 3 4 5 5 6 6
+6 5 4 3 2 1 ./studio19 6 6 5 5 4 3 2 1 ./studio19 [wang.y1@linuxlab002 s19]$ 
+
+multiset now allows duplicate values.
+
+6.
+    multiset<string> ms;
+    copy(start, end, inserter(ms, ms.begin()));
+    string key = "1";
+    std::cout << "key = " << key << "; equal range = ";
+    const auto [lb, ub] = ms.equal_range(key);
+    copy(lb, ub, os);
+
+
+    [wang.y1@linuxlab002 s19]$ ./studio19 1 1 1 1 1 1 1 1 2  2
+    key = 1; equal range = 1 1 1 1 1 1 1 1 
+
+7.
+The erase with single parameter will only remove the passed in element
+[wang.y1@linuxlab002 s19]$ ./studio19 1 1 1 1 1 1 1 1 2  2
+key = 1; equal range = 1 1 1 1 1 1 1 1 ./studio19 1 1 1 1 1 1 1 2 2
+
+The erase with two parameters will remove all elements in the range provided
+[wang.y1@linuxlab002 s19]$ ./studio19 1 1 1 1 1 1 1 1 2  2
+key = 1; equal range = 1 1 1 1 1 1 1 1 ./studio19 2 2 
